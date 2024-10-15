@@ -37,3 +37,4 @@ zile[timp == min(timp)]
 raspunsC = zile[timp > 120]
 table(raspunsC)
 unique(raspunsC)
+

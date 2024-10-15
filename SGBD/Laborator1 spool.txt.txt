@@ -1,0 +1,73 @@
+SQL> DROP TABLE MOTOR_CARBURANT;
+
+Table dropped.
+
+SQL> DROP TABLE MOTOR_ELECTRIC;
+
+Table dropped.
+
+SQL> DROP TABLE SHOWROOM_NUMERE_TELEFON;
+
+Table dropped.
+
+SQL> DROP TABLE VEHICUL;
+
+Table dropped.
+
+SQL> DROP TABLE CLIENT_NUMERE_TELEFON;
+
+Table dropped.
+
+SQL> DROP TABLE TRANZACTIE;
+
+Table dropped.
+
+SQL> DROP TABLE SERVICE;
+
+Table dropped.
+
+SQL> DROP TABLE CARBURANT;
+
+Table dropped.
+
+SQL> DROP TABLE MECANIC;
+
+Table dropped.
+
+SQL> DROP TABLE VANZATOR;
+
+Table dropped.
+
+SQL> DROP TABLE VEHICUL_DETINUT_CLIENT;
+
+Table dropped.
+
+SQL> DROP TABLE PLATA;
+
+Table dropped.
+
+SQL> DROP TABLE CAROSERIE;
+
+Table dropped.
+
+SQL> DROP TABLE ANGAJAT_SHOWROOM;
+
+Table dropped.
+
+SQL> DROP TABLE SHOWROOM;
+
+Table dropped.
+
+SQL> DROP TABLE ADRESA;
+
+Table dropped.
+
+SQL> DROP TABLE MOTOR;
+
+Table dropped.
+
+SQL> DROP TABLE CLIENT;
+
+Table dropped.
+
+SQL> spool off;
