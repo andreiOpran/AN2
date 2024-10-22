@@ -68,6 +68,7 @@ View(mtcars)
 mean(mtcars$wt[mtcars$am == 0])
 mean(mtcars$wt[mtcars$am == 1])
 
+# in loc de x se foloseste formula, in caz de erori
 aggregate(x = wt ~ am, FUN = mean, data = mtcars)
 
 aggregate(x = wt ~ cyl, FUN = mean, data = mtcars)

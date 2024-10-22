@@ -1,0 +1,2 @@
+cecac457-5a31-4c3a-975d-9891cfa1dbe5:1729576637548:0:S:VARIABLE rezultat VARCHAR2(35)
+b7333eca-f66e-48ed-ad81-2aed0cc19935:1729576637795:40:S:BEGIN\nSELECT department_name\nINTO :rezultat\nFROM employees e, departments d\nWHERE e.department_id=d.department_id\nGROUP BY department_name\nHAVING COUNT(*) = (SELECT MAX(COUNT(*))\nFROM employees\nGROUP BY department_id);\nDBMS_OUTPUT.PUT_LINE('Departamentul '|| :rezultat);\nEND;\n/
