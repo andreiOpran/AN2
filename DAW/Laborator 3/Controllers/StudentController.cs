@@ -6,7 +6,7 @@ namespace Laborator_3.Controllers
     {
         public string Index()
         {
-            return "Afisare lista studenti";
+            return "Afisare lista studenti:s";
         }
 
         public string Show(int? id)

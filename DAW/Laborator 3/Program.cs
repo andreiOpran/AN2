@@ -19,9 +19,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
+app.UseRouting(); // activeaza rutarea, trebuie plasat inainte de MapControllerRoute
 
 app.UseAuthorization();
+
+
 
 // Exercitiul 1
 
