@@ -1,0 +1,6 @@
+﻿  Laborator 2.cpp
+C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2.cpp(225,16): warning C4101: 'nrMuchii': unreferenced local variable
+C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2.cpp(225,29): warning C4101: 'y': unreferenced local variable
+C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2.cpp(225,6): warning C4101: 'nrNoduri': unreferenced local variable
+C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2.cpp(225,26): warning C4101: 'x': unreferenced local variable
+  Laborator 2.vcxproj -> C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\x64\Debug\Laborator 2.exe

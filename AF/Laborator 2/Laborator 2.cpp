@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 #include <fstream>
 using namespace std;
 
@@ -11,9 +12,12 @@ static void MatriceAdiacenta(vector<vector<int>>& ma, const string& numeFisier, 
 	ma.resize(nrNoduri + 1, vector<int>(nrNoduri + 1, 0));
 	while (fin >> x >> y)
 	{
-		ma[x][y] = 1;
-		if (!orientat)
-			ma[y][x] = 1;
+		if (x != y)
+		{
+			ma[x][y] = 1;
+			if (!orientat)
+				ma[y][x] = 1;
+		}
 	}
 }
 static void AfisareMatriceAdiacenta(vector<vector<int>> ma)
@@ -34,9 +38,12 @@ static void ListaAdiacenta(vector<vector<int>>& la, const string& numeFisier, bo
 	la.resize(nrNoduri + 1);
 	while (fin >> x >> y)
 	{
-		la[x].push_back(y);
-		if (!orientat)
-			la[y].push_back(x);
+		if (x != y)
+		{
+			la[x].push_back(y);
+			if (!orientat)
+				la[y].push_back(x);
+		}
 	}
 }
 static void AfisareListaAdiacenta(vector<vector<int>> la)
@@ -68,6 +75,8 @@ static void TransformareListaAdiacentaInMatriceAdiacenta(const vector<vector<int
 			ma[i][la[i][j]] = 1;
 }
 
+/* A. MEMORAREA UNUI GRAF (1, 2, 3, 4)
+
 int main()
 {
 	string numeFisier = "graf.in";
@@ -94,6 +103,153 @@ int main()
 	ma.clear();
 	TransformareListaAdiacentaInMatriceAdiacenta(la, ma);
 	AfisareMatriceAdiacenta(ma);
-	
+
 	return 0;
 }
+
+*/
+
+
+
+
+// BFS
+vector<int> BFS(string numeFisier, bool orientat) // va afisa pentru fiecare nod, numarul minim de arce necesare pentru a ajunge la acesta din nodul de start
+{
+	vector<vector<int>> la;
+	int nrNoduri, nrMuchii, nodStart, x, y;
+	ifstream fin(numeFisier);
+	fin >> nrNoduri >> nrMuchii >> nodStart;
+
+	// creeare lista adiacenta
+	la.resize(nrNoduri + 1);
+	while (fin >> x >> y)
+	{
+		if (x != y)
+		{
+			la[x].push_back(y);
+			if (!orientat)
+				la[y].push_back(x);
+		}
+	}
+
+	// initalizare coada si vector de distante
+	queue<int> q;
+	vector<int> dist(nrNoduri + 1, -1);
+	dist[nodStart] = 0;
+	q.push(nodStart);
+
+	// parcurgere BFS
+	while (!q.empty())
+	{
+		int nodCurent = q.front();
+		q.pop();
+		for (int i = 0; i < la[nodCurent].size(); i++)
+		{
+			int vecin = la[nodCurent][i];
+			if (dist[vecin] == -1)
+			{
+				dist[vecin] = dist[nodCurent] + 1;
+				q.push(vecin);
+			}
+		}
+	}
+
+	return dist;
+
+	/*
+
+	bfs.in
+	5 7 2
+	1 2
+	2 1
+	2 2
+	3 2
+	2 5
+	5 3
+	4 5
+
+	bfs.out
+	-1 0 1 2 1
+
+	*/
+}
+
+int BFS2(string numeFisier, bool orientat, int X) // in plus fata de BFS(), avem nodul X -> vom afisa numarul minim de arce de la nodul de start la nodul x
+{
+	vector<vector<int>> la;
+	int nrNoduri, nrMuchii, nodStart, x, y;
+	ifstream fin(numeFisier);
+	fin >> nrNoduri >> nrMuchii >> nodStart;
+
+	// creeare lista adiacenta
+	la.resize(nrNoduri + 1);
+	while (fin >> x >> y)
+	{
+		if (x != y)
+		{
+			la[x].push_back(y);
+			if (!orientat)
+				la[y].push_back(x);
+		}
+	}
+
+	// initalizare coada si vector de distante
+	queue<int> q;
+	vector<int> dist(nrNoduri + 1, -1);
+	dist[nodStart] = 0;
+	q.push(nodStart);
+
+	// parcurgere BFS
+	while (!q.empty())
+	{
+		int nodCurent = q.front();
+		q.pop();
+		for (int i = 0; i < la[nodCurent].size(); i++)
+		{
+			int vecin = la[nodCurent][i];
+			if (dist[vecin] == -1)
+			{
+				dist[vecin] = dist[nodCurent] + 1;
+				q.push(vecin);
+			}
+		}
+	}
+
+	return dist[X];
+}
+
+
+
+
+
+// DFS
+int DFS(string numeFisier, bool orientat) // va return numarul de componente conexe
+{
+	vector<vector<int>> la;
+	int nrNoduri, nrMuchii, x, y;
+	ifstream fin(numeFisier);
+	ListaAdiacenta(la, numeFisier, orientat);
+	
+	vector<bool> vizitat(nrNoduri + 1, false);
+	int nrComponenteConexe = 0;
+
+
+
+	return 0;
+}
+
+
+int main()
+{
+	string numeFisier = "dfs.in";
+	bool orientat = false;
+
+	DFS(numeFisier, orientat);
+
+	return 0;
+}
+
+
+// DE CONTINUAT DFS
+
+
