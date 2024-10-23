@@ -1,0 +1,31 @@
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\appsettings.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\Laborator 4.staticwebassets.runtime.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\Laborator 4.exe
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\Laborator 4.deps.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\Laborator 4.runtimeconfig.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\Laborator 4.dll
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\bin\Debug\net8.0\Laborator 4.pdb
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.AssemblyInfoInputs.cache
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.AssemblyInfo.cs
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.csproj.CoreCompileInputs.cache
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.RazorAssemblyInfo.cache
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.RazorAssemblyInfo.cs
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.sourcelink.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\staticwebassets\msbuild.Laborator 4.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\staticwebassets\msbuild.build.Laborator 4.props
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Laborator 4.props
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Laborator 4.props
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\scopedcss\bundle\Laborator 4.styles.css
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\scopedcss\projectbundle\Laborator 4.bundle.scp.css
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.dll
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\refint\Laborator 4.dll
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.pdb
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\Laborator 4.genruntimeconfig.cache
+C:\Users\andre\Desktop\AN2-SEM1\DAW\Laborator 4\obj\Debug\net8.0\ref\Laborator 4.dll

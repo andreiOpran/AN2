@@ -1,0 +1,27 @@
+﻿@*  @ -> semnifica ceva ce trebuie executat  *@
+
+@{
+    ViewBag.PageName = "Index - afisarea tuturor articolelor";
+}
+
+<h2>@ViewBag.PageName</h2>
+<br />
+
+@* ViewBag.numeDinController ? *@
+@foreach(var article in ViewBag.Articles) // var tine orice tip de date
+{
+    <h1>@article.Title</h1> 
+    <p>@article.Content</p>
+    <small>@article.Date</small>
+
+    <a href="/Articles/Show/@article.Id">Afisare articol</a> // redirect catre pagina show // RUTA IMPLICITA
+    <a href="/articole/show/@article.Id">Afisare articol</a> // ruta configurata
+
+    <a href="/Articles/Edit/@article.Id">Editare articol</a>
+
+    <br />
+    <br />
+    <hr />
+}
+
+<a href="/Articles/New/">Adaugare articol</a>
