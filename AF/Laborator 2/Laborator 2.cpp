@@ -1,7 +1,8 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <queue>
-#include <fstream>
+#include <stack>
 using namespace std;
 
 static void MatriceAdiacenta(vector<vector<int>>& ma, const string& numeFisier, bool orientat)
@@ -221,35 +222,251 @@ int BFS2(string numeFisier, bool orientat, int X) // in plus fata de BFS(), avem
 
 
 
+/* KOSARAJU
 
-// DFS
-int DFS(string numeFisier, bool orientat) // va return numarul de componente conexe
+void DFS1(int v, const vector<vector<int>>& G, vector<bool>& viz, stack<int>& S) {
+	viz[v] = true; // Marcam nodul curent ca vizitat
+	for (int i : G[v]) {
+		if (!viz[i]) {
+			DFS1(i, G, viz, S); // Continuam DFS pentru nodurile adiacente nevizitate
+		}
+	}
+	S.push(v); // Adaugam nodul curent in stiva dupa ce toate nodurile adiacente au fost vizitate
+}
+
+void DFS2(int v, const vector<vector<int>>& GT, vector<bool>& viz) {
+	cout << v << " "; // Afisam nodul curent
+	viz[v] = true; // Marcam nodul curent ca vizitat
+	for (int i : GT[v]) {
+		if (!viz[i]) {
+			DFS2(i, GT, viz); // Continuam DFS pentru nodurile adiacente nevizitate
+		}
+	}
+}
+
+void Kosaraju(const string& numeFisier) {
+	ifstream fin(numeFisier);
+	int nrNoduri, nrMuchii, x, y;
+	fin >> nrNoduri >> nrMuchii;
+
+	// Initializam graful original si graful transpus
+	vector<vector<int>> G(nrNoduri + 1);
+	vector<vector<int>> GT(nrNoduri + 1);
+
+	// Citim muchiile din fisier si construim graful original si graful transpus
+	while (fin >> x >> y) {
+		G[x].push_back(y);
+		GT[y].push_back(x); // graful transpus
+	}
+
+	stack<int> S;
+	vector<bool> viz(nrNoduri + 1, false);
+
+	// Pasul 1: Parcurgem DFS pentru a stoca ordinea de finalizare a nodurilor
+	for (int i = 1; i <= nrNoduri; ++i) {
+		if (!viz[i]) {
+			DFS1(i, G, viz, S);
+		}
+	}
+
+	// Resetam vectorul de vizitare pentru a-l folosi in pasul 2
+	fill(viz.begin(), viz.end(), false); // Marcam toate varfurile ca fiind nevizitate
+
+	// Pasul 2: Parcurgem DFS pe graful transpus in ordinea stocata in stiva
+	while (!S.empty()) {
+		int v = S.top();
+		S.pop();
+		if (!viz[v]) {
+			cout << "Componenta tare conexa: ";
+			DFS2(v, GT, viz);
+			cout << endl;
+		}
+	}
+}
+
+*/
+
+
+
+
+// DFS CARE RETURNEAZA NUMARUL DE COMPONENTE CONEXE
+void DFSNumarComponenteAux(int vf, const vector<vector<int>>& la, vector<bool>& vizitat)
+{
+	vizitat[vf] = true;
+	for(int i : la[vf])
+		if (!vizitat[i])
+			DFSNumarComponenteAux(i, la, vizitat);
+}
+int DFSNumarComponenteConexe(string numeFisier, bool orientat = false) 
 {
 	vector<vector<int>> la;
-	int nrNoduri, nrMuchii, x, y;
+	int nrNoduri = 0;
 	ifstream fin(numeFisier);
 	ListaAdiacenta(la, numeFisier, orientat);
 	
+	// atentie la nrNoduri/nrMuchii atunci cand citim cu ListaAdiacenta()/MatriceAdiacenta(), pentru ca vor fi NEINITIALIZATE
+	nrNoduri = la.size() - 1;
 	vector<bool> vizitat(nrNoduri + 1, false);
 	int nrComponenteConexe = 0;
 
-
-
-	return 0;
+	for (int i = 1; i <= nrNoduri; i++) // parcurgem toate nodurile
+	{
+		if (!vizitat[i])
+		{
+			DFSNumarComponenteAux(i, la, vizitat);
+			nrComponenteConexe++;
+		}
+	}
+	return nrComponenteConexe;
 }
+
+
+// INCORECT
+// DFS CARE AFISEAZA ARCELE DE INTOARCERE, DE TRAVERSARE, DE AVANSARE SI DE AVANSARE DIRECTA(DE ARBORE DF)
+void DFSArceAux(int vf, const vector<vector<int>>& la, vector<bool>& vizitat, vector<int>& tata, vector<int>& timpInitial, vector<int>& timpFinal, int& timp)
+{
+	vizitat[vf] = true;
+	timpInitial[vf] = ++timp;
+	for (int vecin : la[vf])
+	{
+		if (!vizitat[vecin])
+		{
+			tata[vecin] = vf;
+			cout << "                                                                           Arc de avansare directa: " << vf << " -> " << vecin << '\n';
+			DFSArceAux(vecin, la, vizitat, tata, timpInitial, timpFinal, timp);
+		}
+		else if (timpInitial[vecin] < timpInitial[vf] && tata[vf] != vecin)
+			cout << "Arc de intoarcere: " << vf << " -> " << vecin << '\n';
+		else if (timpInitial[vecin] > timpInitial[vf])
+			cout << "Arc de traversare: " << vf << " -> " << vecin << '\n';
+		else if (timpInitial[vecin] < timpInitial[vf] && tata[vf] == vecin)
+			cout << "Arc de avansare: " << vf << " -> " << vecin << '\n';
+	}
+	timpFinal[vf] = ++timp;
+}
+void DFSArce(string numeFisier, bool orientat = false, int nodStart = 1)
+{
+	vector<vector<int>> la;
+	int nrNoduri = 0;
+	ifstream fin(numeFisier);
+	ListaAdiacenta(la, numeFisier, orientat);
+	nrNoduri = la.size() - 1;
+
+	AfisareListaAdiacenta(la);
+
+	vector<bool> vizitat(nrNoduri + 1, false);
+	vector<int> tata(nrNoduri + 1, 0);
+	vector<int> timpInitial(nrNoduri + 1, 0);
+	vector<int> timpFinal(nrNoduri + 1, 0);
+	int timp = 0;
+
+	DFSArceAux(nodStart, la, vizitat, tata, timpInitial, timpFinal, timp);
+
+	/*
+	
+	graf orientat curs DF
+
+	11 14
+	1 5
+	1 3
+	1 9
+	2 5
+	3 2
+	3 1
+	3 6
+	4 9
+	4 8
+	7 4
+	9 7
+	9 8
+	10 11
+	11 8
+	
+	*/
+}
+
+
+// INCORECT
+// PENTRU UN GRAF NEORIENTAT, SE VERIFICA DACA EXISTA SI SE AFISEAZA UN CICLU ELEMENTAR 
+void DFSCicluri(int x, const vector<vector<int>>& la, vector<int>& viz, vector<int>& tata, vector<int>& ciclu, bool& cicluGasit) {
+	viz[x] = 1;
+
+	// Parcurgem toti vecinii nodului curent
+	for (int y : la[x]) {
+		if (viz[y] == 0) {
+			// Daca vecinul nu a fost vizitat, il marcam si continuam DFS
+			tata[y] = x;
+			DFSCicluri(y, la, viz, tata, ciclu, cicluGasit);
+			if (cicluGasit) return; // Daca am gasit un ciclu, ne oprim
+		}
+		else if (tata[x] != y && !cicluGasit) {
+			// Daca vecinul a fost vizitat si nu este parintele nodului curent, am gasit un ciclu
+			cicluGasit = true;
+			int v = x;
+			// Reconstruim ciclul gasit
+			while (v != y) {
+				ciclu.push_back(v);
+				v = tata[v];
+			}
+			ciclu.push_back(y);
+			ciclu.push_back(x);
+			return;
+		}
+	}
+}
+void DetectAndPrintCycle(string numeFisier) {
+	vector<vector<int>> la;
+	int nrNoduri, nrMuchii, x, y;
+	ifstream fin(numeFisier);
+	fin >> nrNoduri >> nrMuchii;
+
+	// Creeare lista adiacenta
+	la.resize(nrNoduri + 1);
+	while (fin >> x >> y) {
+		if (x != y) {
+			la[x].push_back(y);
+			la[y].push_back(x);
+		}
+	}
+
+	vector<int> viz(nrNoduri + 1, 0);
+	vector<int> tata(nrNoduri + 1, -1);
+	vector<int> ciclu;
+	bool cicluGasit = false;
+
+	// Parcurgem toate nodurile pentru a detecta cicluri
+	for (int i = 1; i <= nrNoduri; ++i) {
+		if (viz[i] == 0) {
+			DFSCicluri(i, la, viz, tata, ciclu, cicluGasit);
+			if (cicluGasit) break;
+		}
+	}
+
+	// Afisam ciclul daca a fost gasit
+	if (cicluGasit) {
+		cout << "Ciclu detectat: ";
+		for (int nod : ciclu) {
+			cout << nod << " ";
+		}
+		cout << endl;
+	}
+	else {
+		cout << "Graful nu contine cicluri." << endl;
+	}
+}
+
 
 
 int main()
 {
-	string numeFisier = "dfs.in";
+	string numeFisier = "graf.in";
 	bool orientat = false;
 
-	DFS(numeFisier, orientat);
+	DetectAndPrintCycle(numeFisier);
 
 	return 0;
 }
 
 
-// DE CONTINUAT DFS
-
+// DE CORECTAT DFSArce() si DetectAndPrintCycle()
 
