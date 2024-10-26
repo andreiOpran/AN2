@@ -1,4 +1,4 @@
 ﻿  Laborator 2.cpp
-C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2.cpp(308,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2.cpp(353,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2\Laborator 2.cpp(308,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\Laborator 2\Laborator 2.cpp(353,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Laborator 2.vcxproj -> C:\Users\andre\Desktop\Facultate\AN2-SEM1\AF\Laborator 2\x64\Debug\Laborator 2.exe
