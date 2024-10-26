@@ -540,3 +540,12 @@ ipch/
 # TFS 2012 Local Workspace
 $tf/
 
+
+
+# adaugat de mine
+*.db-shm
+*.db-wal
+*.db
+*.vsidx
+*.suo
+*.VC.db
