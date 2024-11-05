@@ -209,8 +209,6 @@ where cardinality(a.telefon) is null;
 has context menu
 
 
-
-
 -- TEMA 1 -> PENTRU SAPT VIITOARE E1, E2 (A, B) 
 -- TEMA 2 -> PENTRU CELALATA SAPTAMANA E2 (C, D, E), E3
 
