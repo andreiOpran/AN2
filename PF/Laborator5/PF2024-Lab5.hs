@@ -37,6 +37,11 @@ rmCharsRec = undefined
 
 rmCharsFold :: String -> String -> String
 rmCharsFold = undefined
-    
+
+
+
 myUnzip :: [(a, b)] -> ([a], [b])
-myUnzip = undefined
+myUnzip = foldr f e
+	where
+		f (x, y) (xs, ys) = ((x:xs), (y:ys))
+		e = ([], [])
