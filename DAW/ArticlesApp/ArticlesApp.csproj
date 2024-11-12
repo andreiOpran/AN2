@@ -15,10 +15,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Articles\" />
-    <Folder Include="Views\Categories\" />
-    <Folder Include="Views\Comments\" />
-  </ItemGroup>
-
 </Project>

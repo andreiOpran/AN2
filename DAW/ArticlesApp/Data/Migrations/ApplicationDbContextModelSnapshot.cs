@@ -48,7 +48,7 @@ namespace ArticlesApp.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Articles", (string)null);
                 });
 
             modelBuilder.Entity("ArticlesApp.Models.Category", b =>
@@ -65,7 +65,7 @@ namespace ArticlesApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("ArticlesApp.Models.Comment", b =>
@@ -90,7 +90,7 @@ namespace ArticlesApp.Data.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
