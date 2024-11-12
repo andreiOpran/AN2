@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\Desktop\\Facultate\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj": {}
+    "C:\\Users\\andre\\Desktop\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\Desktop\\Facultate\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj": {
+    "C:\\Users\\andre\\Desktop\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\Desktop\\Facultate\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\Desktop\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj",
         "projectName": "Laborator 3",
-        "projectPath": "C:\\Users\\andre\\Desktop\\Facultate\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj",
+        "projectPath": "C:\\Users\\andre\\Desktop\\AN2-SEM1\\DAW\\Laborator 3\\Laborator 3.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\Desktop\\Facultate\\AN2-SEM1\\DAW\\Laborator 3\\obj\\",
+        "outputPath": "C:\\Users\\andre\\Desktop\\AN2-SEM1\\DAW\\Laborator 3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -64,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

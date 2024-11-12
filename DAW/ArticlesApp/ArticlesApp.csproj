@@ -17,6 +17,8 @@
 
   <ItemGroup>
     <Folder Include="Views\Articles\" />
+    <Folder Include="Views\Categories\" />
+    <Folder Include="Views\Comments\" />
   </ItemGroup>
 
 </Project>
