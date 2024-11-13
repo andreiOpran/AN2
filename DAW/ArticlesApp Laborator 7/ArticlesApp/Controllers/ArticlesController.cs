@@ -2,7 +2,9 @@
 using ArticlesApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace ArticlesApp.Controllers
 {
@@ -31,25 +33,26 @@ namespace ArticlesApp.Controllers
         // impreuna cu categoria din care face parte
         // In plus sunt preluate si toate comentariile asociate unui articol
         // HttpGet implicit
-        public IActionResult Show(int id)
+        public IActionResult Show(int id) // id-ul este din ruta
         {
             
-            Article article = db.Articles.Include("").Include("")
-                            //  .Where(se adauga conditia)
+            Article article = db.Articles.Include("Category").Include("Comments")
+                              .Where(a => a.Id == id) // id -> parametru, Id -> model
                               .First();
+                              
 
             /* Metoda .First() este necesara pentru a obtine un singur articol din colectia returnata de metoda Where. Fara .First(), codul ar returna o colectie de articole care se potrivesc cu criteriul din Where (chiar daca exista un singur articol care indeplineste conditia), in loc sa returneze direct obiectul Article.
              .First() executa query-ul imediat si returneaza primul (si singurul) articol care indeplineste conditia.
              */
 
-            ViewBag.Article = article;
+            //ViewBag.Article = article;
 
-            ViewBag.Category = article.Category;
+            //ViewBag.Category = article.Category;
             
 
             //ViewBag.Category(ViewBag.UnNume) = article.Category (proprietatea Category);
 
-            return View();
+            return View(article);
         }
 
         // Se afiseaza formularul in care se vor completa datele unui articol
@@ -58,13 +61,18 @@ namespace ArticlesApp.Controllers
 
         public IActionResult New()
         {
-            var categories = from categ in db.Categories
-                             select categ;
-
-            ViewBag.Categories = categories;
-
-            /* Metoda prin care preluam list de categorii se afla mai jos, avand numele GetAllCategories
+            /*Metoda prin care preluam list de categorii se afla mai jos, avand numele GetAllCategories
              */
+
+            //var categories = from categ in db.Categories
+            //                 select categ;
+
+            //ViewBag.Categories = categories;
+
+            Article article = new Article();
+            article.Categ = GetAllCategories();
+
+            
 
             return View();
         }
@@ -74,20 +82,24 @@ namespace ArticlesApp.Controllers
         public IActionResult New(Article article)
         {
             // se adauga data 
-            
+            article.Date = DateTime.Now;
 
             try
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
-              // Aici dorim sa preluam mesajul "Articolul a fost adaugat";
-              // Unde se va afisa acest mesaj? 
+                // Aici dorim sa preluam mesajul "Articolul a fost adaugat";
+                // Unde se va afisa acest mesaj? 
+
+                TempData["message"] = "Articolul a fost adaugat"; // mesajul va fi afisat in Index.cshtml
+
                 return RedirectToAction("Index");
             }
 
             catch (Exception)
             {
-                return View();
+                article.Categ = GetAllCategories(); // atasez lista de categorii la articol
+                return View(article); // pt cand formularul nu este complet si dai submit, nu mergi altundeva si ai progresul salvat in fromular
             }
         }
 
@@ -152,7 +164,7 @@ namespace ArticlesApp.Controllers
         // ce parametru primeste metoda Delete()?
         public ActionResult Delete(int id)
         {
-            Article article = db.Articles.Find(id);
+            Article article = db.Articles.Find(id); // limbaj linq -> framework-ul transforma in query-uri sql
             db.Articles.Remove(article);
             db.SaveChanges();
             // Cum se afiseaza acest mesaj? "Articolul a fost sters";

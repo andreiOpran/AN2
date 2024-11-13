@@ -40,7 +40,7 @@ namespace ArticlesApp.Controllers
             Comment comm = db.Comments.Find(id);
             db.Comments.Remove(comm);
             db.SaveChanges();
-            return Redirect("/Articles/Show/" + comm.ArticleId);
+            return Redirect("/Articles/Show/" + comm.ArticleId); // dupa ce sterg comentariul ma intorc pe pagina articolului de unde am sters inital
         }
 
         // In acest moment vom implementa editarea intr-o pagina View separata
