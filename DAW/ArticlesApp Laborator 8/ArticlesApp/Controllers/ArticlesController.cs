@@ -3,6 +3,7 @@ using ArticlesApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ArticlesApp.Controllers
 {
@@ -109,6 +110,23 @@ namespace ArticlesApp.Controllers
                 article.Content = requestArticle.Content;
                 article.Date = DateTime.Now;
                 article.CategoryId = requestArticle.CategoryId;
+
+                if (string.IsNullOrEmpty(requestArticle.Title))
+                    ModelState.AddModelError(string.Empty, "Titlul trebuie completat");
+
+                
+                if (!string.IsNullOrEmpty(article.Title) && article.Title.Length < 5)
+                    ModelState.AddModelError("Title lungime prea mica", "Titlul trebuie sa aiba minim 5 caractere");
+                if (!string.IsNullOrEmpty(article.Title) && article.Title.Length > 100)
+                    ModelState.AddModelError("Title lungime prea mare", "Titlul trebuie sa aiba maxim 100 de caractere");
+
+
+                if (string.IsNullOrEmpty(requestArticle.Content))
+                    ModelState.AddModelError(string.Empty, "Content-ul trebuie completat");
+
+
+
+
                 db.SaveChanges();
                 TempData["message"] = "Articolul a fost modificat";
                 return RedirectToAction("Index");
