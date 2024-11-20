@@ -18,16 +18,27 @@
                     <br /><br />
                 </div>
 
-                <div class="form-group">
-                    @* Aici se adauga codul pentru continutul articolului*@
-                    <label asp-for="Content" class="form-label">Continut Articol</label>
+                <div class="form-group">                   
+                    
+                    <label asp-for="Content" class="form-label">Continut articol</label>
+                    <br />
+                    <textarea asp-for="Content" class="form-control"></textarea>
+                    <br />
+                    <br />
+
                 </div>
 
                 <div class="form-group">
-                    @* Aici se adauga codul pentru dropdown*@
+                    
+                    <label for="CategoryId">Selectati categoria</label>
+                    <br />
+                    
                     <select asp-for="CategoryId" asp-items="Model.Categ" class="form-select">
                         <option>Selectati categoria</option>
-                    </select>           
+                    </select>
+                    
+                    <br />
+
                 </div>
 
                 <button class="btn btn-success" type="submit">Adauga articol</button>

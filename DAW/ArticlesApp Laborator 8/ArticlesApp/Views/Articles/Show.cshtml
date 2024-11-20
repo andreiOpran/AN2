@@ -1,4 +1,4 @@
-﻿@model ArticlesApp.Models.Article // trimis din controller prin return View(article)
+﻿@model ArticlesApp.Models.Article
 
 
 @* Afisarea unui articol impreuna cu categoria din care face *@
@@ -22,7 +22,7 @@
 
         <div class="d-flex justify-content-between flex-row mt-5">
 
-            <div><i class="bi bi-globe"></i>@Model.Category.CategoryName</div>
+            <div><i class="bi bi-globe"></i> @Model.Category.CategoryName</div>
 
             <span class="alert-success">@Model.Date</span>
 
@@ -34,9 +34,11 @@
 
     <div class="d-flex flex-row justify-content-between">
 
-        <a asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Editează articol</a>
 
-        <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id"> @* modificat *@ 
+
+        <a class="btn btn-success" href="/Articles/Edit/@Model.Id">Editeaza articol</a>
+
+        <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id">
 
             <button class="btn btn-danger" type="submit">Sterge articol</button>
 
@@ -115,7 +117,7 @@
 
                     <div class="card-body">
 
-                        <input type="hidden" name="ArticleId" value="@Model.Id" /> @* preluam id-ul articolului ca sa ill asociem comentariului *@
+                        <input type="hidden" name="ArticleId" value="@Model.Id" />
 
                         <label>Continut comentariu</label>
                         <br />

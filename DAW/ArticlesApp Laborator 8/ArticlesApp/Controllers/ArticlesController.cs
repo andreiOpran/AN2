@@ -2,9 +2,7 @@
 using ArticlesApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace ArticlesApp.Controllers
 {
@@ -26,6 +24,11 @@ namespace ArticlesApp.Controllers
             // ViewBag.OriceDenumireSugestiva
             ViewBag.Articles = articles;
 
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+            }
+
             return View();
         }
 
@@ -33,24 +36,11 @@ namespace ArticlesApp.Controllers
         // impreuna cu categoria din care face parte
         // In plus sunt preluate si toate comentariile asociate unui articol
         // HttpGet implicit
-        public IActionResult Show(int id) // id-ul este din ruta
+        public IActionResult Show(int id)
         {
-            
             Article article = db.Articles.Include("Category").Include("Comments")
-                              .Where(a => a.Id == id) // id -> parametru, Id -> model
+                              .Where(art => art.Id == id)
                               .First();
-                              
-
-            /* Metoda .First() este necesara pentru a obtine un singur articol din colectia returnata de metoda Where. Fara .First(), codul ar returna o colectie de articole care se potrivesc cu criteriul din Where (chiar daca exista un singur articol care indeplineste conditia), in loc sa returneze direct obiectul Article.
-             .First() executa query-ul imediat si returneaza primul (si singurul) articol care indeplineste conditia.
-             */
-
-            //ViewBag.Article = article;
-
-            //ViewBag.Category = article.Category;
-            
-
-            //ViewBag.Category(ViewBag.UnNume) = article.Category (proprietatea Category);
 
             return View(article);
         }
@@ -61,18 +51,10 @@ namespace ArticlesApp.Controllers
 
         public IActionResult New()
         {
-            /*Metoda prin care preluam list de categorii se afla mai jos, avand numele GetAllCategories
-             */
-
-            //var categories = from categ in db.Categories
-            //                 select categ;
-
-            //ViewBag.Categories = categories;
-
+          
             Article article = new Article();
-            article.Categ = GetAllCategories();
 
-            
+            article.Categ = GetAllCategories();
 
             return View(article);
         }
@@ -81,7 +63,6 @@ namespace ArticlesApp.Controllers
         [HttpPost]
         public IActionResult New(Article article)
         {
-            // se adauga data 
             article.Date = DateTime.Now;
             article.Categ = GetAllCategories();
 
@@ -89,18 +70,13 @@ namespace ArticlesApp.Controllers
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
-               
-                // Aici dorim sa preluam mesajul "Articolul a fost adaugat";
-                // Unde se va afisa acest mesaj? 
-
-                TempData["message"] = "Articolul a fost adaugat"; // mesajul va fi afisat in Index.cshtml
+                TempData["message"] = "Articolul a fost adaugat";
                 return RedirectToAction("Index");
             }
 
             catch (Exception)
             {
-                article.Categ = GetAllCategories(); // atasez lista de categorii la articol
-                return View(article); // pt cand formularul nu este complet si dai submit, nu mergi altundeva si ai progresul salvat in fromular
+                return View(article);
             }
         }
 
@@ -117,72 +93,43 @@ namespace ArticlesApp.Controllers
 
             article.Categ = GetAllCategories();
 
-            
-            // ce trebuie sa returnam in View?
             return View(article);
-
-
-            /* Acesta este codul anterior, utilizand variabile ViewBag
-             * 
-             * 
-            ViewBag.Article = article;
-            ViewBag.Category = article.Category;
-
-            var categories = from categ in db.Categories
-                             select categ;
-
-             ViewBag.Categories = categories;
-
-            */
 
         }
 
         // Se adauga articolul modificat in baza de date
         [HttpPost]
-
-        // care sunt parametrii de intrare din metoda Edit()?
         public IActionResult Edit(int id, Article requestArticle)
         {
-            // se cauta articolul in baza de date
             Article article = db.Articles.Find(id);
-
 
             try
             {
-                // se editeaza articolul din baza de date, primind noile valori (cele venite din formular)
-                // commit -> se salveaza obiectul in baza de date
-
                 article.Title = requestArticle.Title;
                 article.Content = requestArticle.Content;
                 article.Date = DateTime.Now;
-                article.CategoryId = requestArticle.CategoryId;                
+                article.CategoryId = requestArticle.CategoryId;
                 db.SaveChanges();
-
-                // Cum se afiseaza acest mesaj? "Articolul a fost modificat";
                 TempData["message"] = "Articolul a fost modificat";
-
                 return RedirectToAction("Index");
 
             }
             catch (Exception e)
             {
-                // ce se intampla pe ramura aceasta?
-
                 requestArticle.Categ = GetAllCategories();
-                return View();
+                return View(requestArticle);
             }
         }
 
 
         // Se sterge un articol din baza de date 
         [HttpPost]
-        // ce parametru primeste metoda Delete()?
         public ActionResult Delete(int id)
         {
-            Article article = db.Articles.Find(id); // limbaj linq -> framework-ul transforma in query-uri sql
+            Article article = db.Articles.Find(id);
             db.Articles.Remove(article);
             db.SaveChanges();
-            // Cum se afiseaza acest mesaj? "Articolul a fost sters";
+            TempData["message"] = "Articolul a fost sters";
             return RedirectToAction("Index");
         }
 
@@ -224,4 +171,3 @@ namespace ArticlesApp.Controllers
         }
     }
 }
-
