@@ -12,7 +12,7 @@ namespace ArticlesApp.Models
         [Key]
         public int Id { get; set; }
 
-        [MinLength(5, ErrorMessage = "Lungimea minima trebuie sa fie de 5 caractere")]
+        [MinLength(5, ErrorMessage = "Lungimea titlului minima este de 5 caractere")]
         [StringLength(100, ErrorMessage = "Lungimea maxima trebuie sa fie de 100 caractere")]
         [Required(ErrorMessage = "Titlul este obligatoriu")]
         public string Title { get; set; }

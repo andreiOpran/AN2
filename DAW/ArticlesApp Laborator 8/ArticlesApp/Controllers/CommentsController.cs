@@ -14,24 +14,32 @@ namespace ArticlesApp.Controllers
 
 
         // Adaugarea unui comentariu asociat unui articol in baza de date
-        [HttpPost]
-        public IActionResult New(Comment comm)
-        {
-            comm.Date = DateTime.Now;
+        //[HttpPost]
+        //public IActionResult New(Comment comm)
+        //{
+        //    comm.Date = DateTime.Now;
 
-            try
-            {
-                db.Comments.Add(comm);
-                db.SaveChanges();
-                return Redirect("/Articles/Show/" + comm.ArticleId);
-            }
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Redirect("/Articles/Show/" + comm.ArticleId);
+        //    }
 
-            catch (Exception)
-            {
-                return Redirect("/Articles/Show/" + comm.ArticleId);
-            }
+        //    try
+        //    {
+        //        db.Comments.Add(comm);
+        //        db.SaveChanges();
 
-        }
+        //        // ModelState.Clear();
+
+        //        return Redirect("/Articles/Show/" + comm.ArticleId);
+        //    }
+
+        //    catch (Exception)
+        //    {
+        //        return Redirect("/Articles/Show/" + comm.ArticleId);
+        //    }
+
+        //}
 
         // Stergerea unui comentariu asociat unui articol din baza de date
         [HttpPost]

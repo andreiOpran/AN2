@@ -37,6 +37,7 @@ namespace ArticlesApp.Controllers
         // impreuna cu categoria din care face parte
         // In plus sunt preluate si toate comentariile asociate unui articol
         // HttpGet implicit
+        
         public IActionResult Show(int id)
         {
             Article article = db.Articles.Include("Category").Include("Comments")
@@ -67,19 +68,47 @@ namespace ArticlesApp.Controllers
             article.Date = DateTime.Now;
             article.Categ = GetAllCategories();
 
+            if (!ModelState.IsValid)
+            {            
+                return View(article);
+            }
+
             try
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
                 TempData["message"] = "Articolul a fost adaugat";
-                return RedirectToAction("Index");
-            }
 
+                ModelState.Clear(); // altfel nu ma lasa sa dau submit daca am facut priam data o greseala
+
+                return RedirectToAction("Index");
+            
+            }
             catch (Exception)
             {
                 return View(article);
             }
         }
+
+        [HttpPost]
+        public IActionResult Show([FromForm] Comment comment)
+        {
+            comment.Date = DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                return Redirect("/Articles/Show/" + comment.ArticleId);
+            }
+            else
+            {
+                Article art = db.Articles.Include("Category").Include("Comments")
+                .Where(art => art.Id == comment.ArticleId).First();
+                //return Redirect("/Articles/Show/" + comm.ArticleId);
+                return View(art);
+            }
+        }
+
 
         // Se editeaza un articol existent in baza de date impreuna cu categoria din care face parte
         // Categoria se selecteaza dintr-un dropdown
@@ -104,35 +133,45 @@ namespace ArticlesApp.Controllers
         {
             Article article = db.Articles.Find(id);
 
+            if(!ModelState.IsValid)
+            {
+                requestArticle.Categ = GetAllCategories();
+                return View(requestArticle);
+            }
+
             try
             {
+
+
+                //if (string.IsNullOrEmpty(requestArticle.Title))
+                //    ModelState.AddModelError(string.Empty, "Titlul trebuie completat");
+
+                //if (!string.IsNullOrEmpty(requestArticle.Title) && requestArticle.Title.Length < 5)
+                //    ModelState.AddModelError(string.Empty, "Titlul trebuie sa aiba minim 5 caractere");
+                //if (!string.IsNullOrEmpty(requestArticle.Title) && requestArticle.Title.Length > 100)
+                //    ModelState.AddModelError(string.Empty, "Titlul trebuie sa aiba maxim 100 de caractere");
+
+                //if (string.IsNullOrEmpty(requestArticle.Content))
+                //    ModelState.AddModelError(string.Empty, "Continutul articolului este obligatoriu");
+
+                //if (requestArticle.CategoryId == null || requestArticle.CategoryId == 0)
+                //    ModelState.AddModelError(string.Empty, "Categoria este obligatorie");
+
+                //if (ModelState.IsValid == false)
+                //    throw new Exception("Datele introduse nu sunt valide");
+
+
                 article.Title = requestArticle.Title;
                 article.Content = requestArticle.Content;
                 article.Date = DateTime.Now;
                 article.CategoryId = requestArticle.CategoryId;
-
-                if (string.IsNullOrEmpty(requestArticle.Title))
-                    ModelState.AddModelError(string.Empty, "Titlul trebuie completat");
-
-                
-                if (!string.IsNullOrEmpty(article.Title) && article.Title.Length < 5)
-                    ModelState.AddModelError("Title lungime prea mica", "Titlul trebuie sa aiba minim 5 caractere");
-                if (!string.IsNullOrEmpty(article.Title) && article.Title.Length > 100)
-                    ModelState.AddModelError("Title lungime prea mare", "Titlul trebuie sa aiba maxim 100 de caractere");
-
-
-                if (string.IsNullOrEmpty(requestArticle.Content))
-                    ModelState.AddModelError(string.Empty, "Content-ul trebuie completat");
-
-
-
 
                 db.SaveChanges();
                 TempData["message"] = "Articolul a fost modificat";
                 return RedirectToAction("Index");
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 requestArticle.Categ = GetAllCategories();
                 return View(requestArticle);

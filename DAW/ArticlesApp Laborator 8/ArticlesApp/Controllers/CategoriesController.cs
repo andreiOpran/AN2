@@ -40,6 +40,12 @@ namespace ArticlesApp.Controllers
         [HttpPost]
         public ActionResult New(Category cat)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(cat);
+            }
+
             try
             {
                 db.Categories.Add(cat);
@@ -50,6 +56,7 @@ namespace ArticlesApp.Controllers
 
             catch (Exception e)
             {
+                ModelState.AddModelError(string.Empty, "eroare"); 
                 return View(cat);
             }
         }
@@ -65,12 +72,20 @@ namespace ArticlesApp.Controllers
         {
             Category category = db.Categories.Find(id);
 
+            if (!ModelState.IsValid)
+            {
+                return View(requestCategory);
+            }
+
             try
             {
 
                 category.CategoryName = requestCategory.CategoryName;
                 db.SaveChanges();
                 TempData["message"] = "Categoria a fost modificata!";
+
+                ModelState.Clear();
+
                 return RedirectToAction("Index");
             }
             catch (Exception e)

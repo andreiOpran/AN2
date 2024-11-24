@@ -24,7 +24,7 @@
 
 @foreach (var article in ViewBag.Articles)
 {
-    <div class="card">
+    @* <div class="card">
 
         <div class="card-body">
 
@@ -44,8 +44,14 @@
 
         </div>
 
-    </div>
+    </div> *@
 
+    <partial name="ArticleInfo" model="article" /> 
+
+    <a class="btn btn-success" href="/Articles/Show/@article.Id">Afisare articol</a>
+
+    <br />
+    <br />
     <br />
     <br />
 }

@@ -14,7 +14,7 @@
 
 <div class="card">
 
-    <div class="card-body">
+    @* <div class="card-body">
 
         <h3 class="card-title alert-success py-3 px-3 rounded-2">@Model.Title</h3>
 
@@ -28,7 +28,9 @@
 
         </div>
 
-    </div>
+    </div> *@
+
+    <partial name="ArticleInfo" model="Model" />
 
     <hr />
 
@@ -102,7 +104,6 @@
 
 
 @* Afisarea formularului in care se poate adauga un comentariu *@
-
 <div class="container">
 
     <div class="row">
@@ -113,7 +114,9 @@
 
             <div class="card">
 
-                <form method="post" asp-controller="Comments" asp-action="New">
+                <form method="post" asp-controller="Articles" asp-action="Show">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="card-body">
 
@@ -123,6 +126,9 @@
                         <br />
 
                         <textarea class="form-control" name="Content"></textarea>
+                        <br />
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                        <br />
                         <br />
 
                         <button class="btn btn-success " type="submit">Adauga comentariul</button>
