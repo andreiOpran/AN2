@@ -46,3 +46,11 @@ ex9 = head $ tail l3
 
 h x = x + g x
   where g x = x + 1
+
+
+f x = x + x
+g x = x * x
+
+product :: [Int] -> Int
+product xs = foldr (*) 1 xs
+
