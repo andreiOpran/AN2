@@ -1,5 +1,7 @@
 ﻿using ArticlesApp.Data;
 using ArticlesApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,17 +9,38 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ArticlesApp.Controllers
 {
+    [Authorize]
     public class ArticlesController : Controller
     {
+
+        // PASUL 10: useri si roluri
+
+        //private readonly ApplicationDbContext db;
+        //public ArticlesController(ApplicationDbContext context)
+        //{
+        //    db = context;
+        //}
+
+
         private readonly ApplicationDbContext db;
-        public ArticlesController(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public ArticlesController(
+        ApplicationDbContext context,
+        UserManager<ApplicationUser> userManager,
+        RoleManager<IdentityRole> roleManager
+        )
         {
             db = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
+
 
         // Se afiseaza lista tuturor articolelor impreuna cu categoria 
         // din care fac parte
         // HttpGet implicit
+        [Authorize(Roles = "User,Editor,Admin")]
         public IActionResult Index()
         {
             var articles = db.Articles.Include("Category");
@@ -37,7 +60,7 @@ namespace ArticlesApp.Controllers
         // impreuna cu categoria din care face parte
         // In plus sunt preluate si toate comentariile asociate unui articol
         // HttpGet implicit
-        
+        [Authorize(Roles = "User,Editor,Admin")]
         public IActionResult Show(int id)
         {
             Article article = db.Articles.Include("Category").Include("Comments")
@@ -50,7 +73,7 @@ namespace ArticlesApp.Controllers
         // Se afiseaza formularul in care se vor completa datele unui articol
         // impreuna cu selectarea categoriei din care face parte
         // HttpGet implicit
-
+        [Authorize(Roles = "Editor,Admin")]
         public IActionResult New()
         {
           
@@ -63,6 +86,7 @@ namespace ArticlesApp.Controllers
 
         // Se adauga articolul in baza de date
         [HttpPost]
+        [Authorize(Roles = "Editor,Admin")]
         public IActionResult New(Article article)
         {
             article.Date = DateTime.Now;
@@ -91,6 +115,7 @@ namespace ArticlesApp.Controllers
         }
 
         [HttpPost]
+        //[Authorize(Roles = "Editor,Admin")]
         public IActionResult Show([FromForm] Comment comment)
         {
             comment.Date = DateTime.Now;
@@ -114,6 +139,7 @@ namespace ArticlesApp.Controllers
         // Categoria se selecteaza dintr-un dropdown
         // HttpGet implicit
         // Se afiseaza formularul impreuna cu datele aferente articolului din baza de date
+        [Authorize(Roles = "Editor,Admin")]
         public IActionResult Edit(int id)
         {
 
@@ -129,6 +155,7 @@ namespace ArticlesApp.Controllers
 
         // Se adauga articolul modificat in baza de date
         [HttpPost]
+        [Authorize(Roles = "Editor,Admin")]
         public IActionResult Edit(int id, Article requestArticle)
         {
             Article article = db.Articles.Find(id);
@@ -181,8 +208,12 @@ namespace ArticlesApp.Controllers
 
         // Se sterge un articol din baza de date 
         [HttpPost]
+        [Authorize(Roles = "Editor,Admin")]
         public ActionResult Delete(int id)
         {
+
+            // TODO: trebuie sterse comentariile inainte, altfel da eroare
+
             Article article = db.Articles.Find(id);
             db.Articles.Remove(article);
             db.SaveChanges();

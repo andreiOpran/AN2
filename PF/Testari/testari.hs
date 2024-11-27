@@ -54,3 +54,67 @@ g x = x * x
 product :: [Int] -> Int
 product xs = foldr (*) 1 xs
 
+
+data Point a b = Pt a b
+
+data StrInt = VS String | VI Int
+
+data Shape = Circle Float | Rectangle Float Float
+
+data Pair a b = Pair a b
+
+data Tree a = Empty | Leaf a | Branch (Tree a) (Tree a)
+
+
+data Doggies a = Husky a | Mastiff a
+
+-- data List a = Nil | Cons a (List a)
+-- data [a] = [] | a : [a]
+
+power :: Maybe Int -> Int -> Int
+power Nothing n = 2 ^ n
+power ( Just m ) n = m ^ n
+
+-- power Nothing 3
+-- power (Just 2) 3
+
+divide :: Int -> Int -> Maybe Int
+divide n 0 = Nothing
+divide n m = Just (n `div` m)
+
+right :: Int -> Int -> Int
+right n m = case divide n m of
+    Nothing -> 3
+    Just r -> r + 3
+
+
+type FirstName = String
+type LastName = String
+type Age = Int
+type Height = Float
+type Phone = String
+
+-- data Person = Person FirstName LastName Age Height Phone
+
+-- firstName :: Person -> String
+-- firstName (Person firstName _ _ _ _) = firstName
+
+data Person = Person
+  { firstName   :: String
+  , lastName    :: String
+  , age         :: Int
+  , height      :: Float
+  , phoneNumber :: String
+  }
+
+
+-- instance Functor Maybe where
+--     fmap f Nothing = Nothing
+--     fmap f (Just x) = Just (f x)
+
+data Arbore a = Nil
+              | Nod a (Arbore a) (Arbore a)
+
+instance Functor Arbore where
+  fmap f Nil = Nil
+  fmap f (Nod x l r) = Nod (f x) (fmap f l) (fmap f r)

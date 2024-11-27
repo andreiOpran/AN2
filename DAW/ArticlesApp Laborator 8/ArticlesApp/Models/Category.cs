@@ -10,6 +10,7 @@ namespace ArticlesApp.Models
         [Required(ErrorMessage = "Numele categoriei este obligatoriu")]
         public string? CategoryName { get; set; }
 
+        // proprietate virtuala - o categorie poate avea mai multe articole
         public virtual ICollection<Article>? Articles { get; set; }
     }
 

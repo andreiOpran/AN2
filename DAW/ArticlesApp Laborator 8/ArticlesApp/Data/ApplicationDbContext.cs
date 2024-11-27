@@ -4,7 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ArticlesApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+
+    // PAS 3: useri si roluri
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
