@@ -76,7 +76,7 @@ DECLARE
 	GROUP BY DEPARTMENT_NAME;
 
 	V_CONT NUMBER(6) := 0;
-	
+
 BEGIN
 	
 	OPEN C;
@@ -104,6 +104,7 @@ BEGIN
 	END LOOP;
 
 	CLOSE C;
+
 END;
 /
 
@@ -158,6 +159,7 @@ END;
 
 --  Rezolvați problema folosind doar colecții. 
 DECLARE
+
 	TYPE TIP_TABEL_DEPARTMENT_NAME IS TABLE OF DEPARTMENTS.DEPARTMENT_NAME%TYPE INDEX BY PLS_INTEGER;
 	TYPE TIP_TABEL_NR IS TABLE OF NUMBER(4) INDEX BY PLS_INTEGER;
 
@@ -285,12 +287,12 @@ DECLARE
 
 	v_cont NUMBER(6) := 0;
 
-	CURSOR C1B IS
+	CURSOR C1 IS
 	SELECT 
 		DISTINCT JOB_TITLE
 	FROM JOBS;
 
-	CURSOR C2B(titluJobParametru JOBS.JOB_TITLE%TYPE) IS
+	CURSOR C2(titluJobParametru JOBS.JOB_TITLE%TYPE) IS
 	SELECT
 		E.LAST_NAME AS NUME,
 		E.SALARY AS SALARIU
@@ -299,14 +301,9 @@ DECLARE
 
 BEGIN
 
+	FOR inregistrareOuter in C1 LOOP
 
-
-	OPEN C1B;
-
-	LOOP
-
-		FETCH C1B INTO titluJob;
-		EXIT WHEN C1B%NOTFOUND;
+		titluJob := inregistrareOuter.JOB_TITLE;
 
 		DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------');
 		DBMS_OUTPUT.PUT_LINE('TITLU JOB: ' || titluJob);
@@ -314,7 +311,7 @@ BEGIN
 
 		v_cont := 0;
 
-		FOR inregistrare IN C2B(titluJob) LOOP
+		FOR inregistrare IN C2(titluJob) LOOP
 
 			auxNume := inregistrare.NUME;
 			auxSalariu := inregistrare.SALARIU;
@@ -336,8 +333,6 @@ BEGIN
 
 	END LOOP;
 
-	CLOSE C1B;
-
 	DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------');
 
 END;
@@ -356,7 +351,11 @@ DECLARE
 
 BEGIN
 
-	FOR titluFor in ( SELECT DISTINCT JOB_TITLE FROM JOBS ) LOOP
+	FOR titluFor in ( 
+		SELECT 
+			DISTINCT JOB_TITLE 
+		FROM JOBS 
+	) LOOP
 
 		titluJob := titluFor.JOB_TITLE;
 
