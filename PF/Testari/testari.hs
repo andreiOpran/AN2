@@ -118,3 +118,7 @@ data Arbore a = Nil
 instance Functor Arbore where
   fmap f Nil = Nil
   fmap f (Nod x l r) = Nod (f x) (fmap f l) (fmap f r)
+
+instance Show a => Show (Arbore a) where
+  show Nil = "Nil"
+  show (Nod x l r) = "Nod " ++ show x ++ " (" ++ show l ++ ") (" ++ show r ++ ")"
