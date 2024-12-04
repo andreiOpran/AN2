@@ -170,8 +170,8 @@ DECLARE
     email VARCHAR2(256) := 'primul.angajat@gmail.com';
     job_name VARCHAR2(256) := 'IT_PROG';
     department_name VARCHAR2(256) := 'IT';
-    manager_first_name VARCHAR2(256) := 'Alexander';
-    manager_last_name VARCHAR2(256) := 'Hunold';
+    manager_first_name VARCHAR2(256) := 'David';
+    manager_last_name VARCHAR2(256) := 'Lee';
 
     REZULTAT EMP_AO%ROWTYPE;
 
