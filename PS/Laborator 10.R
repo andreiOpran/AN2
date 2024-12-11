@@ -14,6 +14,10 @@ for (i in 1:N)
     primaAruncare = sample(1:6, 1)
     aruncari = sample(1:6, primaAruncare, replace = TRUE)
     X[i] = sum(aruncari == 6)
+    if(primaAruncare == 6)
+    {
+        X[i] = X[i] + 1
+    }
 }
 
 functieMasa = table(X) / N
@@ -29,15 +33,20 @@ functieMasa
 # (și el aleator, dar cu distribuție știută) de transmitere al unui mesaj?
 
 N = 1e5
-q = 0.7
-p = 0.2
+q = 0.42
+p = 0.56
+
+mesaje = rep(0, N)
 
 for(i in 1:N)
 {
     n = rgeom(1, q) + 1 # numarul de esecuri + 1 (succesul)
     
-    # reprezinta: in numarul n de intervale de timp, cate mesaje au sosit -> size = nr. experimente, p = prob. din enunt
+    # reprezinta: in numarul n de intervale de timp, cate mesaje au sosit -> size = nr. experimente == 1 => Bernoulli, p = prob. din enunt
     mesaje[i] = sum(rbinom(n, size = 1, p)) 
+
+    # sau
+    # rbinom(1, size = n, p);    
 }
 
 media = mean(mesaje)
