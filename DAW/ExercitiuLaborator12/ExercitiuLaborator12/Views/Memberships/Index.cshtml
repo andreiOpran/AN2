@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Lista Abonamente";
+}
+
+<h2>Membership-uri</h2>
+<br />
+
+@if (TempData.ContainsKey("message"))
+{
+    <h1>@TempData["message"]</h1>
+}
+
+<br />
+
+<div class="row">
+    @foreach (var item in ViewBag.Memberships)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">
+                        <strong>Valoare:</strong> @item.Valoare<br />
+                        <strong>Data Emitere:</strong> @item.DataEmitere.ToShortDateString()<br />
+                        <strong>Gym Name:</strong> @item.Gym.Nume
+                    </p>                    
+                    <a class="btn btn-warning" asp-controller="Memberships" asp-action="Edit" asp-route-id="@item.Id">Editare</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<br />
+<a class="btn btn-success" asp-controller="Memberships" asp-action="New">Adauga un nou abonament</a>
+<br />
