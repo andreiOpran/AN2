@@ -147,10 +147,11 @@ CREATE OR REPLACE PACKAGE BODY pachet_employees_ao AS
 
 
 	PROCEDURE afisare_informatii_job IS
-		job_cursor SYS_REFCURSOR;
-		emp_cursor SYS_REFCURSOR;
-		job JOBS%ROWTYPE;
-		employee EMPLOYEES%ROWTYPE;
+	job_cursor SYS_REFCURSOR;
+	emp_cursor SYS_REFCURSOR;
+	job JOBS%ROWTYPE;
+	employee EMPLOYEES%ROWTYPE;
+	
 	BEGIN
 		job_cursor := get_jobs;
 
