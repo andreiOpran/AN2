@@ -1,5 +1,19 @@
 SET SERVEROUTPUT ON;
 
+-- e. o procedură prin care se actualizează cu o valoare dată ca parametru salariul unui angajat al cărui nume este dat ca parametru:
+-- - se va verifica dacă valoarea dată pentru salariu respectă limitele impuse pentru acel job;
+-- - dacă sunt mai mulţi angajaţi care au acelaşi nume, atunci se va afişa un mesaj corespunzător şi de asemenea se va afişa lista acestora;
+-- - dacă nu există angajaţi cu numele dat, atunci se va afişa un mesaj corespunzător;
+
+-- f. un cursor care obţine lista angajaţilor care lucrează pe un job al cărui cod este dat ca
+-- parametru;
+
+-- g. un cursor care obţine lista tuturor joburilor din companie;
+
+-- h. o procedură care utilizează cele două cursoare definite anterior şi obţine pentru fiecare job
+-- numele acestuia şi lista angajaţilor care lucrează în prezent pe acel job; în plus, pentru
+-- fiecare angajat să se specifice dacă în trecut a mai avut sau nu jobul respectiv
+
 CREATE OR REPLACE PACKAGE pachet_employees_ao AS
 
 	-- e
@@ -182,7 +196,7 @@ where first_name = 'Alexander' and last_name = 'Hunold';
 BEGIN
 	pachet_employees_ao.set_salary(100, 'Alexander', 'Hunold');
 	pachet_employees_ao.set_salary(10000000, 'Alexander', 'Hunold');
-	pachet_employees_ao.set_salary(8500, 'Alexander', 'Hunold');
+	pachet_employees_ao.set_salary(9500, 'Alexander', 'Hunold');
 END;
 /
 
