@@ -1,0 +1,40 @@
+(a) Exemplu de mulțime de puncte și numărul de muchii
+
+Pentru a aborda prima cerință, să considerăm un exemplu de mulțime M⊂R2M⊂R2 care să admită o triangulare cu exact cinci fețe (triunghiuri). Vom alege șase puncte astfel încât să formăm cinci triunghiuri distincte prin triangulare.
+
+Un exemplu simplu este alegerea unui hexagon convex (un poligon cu șase laturi), unde punctele sunt dispuse astfel încât să formeze un hexagon regulat. Numim aceste puncte A,B,C,D,E,FA,B,C,D,E,F. Triangularea se poate realiza astfel:
+
+    Adăugăm diagonalele AC,CE,AC,CE, și EAEA, creând astfel o stea în interiorul hexagonului.
+    Acest lucru împarte hexagonul în cinci triunghiuri: △ABC,△CDE,△EFA,△ACE,△ABC,△CDE,△EFA,△ACE, și △ECA△ECA.
+
+Numărul de muchii în această triangulare poate fi calculat astfel:
+
+    Hexagonul inițial are 6 laturi.
+    Adăugăm trei diagonale, totalizând 9 muchii.
+
+(b) Caracterizare a mulțimilor de puncte
+
+Un rezultat general care să caracterizeze mulțimile de puncte ce admit o triangulare cu exact cinci fețe poate fi bazat pe teorema lui Euler pentru poliedre planare, care spune că pentru orice graf planar avem relația V−E+F=2V−E+F=2, unde VV este numărul de vârfuri, EE este numărul de muchii, și FF este numărul de fețe (inclusiv regiunea exterioară).
+
+Pentru o triangulare, fiecare față internă este un triunghi, și avem:
+
+    F=6F=6 fețe în total (5 triunghiuri + 1 față exterioară).
+
+Substituind în formula lui Euler:
+V−E+6=2V−E+6=2
+E=V+4E=V+4
+
+Pentru F=5F=5 triunghiuri interne și o față exterioară, avem:
+
+    Fiecare triunghi contribuie cu 3 laturi, dar fiecare latură este împărțită de două triunghiuri, deci 3F/23F/2 laturi unice intern, adică 3×5/2=7.53×5/2=7.5, rotunjit la 9 laturi pentru fețele interne + laturile exterioare.
+
+Prin urmare, pentru a satisface această condiție:
+
+    Mulțimea MM trebuie să aibă suficient de multe puncte astfel încât să poată fi conectate pentru a forma cinci triunghiuri fără a împărți laturi cu exteriorul (deci minim 6 puncte).
+    Punctele trebuie să fie dispuse astfel încât să permită formarea unui graf planar, fără muchii care se intersectează.
+
+Exemplu
+
+Considerăm un set de șase puncte aranjate în formă de stea, unde fiecare pereche de puncte vecine (consecutive) este conectată, și fiecare al doilea punct este conectat prin diagonale, formând astfel cinci triunghiuri interioare, ca în exemplul anterior.
+
+Acest tip de aranjament și numărul de muchii asigură îndeplinirea criteriului Eulerian pentru o triangulare cu exact cinci fețe, oferind un cadru clar pentru identificarea și crearea altor astfel de seturi de puncte.

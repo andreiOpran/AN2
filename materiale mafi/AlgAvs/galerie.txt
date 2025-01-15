@@ -1,0 +1,26 @@
+Partea (a): Amplasarea Camerelor de Supraveghere
+
+Pentru a aborda problema amplasării camerelor de supraveghere conform metodei din teorema galeriei de artă, este necesar să identificăm toate punctele poligonului A1A2...A10A11. Inițial, trebuie să găsim coordonatele punctelor A7 până la A11 ca fiind simetricele punctelor A6 până la A2 față de prima bisectoare (x = y).
+Calculul Punctelor Simetrice
+
+Simetria unui punct (x,y)(x,y) față de dreapta x=yx=y se obține prin interschimbarea coordonatelor xx și yy. Astfel:
+
+    A6=(10,6)⇒A7=(6,10)A6=(10,6)⇒A7=(6,10)
+    A5=(9,5)⇒A8=(5,9)A5=(9,5)⇒A8=(5,9)
+    A4=(7,5)⇒A9=(5,7)A4=(7,5)⇒A9=(5,7)
+    A3=(6,4)⇒A10=(4,6)A3=(6,4)⇒A10=(4,6)
+    A2=(6,3)⇒A11=(3,6)A2=(6,3)⇒A11=(3,6)
+
+Poligonul A1A2...A11
+
+Poligonul format va avea vârfurile în ordinea: A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11. În funcție de geometria poligonului, trebuie să decidem unde să plasăm camerele de supraveghere.
+Teorema galeriei de artă
+
+Teorema afirmă că orice poligon cu nn laturi poate fi supravegheat de ⌊n/3⌋⌊n/3⌋ camere. Avem un poligon cu 11 vârfuri, deci ⌊11/3⌋=3⌊11/3⌋=3 camere sunt suficiente.
+Plasarea Camerelor
+
+    Camera la A2: Aceasta poate acoperi o mare parte din poligon, inclusiv A1, A2, A3, A11.
+    Camera la A5: Aceasta poate supraveghea segmentul central al poligonului, inclusiv A4, A5, A6, A9.
+    Camera la A8: Poate acoperi A7, A8, A9, A10.
+
+Această configurație trebuie verificată pentru acoperire completă, dar este o bună începere pentru a respecta cerința de minim trei camere.

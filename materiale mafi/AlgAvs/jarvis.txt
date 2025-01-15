@@ -1,0 +1,41 @@
+Pentru a găsi succesorul lui P1P1 în algoritmul Jarvis' March (cunoscut și sub numele de „înfășurarea cadourilor”) pentru determinarea acoperirii convexe a unei mulțimi de puncte, urmează să aplicăm următorii pași. Algoritmul începe cu un punct ales (în cazul nostru P1=(0,0)P1=(0,0)) și caută punctul care are unghiul polar cel mai mic relativ la punctul inițial și axa orizontală, mărind treptat acoperirea convexă.
+Pași pentru a găsi succesorul lui P1P1:
+
+    Selectarea punctului inițial: P1=(0,0)P1=(0,0) este punctul de start.
+
+    Determinarea unghiurilor:
+        Pentru fiecare punct PiPi din mulțimea PP, calculăm unghiul format de segmentul de dreaptă dintre P1P1 și PiPi și axa orizontală. Acest unghi poate fi calculat folosind funcția arctangentă a pantei segmentului, atan2(yi−y1,xi−x1)atan2(yi​−y1​,xi​−x1​), unde (xi,yi)(xi​,yi​) sunt coordonatele punctului PiPi.
+
+    Compararea unghiurilor:
+        Selectăm punctul care are cel mai mic unghi pozitiv (dacă navigăm în sens trigonometric). Dacă două sau mai multe puncte au același unghi, alegem cel mai îndepărtat punct de P1P1 pentru a evita selectarea unui punct interior acoperirii convexe.
+
+    Verificarea specială pentru unghiul de 180 de grade:
+        Dacă există puncte direct la stânga lui P1P1 (cu coordonatele yy egale și xx mai mic), trebuie să luăm cel mai îndepărtat dintre aceste puncte.
+
+Calculul unghiurilor pentru fiecare punct din PP:
+
+Să calculăm și să comparăm acum unghiurile pentru a determina succesorul lui P1P1:
+
+    P2=(1,2)P2=(1,2)
+    P3=(2,1)P3=(2,1)
+    P4=(3,0)P4=(3,0)
+    P5=(5,0)P5=(5,0)
+    P6=(2,−3)P6=(2,−3)
+    P7=(5,−2)P7=(5,−2)
+    P8=(3.5,−2)P8=(3.5,−2)
+
+Vom folosi atan2atan2 pentru a calcula unghiul pentru fiecare punct și vom identifica punctul cu cel mai mic unghi. Să facem aceste calcule.
+
+Succesorul lui P1P1 în Jarvis' March pentru a determina marginea inferioară a acoperirii convexe, parcursă în sens trigonometric, este punctul P5=(5,0)P5=(5,0). Acesta are unghiul cel mai mic și pozitiv (în acest caz, 0, deoarece este direct pe linia orizontală spre dreapta lui P1P1), comparativ cu celelalte puncte din mulțime.
+
+Unghiurile calculate pentru fiecare punct sunt:
+
+    P2=1.11P2=1.11 radiani
+    P3=0.46P3=0.46 radiani
+    P4=0.00P4=0.00 radiani
+    P5=0.00P5=0.00 radiani
+    P6=5.30P6=5.30 radiani
+    P7=5.90P7=5.90 radiani
+    P8=5.76P8=5.76 radiani
+
+Deși și P4P4 are un unghi de 0 radiani, P5P5 este ales pentru că este mai departe în direcția orizontală dreapta de P1P1, făcându-l succesorul optim în Jarvis' March.

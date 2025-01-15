@@ -1,0 +1,22 @@
+Triangularea unui poligon implică împărțirea acestuia în triunghiuri, astfel încât triunghiurile să nu aibă intersecții între ele în interiorul poligonului și să acopere întreaga arie a poligonului. Triangularea unui poligon convex este relativ simplă și poate fi realizată prin unirea unui punct de referință cu toate celelalte puncte non-adiacente. Pentru a realiza o triangulare eficientă și pentru a construi graful asociat acesteia, urmăm pașii următori:
+
+    Alegerea unui punct de referință: În general, putem alege orice punct al poligonului ca punct de referință pentru triangulare. În acest caz, putem alege punctul P1P1​ ca punct de referință.
+
+    Crearea triunghiurilor: Triangularea se realizează prin unirea punctului de referință cu toate celelalte puncte care nu sunt direct adiacente în poligon. Astfel, triunghiurile create pentru punctul de referință P1P1​ vor fi:
+        △P1P2P3△P1​P2​P3​
+        △P1P3P4△P1​P3​P4​
+        △P1P4P5△P1​P4​P5​
+        △P1P5P6△P1​P5​P6​
+        △P1P6P7△P1​P6​P7​
+        △P1P7P8△P1​P7​P8​
+
+    Construirea grafului asociat triangulării: Graful asociat triangulării TPTP va avea nodurile reprezentând triunghiurile și muchiile reprezentând adiacența triunghiurilor în poligon. Două triunghiuri sunt adiacente dacă ele împărtășesc o latură comună.
+        Muchii între △P1P2P3△P1​P2​P3​ și △P1P3P4△P1​P3​P4​ (partajază latura P1P3P1​P3​)
+        Muchii între △P1P3P4△P1​P3​P4​ și △P1P4P5△P1​P4​P5​ (partajază latura P1P4P1​P4​)
+        Muchii între △P1P4P5△P1​P4​P5​ și △P1P5P6△P1​P5​P6​ (partajază latura P1P5P1​P5​)
+        Muchii între △P1P5P6△P1​P5​P6​ și △P1P6P7△P1​P6​P7​ (partajază latura P1P6P1​P6​)
+        Muchii între △P1P6P7△P1​P6​P7​ și △P1P7P8△P1​P7​P8​ (partajază latura P1P7P1​P7​)
+
+    Desenarea grafului: Fiecare triunghi poate fi reprezentat ca un nod în graf, iar muchiile între noduri indică adiacența triunghiurilor în poligon.
+
+Aceasta este o metodă de bază pentru a efectua triangularea unui poligon și de a construi graful asociat acestei triangulări. Dacă este necesar, pot furniza un desen schematic al grafului sau al triangulării.

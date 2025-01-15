@@ -1,0 +1,11 @@
+Desigur, "Graham scan", în varianta propusă de Andrew, este un algoritm eficient pentru a găsi învelișul convex al unui set de puncte în plan. Învelișul convex poate fi înțeles ca fiind cea mai mică formă convexă care conține toate punctele din set. Imaginează-ți că întinzi un elastic în jurul tuturor punctelor, iar când eliberezi elasticul, acesta va lua forma învelișului convex.
+
+Iată cum funcționează algoritmul Graham scan în varianta Andrew:
+
+    Sortarea Punctelor: Mai întâi, punctele sunt sortate după coordonatele lor x (și, în caz de egalitate, după coordonata y). Acest lucru ajută la parcurgerea punctelor într-o ordine definită și facilitează identificarea punctelor care vor face parte din înveliș.
+
+    Construirea învelișului inferior: Începând cu punctul cu cea mai mică coordonată x, algoritmul parcurge punctele sortate și adaugă fiecare punct la învelișul inferior. Dacă un punct nou adăugat creează un unghi concav (sau un viraj spre dreapta) cu ultimele două puncte din înveliș, punctul dinaintea acestuia este eliminat. Aceasta este repetată până când adăugarea noului punct nu mai formează un unghi concav.
+
+    Construirea învelișului superior: Procesul este similar cu cel de construire a învelișului inferior, dar începe de la punctul cu cea mai mare coordonată x și parcurge punctele în ordine inversă. Din nou, punctele care creează unghiuri concave sunt eliminate.
+
+    Unirea învelișurilor: Învelișurile inferior și superior sunt unite pentru a forma învelișul convex complet. Punctele care sunt comune ambelor învelișuri apar o singură dată.

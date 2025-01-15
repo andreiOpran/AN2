@@ -1,0 +1,24 @@
+Pentru a determina cum evoluează lista LiLi​ a vârfurilor care determină marginea inferioară a frontierei acoperirii convexe a mulțimii MM, folosind algoritmul Graham's scan în varianta Andrew, vom trece prin următorii pași:
+
+    Sortarea punctelor: În primul rând, punctele sunt sortate după coordonata x, și în caz de egalitate, după coordonata y. Punctele noastre deja date par să fie sortate conform acestui criteriu.
+
+    Construirea listei inferioare LiLi​:
+        Începem cu primele două puncte în listă și le adăugăm direct în LiLi​ pentru că avem nevoie de cel puțin două puncte pentru a forma o linie.
+        Pentru fiecare punct următor, verificăm dacă adăugarea acestuia continuă să mențină forma convexă a poligonului. Concret, pentru fiecare trei puncte consecutive (a,b,c)(a,b,c) din listă, trebuie să determinăm dacă virajul format este la dreapta sau la stânga. Dacă este la dreapta, punctul bb este eliminat din lista LiLi​ și verificarea se repetă pentru noua configurație de trei puncte.
+        Folosim determinarea virajului prin calculul determinantului dintre vectorii formati de puncte:
+        det=(x2−x1)×(y3−y1)−(x3−x1)×(y2−y1)
+        det=(x2​−x1​)×(y3​−y1​)−(x3​−x1​)×(y2​−y1​)
+        Dacă determinantul este pozitiv, virajul este la stânga, iar dacă este negativ, virajul este la dreapta.
+
+Vom urmări evoluția listei LiLi​ pentru mulțimea noastră MM:
+
+    Li={(−6,2)}Li​={(−6,2)}
+    Adăugăm P2P2: Li={(−6,2),(−4,0)}Li​={(−6,2),(−4,0)}
+    Adăugăm P3P3: Li={(−6,2),(−4,0),(−2,−2)}Li​={(−6,2),(−4,0),(−2,−2)}
+    Verificăm adăugarea lui P4P4: P1,P3,P4P1,P3,P4 formează un viraj la stânga, deci P2P2 este eliminat. Rezultatul este Li={(−6,2),(−2,−2),(1,−2)}Li​={(−6,2),(−2,−2),(1,−2)}
+    Adăugăm P5P5: Verificăm P3,P4,P5P3,P4,P5. Toate punctele rămân pentru că virajele sunt la stânga.
+    Adăugăm P6P6: Li={(−6,2),(−2,−2),(1,−2),(3,−2)}Li​={(−6,2),(−2,−2),(1,−2),(3,−2)}
+    Adăugăm P7P7: Aici, virajul format de P4,P6,P7P4,P6,P7 determină eliminarea lui P6P6 și reluarea verificării pentru noua configurație. Rezultatul este Li={(−6,2),(−2,−2),(1,−2),(6,1)}Li​={(−6,2),(−2,−2),(1,−2),(6,1)}
+    Adăugăm P8P8 și P9P9, eliminând potențial alte puncte dacă virajele sunt la dreapta.
+
+Acest proces arată cum, la fiecare pas, verificăm dacă noua triadă de puncte păstrează marginea inferioară convexă și facem ajustări eliminând punctele care nu respectă această condiție. Acest lucru asigură că la finalul iterațiilor, LiLi​ conține punctele care formează marginea inferioară a acoperirii convexe.
