@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "8d913781674145c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "68e91a525c29fae5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2304201fb1e6525e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "8bd8f4b1-5484-4173-80ed-71d7a3b16ffc.png"
+              },
+              "icon": "lucide-image",
+              "title": "8bd8f4b1-5484-4173-80ed-71d7a3b16ffc"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "18931870c185fd28",
+    "type": "split",
+    "children": [
+      {
+        "id": "02fc412c1a64e07d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc665528d1a4fb99",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "39bd5769a7c76abf",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "049f608c53f5cd88",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0e258d08f92ce60c",
+    "type": "split",
+    "children": [
+      {
+        "id": "9a7a7990f3df16ed",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fa8e602bb4b17985",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "8bd8f4b1-5484-4173-80ed-71d7a3b16ffc.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 8bd8f4b1-5484-4173-80ed-71d7a3b16ffc"
+            }
+          },
+          {
+            "id": "73df93fddd4a8fc1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "8bd8f4b1-5484-4173-80ed-71d7a3b16ffc.png",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 8bd8f4b1-5484-4173-80ed-71d7a3b16ffc"
+            }
+          },
+          {
+            "id": "47e5880755cb0750",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "77c675767f497680",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "8bd8f4b1-5484-4173-80ed-71d7a3b16ffc.png",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 8bd8f4b1-5484-4173-80ed-71d7a3b16ffc"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-importer:Open Importer": false
+    }
+  },
+  "active": "bc665528d1a4fb99",
+  "lastOpenFiles": [
+    "PF",
+    "Notion/TODO/TODO.md",
+    "Notion/Notite SO/Notite SO.md",
+    "image 8.png",
+    "Welcome.md",
+    "Untitled.png",
+    "notion-design.png",
+    "image 2.png",
+    "image 1.png",
+    "image.png",
+    "e390b514-10cd-417e-850d-465024e8a386.png",
+    "create a link edit.md",
+    "background.png",
+    "8bd8f4b1-5484-4173-80ed-71d7a3b16ffc.png",
+    "Apple-WWDC23-Vision-Pro-VisionOS-230605.jpg",
+    "Notion/Folder/Classroom Home/Course Schedule/Course Schedule.md",
+    "Notion/TODO/Deadlines/SGBD tema curs.md",
+    "Notion/Paste bin.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 11.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 6.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 4.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 10.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Throughout.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 5.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 9.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 12.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 2.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 3.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 1.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 7.md",
+    "Notion/Folder/Classroom Home/Course Schedule/Week 8.md",
+    "Notion/Folder/Classroom Home/Class Directory/Immanuel Ullrich.md",
+    "Notion/Folder/Classroom Home/Class Directory/Lenna Hamillton.md",
+    "Notion/Folder/Classroom Home/Class Directory/Cali Miller.md",
+    "Notion/Folder/Classroom Home/Class Directory/Eduardo Nikolaus.md",
+    "Notion/Folder/Classroom Home/Class Directory/Delaney Beatty.md",
+    "Notion/Folder/Hi! I'm Ada Lee/Projects/UX Case Study- Notion",
+    "Notion/Folder/Hi! I'm Ada Lee/Projects/Spatial Computing & Software",
+    "Notion/Folder/Hi! I'm Ada Lee/Projects",
+    "Notion/Folder/Classroom Home/Course Schedule",
+    "Notion/Folder/Classroom Home/Class Directory",
+    "Notion/Folder/Student Job Application Tracker/Applications",
+    "Notion/Folder/Student Job Application Tracker",
+    "Notion/Folder/Student Planner/Assignments",
+    "Notion/Folder/Student Planner/Courses",
+    "Notion/Folder/Student Planner/My blog"
+  ]
+}
