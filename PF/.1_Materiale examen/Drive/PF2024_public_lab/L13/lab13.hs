@@ -106,3 +106,5 @@ runReader mshowPersonA  $ Person "ada" 20
 runReader mshowPerson  $ Person "ada" 20
 "(NAME:ada,AGE:20)"
 -}
+
+
