@@ -25,10 +25,23 @@ tell :: String -> WriterS ()
 tell log = Writer ((), log)
   
 logIncrement :: Int  -> WriterS Int
-logIncrement x = undefined
+logIncrement x = do
+  tell ("incremented" ++ show x)
+  return (x + 1)
+
+logIncrement' :: Int  -> WriterS Int
+logIncrement' x =
+  tell ("incremented " ++ show x) >>
+  return (x + 1)
+
+logIncrement2 :: Int -> WriterS Int
+logIncrement2 x = do
+  x' <- logIncrement x
+  logIncrement x'
 
 logIncrementN :: Int -> Int -> WriterS Int
-logIncrementN x n =  undefined
-   
-                  
+logIncrementN x 1 = logIncrement x
+logIncrementN x n = do
+  x' <- logIncrement x
+  logIncrementN x' (n - 1)
 

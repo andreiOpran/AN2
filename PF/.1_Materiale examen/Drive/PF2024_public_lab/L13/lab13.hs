@@ -24,13 +24,43 @@ pos  x = if (x>=0) then True else False
 fct :: Maybe Int ->  Maybe Bool
 fct  mx =  mx  >>= (\x -> Just (pos x))
 
+fct' :: Maybe Int -> Maybe Bool
+fct' mx = do
+  x <- mx --  This line extracts the value x from the Maybe Int value mx.
+          -- If mx is Just x, then x will be bound to the integer value inside Just.
+          -- If mx is Nothing, the entire do block will result in Nothing.
+  return (pos x) -- The function pos is applied to the extracted value x.
+                 -- return wraps the result of pos x back into the Maybe monad, resulting in Just (pos x) if mx was Just x.
+                 -- If mx was Nothing, the result will be Nothing.
+
+
 addM :: Maybe Int -> Maybe Int -> Maybe Int
-addM mx my = undefined
+addM (Just x) (Just y) = Just (x + y)
+addM _ _ = Nothing
+
+addM' :: Maybe Int -> Maybe Int -> Maybe Int
+addM' mx my = do
+  x <- mx
+  y <- my
+  return (x + y)
+
+addM'' :: Maybe Int -> Maybe Int -> Maybe Int
+addM'' mx my = mx >>= (\x -> my >>= (\y -> return (x + y)))
 
 
 cartesian_product xs ys = xs >>= ( \x -> (ys >>= \y-> return (x,y)))
 
+cartesian_product' xs ys = do
+  x <- xs
+  y <- ys
+  return (x, y)
+
 prod f xs ys = [f x y | x <- xs, y<-ys]
+
+prod' f xs ys = do
+    x <- xs
+    y <- ys
+    return $ f x y
 
 myGetLine :: IO String
 myGetLine = getChar >>= \x ->
@@ -38,6 +68,17 @@ myGetLine = getChar >>= \x ->
           return []
       else
           myGetLine >>= \xs -> return (x:xs)
+
+myGetLine' :: IO String
+myGetLine' = do
+    x <- getChar
+    if x == '\n' then return [] 
+    else do
+      xs <- myGetLine'
+      return (x:xs)
+
+
+------------------------------------- DE AICI ESTE NEMODIFICAT
 
 prelNo noin =  sqrt noin
 
@@ -47,6 +88,8 @@ ioNumber = do
      let  noout = prelNo noin
      putStrLn $ "Iesire"
      print noout
+
+    
 
 data Person = Person { name :: String, age :: Int }
 
@@ -106,5 +149,4 @@ runReader mshowPersonA  $ Person "ada" 20
 runReader mshowPerson  $ Person "ada" 20
 "(NAME:ada,AGE:20)"
 -}
-
 
