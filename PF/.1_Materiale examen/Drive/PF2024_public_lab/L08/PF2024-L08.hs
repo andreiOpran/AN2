@@ -74,7 +74,7 @@ instance Collection SearchTree where
   singleton k v = BNode Empty k (Just v) Empty
 
   insert :: (Ord key) => key -> value -> SearchTree key value -> SearchTree key value
-  insert k v Empty = (BNode Empty k (Just v) right)
+  insert k v Empty = (BNode Empty k (Just v) Empty)
   insert k v (BNode left key value right)
     | key == k = (BNode left key (Just v) right)
     | key < k = (BNode (insert k v left) key value right)
