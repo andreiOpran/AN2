@@ -19,13 +19,13 @@ class Collection c where
 newtype PairList k v
   = PairList { getPairList :: [(k, v)] }
 
-instance Collection PairList where
-  empty = PairList []
-  singleton k v = PairList [(k, v)]
-  insert k v (PairList l) = PairList((k, v) : filter ((/=k).fst) l)
-  clookup k = lookup k . getPairList
-  toList :: PairList key value -> [(key, value)]
-  toList = getPairList
+-- instance Collection PairList where
+--   empty = PairList []
+--   singleton k v = PairList [(k, v)]
+--   insert k v (PairList l) = PairList((k, v) : filter ((/=k).fst) l)
+--   clookup k = lookup k . getPairList
+--   toList :: PairList key value -> [(key, value)]
+--   toList = getPairList
 
 data SearchTree key value
   = Empty
@@ -40,9 +40,9 @@ data Punct = Pt [Int]
 data Arb = Vid | F Int | N Arb Arb
           deriving Show
 
-class ToFromArb a where
- 	    toArb :: a -> Arb
-	    fromArb :: Arb -> a
+-- class ToFromArb a where
+--  	    toArb :: a -> Arb
+-- 	    fromArb :: Arb -> a
 -- Pt [1,2,3]
 -- (1, 2, 3)
 

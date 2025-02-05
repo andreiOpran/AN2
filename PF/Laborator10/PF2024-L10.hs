@@ -51,25 +51,25 @@ variabile = undefined
 test_variabile =
   variabile (Not (Var "P") :&: Var "Q") == ["P", "Q"]
 
-envs :: [Nume] -> [Env]
-envs = [y | y <- [(x, i) | x <- xs, i <- (True, False)], verifica y]
+-- envs :: [Nume] -> [Env]
+-- envs = [y | y <- [(x, i) | x <- xs, i <- (True, False)], verifica y]
  
-test_envs = 
-    envs ["P", "Q"]
-    ==
-    [ [ ("P",False)
-      , ("Q",False)
-      ]
-    , [ ("P",False)
-      , ("Q",True)
-      ]
-    , [ ("P",True)
-      , ("Q",False)
-      ]
-    , [ ("P",True)
-      , ("Q",True)
-      ]
-    ]
+-- test_envs = 
+--     envs ["P", "Q"]
+--     ==
+--     [ [ ("P",False)
+--       , ("Q",False)
+--       ]
+--     , [ ("P",False)
+--       , ("Q",True)
+--       ]
+--     , [ ("P",True)
+--       , ("Q",False)
+--       ]
+--     , [ ("P",True)
+--       , ("Q",True)
+--       ]
+--     ]
 
 satisfiabila :: Prop -> Bool
 satisfiabila = undefined
