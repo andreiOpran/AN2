@@ -1,2 +1,3 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+Semestrul[[:space:]]1/SO/Materiale[[:space:]]examen/Manual/SO10[[:space:]]CH1-11[[:space:]]130.pdf filter=lfs diff=lfs merge=lfs -text

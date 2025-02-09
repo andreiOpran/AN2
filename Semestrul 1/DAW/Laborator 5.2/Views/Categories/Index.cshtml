@@ -1,0 +1,21 @@
+﻿<h2>Afisare categorii</h2>
+<br />
+
+@foreach (var categ in ViewBag.Categories)
+{
+    <p>@categ.CategoryName</p>
+
+    <br />
+    <a class="btn btn-success" href="/Categories/Show/@categ.Id">Afisare categorie</a>
+    <br />
+    <br />
+    <a class="btn btn-info" href="/Categories/Edit/@categ.Id">Editare categorie</a>
+    <hr />
+
+}
+
+<a class="btn btn-success" href="/Categories/New">Adaugare categorie</a>
+<br />
+<br />
+
+<a class ="btn btn-secondary" href="/Articles/Index">Afisare articole</a>
