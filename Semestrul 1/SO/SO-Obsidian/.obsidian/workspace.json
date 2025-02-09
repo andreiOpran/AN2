@@ -45,7 +45,8 @@
               "title": "Multithreading Models"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -189,10 +190,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "da37d9cbff5915a4",
+  "active": "2345607fa0091333",
   "lastOpenFiles": [
-    "Chapter 4 - Threads/Multithreading Models.md",
     "Chapter 4 - Threads/Chapter 4 - Threads.md",
+    "Chapter 4 - Threads/Multithreading Models.md",
+    "Chapter 3 - Processes/IPC - Shared-Memory.md",
     "Imagini/Pasted image 20250210000959.png",
     "Chapter 4 - Threads/Thread libraries.md",
     "Imagini/Pasted image 20250210000359.png",
@@ -216,7 +218,6 @@
     "Chapter 3 - Processes/Sockets.md",
     "Chapter 3 - Processes/IPC - Pipe.md",
     "Chapter 3 - Processes/IPC.md",
-    "Chapter 3 - Processes/IPC - Shared-Memory.md",
     "Chapter 3 - Processes/When a process creates a new process.md",
     "Chapter 3 - Processes/Context switch.md",
     "Chapter 3 - Processes/Process State.md",

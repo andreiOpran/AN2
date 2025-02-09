@@ -1,5 +1,0 @@
----
-"": true
-Deadline: 2025-07-01T23:59
-Materie: AF
----
