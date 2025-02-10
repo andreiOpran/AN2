@@ -8,6 +8,8 @@
 - [[Liveness]]
 - [[Deadlock (Chapter 6-7)]] 
 - [[Priority Inversion]]
+- [[Monitors]]
+- [[Transactional Memory|Alternative approach to mutex locks, semaphores and monitors - Transactional Memory]]
 
 ---
 #### <span style="color:rgb(112, 48, 160)">Summary (Chapter 6 - Synchronization Tools):</span> 
@@ -36,4 +38,6 @@
 
 ### <span style="color:rgb(112, 48, 160)">Chapter 7 - Synchronization Examples</span>
 
-- 
+- [[The Bounded-Buffer Problem]] 
+- [[The Readers–Writers Problem]] 
+- [[The Dining-Philosophers Problem]]

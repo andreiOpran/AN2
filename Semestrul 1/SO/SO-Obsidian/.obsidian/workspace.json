@@ -8,6 +8,20 @@
         "type": "tabs",
         "children": [
           {
+            "id": "303fca6003197c47",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 6-7 Synchronization Tools and Examples/Transactional Memory.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Transactional Memory"
+            }
+          },
+          {
             "id": "5a2ca7e4acad12de",
             "type": "leaf",
             "state": {
@@ -19,6 +33,48 @@
               },
               "icon": "lucide-file",
               "title": "Chapter 6-7 Synchronization Tools and Examples"
+            }
+          },
+          {
+            "id": "52803db00ccb1e06",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 6-7 Synchronization Tools and Examples/Monitors.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Monitors"
+            }
+          },
+          {
+            "id": "9b9670e3b5343e04",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 6-7 Synchronization Tools and Examples/Chapter 6-7 Synchronization Tools and Examples.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 6-7 Synchronization Tools and Examples"
+            }
+          },
+          {
+            "id": "6d691b4e90f45fff",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 6-7 Synchronization Tools and Examples/Transactional Memory.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Transactional Memory"
             }
           }
         ]
@@ -78,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 211.5110321044922,
-    "collapsed": true
+    "width": 211.5110321044922
   },
   "right": {
     "id": "9a148ae8dbf69e9b",
@@ -167,46 +222,46 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5a2ca7e4acad12de",
+  "active": "303fca6003197c47",
   "lastOpenFiles": [
     "Chapter 6-7 Synchronization Tools and Examples/Chapter 6-7 Synchronization Tools and Examples.md",
-    "Pasted image 20250210171022.png",
-    "Pasted image 20250210171006.png",
+    "Chapter 6-7 Synchronization Tools and Examples/Transactional Memory.md",
+    "Imagini/Pasted image 20250211003053.png",
+    "Imagini/Pasted image 20250211003037.png",
+    "Chapter 6-7 Synchronization Tools and Examples/Mutex Locks (Critical Section).md",
+    "Chapter 6-7 Synchronization Tools and Examples/The Dining-Philosophers Problem.md",
+    "Chapter 6-7 Synchronization Tools and Examples/Monitors.md",
+    "Imagini/Pasted image 20250211002036.png",
+    "Imagini/Pasted image 20250211001057.png",
+    "Imagini/Pasted image 20250211001048.png",
+    "Imagini/Pasted image 20250211000442.png",
+    "Imagini/Pasted image 20250211000304.png",
+    "Chapter 6-7 Synchronization Tools and Examples/Peterson's Solution (Critical section).md",
+    "Chapter 6-7 Synchronization Tools and Examples/Deadlock (Chapter 6-7).md",
     "Chapter 6-7 Synchronization Tools and Examples/Memory Barriers - A Hardware Implementation (Critical Section).md",
-    "Chapter 6-7 Synchronization Tools and Examples/Critical section.md",
-    "Chapter 6-7 Synchronization Tools and Examples/Semaphores.md",
-    "Priority Inversion.md",
     "Chapter 6-7 Synchronization Tools and Examples/Liveness.md",
+    "Imagini/Pasted image 20250210232941.png",
+    "Imagini/Pasted image 20250210232929.png",
+    "Imagini/Pasted image 20250210232527.png",
+    "Chapter 6-7 Synchronization Tools and Examples/The Bounded-Buffer Problem.md",
+    "Chapter 6-7 Synchronization Tools and Examples/The Readers–Writers Problem.md",
+    "Chapter 6-7 Synchronization Tools and Examples/Semaphores.md",
+    "Chapter 3 - Processes/Producer–consumer Problem.md",
+    "Chapter 6-7 Synchronization Tools and Examples/Critical section.md",
+    "Chapter 6-7 Synchronization Tools and Examples/Priority Inversion.md",
     "SO - Exam notes.md",
     "Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
     "Chapter 8 - Deadlocks",
-    "Chapter 6-7 Synchronization Tools and Examples/Deadlock (Chapter 6-7).md",
     "Deadlock.md",
-    "Imagini/Pasted image 20250210164533.png",
-    "Chapter 6-7 Synchronization Tools and Examples/Mutex Locks (Critical Section).md",
     "2025-02-10.md",
     "Untitled.canvas",
-    "Chapter 6-7 Synchronization Tools and Examples/Peterson's Solution (Critical section).md",
-    "Imagini/Pasted image 20250210160640.png",
-    "Imagini/Pasted image 20250210160440.png",
-    "Imagini/Pasted image 20250210160116.png",
-    "Imagini/Pasted image 20250210160105.png",
-    "Imagini/Pasted image 20250210153947.png",
     "Mutex Locks.md",
-    "Imagini/Pasted image 20250210151506.png",
     "Chapter 4 - Threads/Chapter 4 - Threads.md",
     "Chapter 6-7 Synchronization Tools and Examples",
     "Chapter 5 - CPU Scheduling/Chapter 5 - CPU Scheduling.md",
     "Chapter 4 - Threads/Multithreading Models.md",
     "Chapter 4 - Threads/Threads.md",
     "Chapter 4 - Threads/Concurrency.md",
-    "Chapter 4 - Threads/Concurrency vs. Parallelism.md",
-    "Imagini/Pasted image 20250210132226.png",
-    "Chapter 4 - Threads/Thread-Local Storage.md",
-    "Chapter 4 - Threads/Thread libraries.md",
-    "Chapter 4 - Threads/Thread Cancellation.md",
-    "Chapter 4 - Threads/Signals.md",
-    "Chapter 4 - Threads/Parallelism.md",
     "Chapter 5 - CPU Scheduling",
     "Chapter 4 - Threads",
     "Chapter 3 - Processes",
