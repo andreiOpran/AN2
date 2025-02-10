@@ -39,3 +39,8 @@
 2. <span style="color:rgb(112, 48, 160)">Balance. </span>While identifying tasks that can run in parallel, programmers must also ensure that the tasks perform equal work of equal value. In some instances, a certain task may not contribute as much value to the overall process as other tasks. Using a separate execution core to run that task may not be worth the cost, see [[Amdahl's Law]].
 3. <span style="color:rgb(112, 48, 160)">Data splitting.</span> Just as applications are divided into separate tasks, the data accessed and manipulated by the tasks must be divided to run on separate cores.
 4. <span style="color:rgb(112, 48, 160)">Data dependency.</span> The data accessed by the tasks must be examined for dependencies between two or more tasks. When one task depends on data from another, programmers must ensure that the execution of the tasks is synchronized to accommodate the data dependency. 
+
+---
+
+- #### [[Thread Cancellation]]
+- #### [[Thread-Local Storage]]
