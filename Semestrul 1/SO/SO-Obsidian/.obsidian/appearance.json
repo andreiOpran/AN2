@@ -2,5 +2,7 @@
   "showRibbon": true,
   "interfaceFontFamily": "",
   "monospaceFontFamily": "",
-  "textFontFamily": ""
+  "textFontFamily": "",
+  "baseFontSizeAction": false,
+  "baseFontSize": 16
 }
