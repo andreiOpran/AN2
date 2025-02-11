@@ -4,80 +4,77 @@
     "type": "split",
     "children": [
       {
-        "id": "21fd2f0b406e2c51",
+        "id": "4f5032269c35371b",
         "type": "tabs",
         "children": [
           {
-            "id": "303fca6003197c47",
+            "id": "e63bd81fc4bb419e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 6-7 - Synchronization Tools and Examples/Chapter 6-7 - Synchronization Tools and Examples.md",
-                "mode": "source",
+                "file": "Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 6-7 - Synchronization Tools and Examples"
+              "title": "Chapter 8 - Deadlocks"
             }
           },
           {
-            "id": "5a2ca7e4acad12de",
+            "id": "45528e1cf62629a7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 6-7 Synchronization Tools and Examples/Chapter 6-7 Synchronization Tools and Examples.md",
+                "file": "Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 6-7 Synchronization Tools and Examples"
+              "title": "Deadlocks - Necessary Conditions"
             }
           },
           {
-            "id": "52803db00ccb1e06",
+            "id": "7bf361cc5f9e5512",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 6-7 Synchronization Tools and Examples/Monitors.md",
+                "file": "Chapter 8 - Deadlocks/Deadlocks - Prevention.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Monitors"
+              "title": "Deadlocks - Prevention"
             }
           },
           {
-            "id": "9b9670e3b5343e04",
+            "id": "1c5aabfc4ecc37a1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 6-7 Synchronization Tools and Examples/Chapter 6-7 Synchronization Tools and Examples.md",
+                "file": "Chapter 8 - Deadlocks/Circular Wait (Deadlock Prevention).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 6-7 Synchronization Tools and Examples"
+              "title": "Circular Wait (Deadlock Prevention)"
             }
           },
           {
-            "id": "6d691b4e90f45fff",
+            "id": "7b7288cc7671a5f0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter 6-7 Synchronization Tools and Examples/Transactional Memory.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Transactional Memory"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -134,7 +131,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 401.5026054382324
+    "width": 237.50260543823242,
+    "collapsed": true
   },
   "right": {
     "id": "9a148ae8dbf69e9b",
@@ -150,7 +148,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Chapter 6-7 Synchronization Tools and Examples/Chapter 6-7 Synchronization Tools and Examples.md",
+                "file": "Livelock.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +158,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Chapter 6-7 Synchronization Tools and Examples"
+              "title": "Backlinks for Livelock"
             }
           },
           {
@@ -169,11 +167,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Livelock.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Livelock"
             }
           },
           {
@@ -222,47 +221,46 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "303fca6003197c47",
+  "active": "7b7288cc7671a5f0",
   "lastOpenFiles": [
-    "Untitled.md",
+    "Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
+    "Imagini/Pasted image 20250211183523.png",
+    "Imagini/Pasted image 20250211183503.png",
+    "Imagini/Pasted image 20250211183452.png",
+    "Imagini/Pasted image 20250211183442.png",
+    "Imagini/Pasted image 20250211183429.png",
+    "Imagini/Pasted image 20250211183415.png",
+    "Imagini/Pasted image 20250211181255.png",
+    "Chapter 8 - Deadlocks/Circular Wait (Deadlock Prevention).md",
+    "Imagini/Pasted image 20250211181018.png",
+    "Imagini/Pasted image 20250211175042.png",
+    "Imagini/Pasted image 20250211175029.png",
+    "Chapter 8 - Deadlocks/Deadlocks - Prevention.md",
+    "Chapter 8 - Deadlocks/No Preemption (Deadlock Prevention).md",
+    "Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
+    "Chapter 8 - Deadlocks/Hold and Wait (Deadlock Prevention).md",
+    "Chapter 8 - Deadlocks/Mutual Exclusion (Deadlock Prevention).md",
+    "Chapter 8 - Deadlocks/Deadlocks - Handling.md",
+    "Chapter 8 - Deadlocks/Livelock.md",
+    "Chapter 6-7 - Synchronization Tools and Examples/Deadlock (Chapter 6-7).md",
     "Chapter 6-7 - Synchronization Tools and Examples/Chapter 6-7 - Synchronization Tools and Examples.md",
+    "Chapter 6-7 - Synchronization Tools and Examples/Liveness.md",
+    "Untitled.md",
     "Chapter 6-7 - Synchronization Tools and Examples/Transactional Memory.md",
-    "Imagini/Pasted image 20250211003053.png",
-    "Imagini/Pasted image 20250211003037.png",
     "Chapter 6-7 - Synchronization Tools and Examples/Mutex Locks (Critical Section).md",
     "Chapter 6-7 - Synchronization Tools and Examples/The Dining-Philosophers Problem.md",
     "Chapter 6-7 - Synchronization Tools and Examples/Monitors.md",
-    "Imagini/Pasted image 20250211002036.png",
-    "Imagini/Pasted image 20250211001057.png",
-    "Imagini/Pasted image 20250211001048.png",
-    "Imagini/Pasted image 20250211000442.png",
-    "Imagini/Pasted image 20250211000304.png",
     "Chapter 6-7 - Synchronization Tools and Examples/Peterson's Solution (Critical section).md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Deadlock (Chapter 6-7).md",
     "Chapter 6-7 - Synchronization Tools and Examples/Memory Barriers - A Hardware Implementation (Critical Section).md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Liveness.md",
-    "Imagini/Pasted image 20250210232941.png",
-    "Imagini/Pasted image 20250210232929.png",
-    "Imagini/Pasted image 20250210232527.png",
     "Chapter 6-7 - Synchronization Tools and Examples/The Bounded-Buffer Problem.md",
     "Chapter 6-7 - Synchronization Tools and Examples/The Readers–Writers Problem.md",
     "Chapter 6-7 - Synchronization Tools and Examples/Semaphores.md",
     "Chapter 3 - Processes/Producer–consumer Problem.md",
     "Chapter 6-7 - Synchronization Tools and Examples/Critical section.md",
     "Chapter 6-7 - Synchronization Tools and Examples/Priority Inversion.md",
-    "SO - Exam notes.md",
-    "Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
     "Chapter 8 - Deadlocks",
-    "Deadlock.md",
-    "2025-02-10.md",
     "Untitled.canvas",
-    "Mutex Locks.md",
-    "Chapter 4 - Threads/Chapter 4 - Threads.md",
     "Chapter 6-7 - Synchronization Tools and Examples",
-    "Chapter 5 - CPU Scheduling/Chapter 5 - CPU Scheduling.md",
-    "Chapter 4 - Threads/Multithreading Models.md",
-    "Chapter 4 - Threads/Threads.md",
-    "Chapter 4 - Threads/Concurrency.md",
     "Chapter 5 - CPU Scheduling",
     "Chapter 4 - Threads",
     "Chapter 3 - Processes",

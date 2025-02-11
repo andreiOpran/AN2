@@ -1,0 +1,7 @@
+
+- A <span style="color:rgb(112, 48, 160)">deadlock</span> situation can arise if the following four conditions hold simultaneously in a system:
+	1. <span style="color:rgb(112, 48, 160)">Mutual exclusion</span>. At least one resource must be held in a nonsharable mode; that is, only one thread at a time can use the resource. If another thread requests that resource, the requesting thread must be delayed until the resource has been released. 
+	2. <span style="color:rgb(112, 48, 160)">Hold and wait</span>. A thread must be holding at least one resource and waiting to acquire additional resources that are currently being held by other threads.
+	3. <span style="color:rgb(112, 48, 160)">No preemption</span>. Resources cannot be preempted; that is, a resource can be released only voluntarily by the thread holding it, after that thread has completed its task. 
+	4. <span style="color:rgb(112, 48, 160)">Circular wait</span>.<span style="color:rgb(112, 48, 160)"></span> A set {T0, T1, ..., Tn} of waiting threads must exist such that T0 is waiting for a resource held by T1, T1 is waiting for a resource held by T2, ..., Tn−1 is waiting for a resource held by Tn, and Tn is waiting for a resource held by T0
+- The <span style="color:rgb(112, 48, 160)">circular-wait</span> condition implies the <span style="color:rgb(112, 48, 160)">hold-and-wait</span> condition, so the four conditions are not completely independent.
