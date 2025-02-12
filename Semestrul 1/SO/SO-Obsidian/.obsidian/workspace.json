@@ -4,67 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4f5032269c35371b",
+        "id": "8aea346c1cf6cf7a",
         "type": "tabs",
         "children": [
           {
-            "id": "e63bd81fc4bb419e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Chapter 8 - Deadlocks"
-            }
-          },
-          {
-            "id": "45528e1cf62629a7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Deadlocks - Necessary Conditions"
-            }
-          },
-          {
-            "id": "7bf361cc5f9e5512",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter 8 - Deadlocks/Deadlocks - Prevention.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Deadlocks - Prevention"
-            }
-          },
-          {
-            "id": "1c5aabfc4ecc37a1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter 8 - Deadlocks/Circular Wait (Deadlock Prevention).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Circular Wait (Deadlock Prevention)"
-            }
-          },
-          {
-            "id": "7b7288cc7671a5f0",
+            "id": "d876e066a1730ad1",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -72,9 +16,37 @@
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
+          },
+          {
+            "id": "438a7d1e85ae61ef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 5 - CPU Scheduling/Scheduling Algorithms (One core).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Scheduling Algorithms (One core)"
+            }
+          },
+          {
+            "id": "60427a79279ee3d6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 5 - CPU Scheduling/Priority (CPU) Scheduling.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Priority (CPU) Scheduling"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -131,8 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.50260543823242,
-    "collapsed": true
+    "width": 293.5026054382324
   },
   "right": {
     "id": "9a148ae8dbf69e9b",
@@ -221,43 +192,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7b7288cc7671a5f0",
+  "active": "da37d9cbff5915a4",
   "lastOpenFiles": [
-    "Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
-    "Imagini/Pasted image 20250211183523.png",
-    "Imagini/Pasted image 20250211183503.png",
-    "Imagini/Pasted image 20250211183452.png",
-    "Imagini/Pasted image 20250211183442.png",
-    "Imagini/Pasted image 20250211183429.png",
-    "Imagini/Pasted image 20250211183415.png",
-    "Imagini/Pasted image 20250211181255.png",
+    "Imagini/Pasted image 20250212025117.png",
+    "Imagini/Pasted image 20250212025044.png",
+    "Imagini/Pasted image 20250212023341.png",
+    "Chapter 5 - CPU Scheduling/Priority (CPU) Scheduling.md",
+    "Imagini/Pasted image 20250212023140.png",
+    "Chapter 5 - CPU Scheduling/Shortest-Job-First (CPU) Scheduling.md",
+    "Chapter 5 - CPU Scheduling/Scheduling Algorithms (One core).md",
+    "Chapter 5 - CPU Scheduling/Round-Robin (CPU) Scheduling.md",
+    "Imagini/Pasted image 20250212022227.png",
+    "Imagini/Pasted image 20250212021826.png",
+    "Imagini/Pasted image 20250212021741.png",
+    "Chapter 5 - CPU Scheduling/Chapter 5 - CPU Scheduling.md",
+    "Imagini/Pasted image 20250212011602.png",
+    "Imagini/Pasted image 20250212011527.png",
+    "Imagini/Pasted image 20250212010924.png",
+    "Imagini/Pasted image 20250212010906.png",
+    "Chapter 5 - CPU Scheduling/First-Come, First-Served (CPU) Scheduling.md",
+    "Chapter 5 - CPU Scheduling/CPU – IO Burst Cycle.md",
+    "CPU – I.O Burst Cycle.md",
+    "CPU – I/O Burst Cycle.md",
+    "CPU – I",
+    "Chapter 4 - Threads/Signals.md",
+    "Chapter 5 - CPU Scheduling/CPU Scheduler.md",
+    "Chapter 5 - CPU Scheduling/CPU Dispatcher.md",
+    "Chapter 5 - CPU Scheduling/Scheduling Criteria.md",
+    "Chapter 3 - Processes/Chapter 3 - Processes.md",
+    "Chapter 4 - Threads/Chapter 4 - Threads.md",
     "Chapter 8 - Deadlocks/Circular Wait (Deadlock Prevention).md",
-    "Imagini/Pasted image 20250211181018.png",
-    "Imagini/Pasted image 20250211175042.png",
-    "Imagini/Pasted image 20250211175029.png",
     "Chapter 8 - Deadlocks/Deadlocks - Prevention.md",
-    "Chapter 8 - Deadlocks/No Preemption (Deadlock Prevention).md",
     "Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
+    "Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
+    "Chapter 8 - Deadlocks/No Preemption (Deadlock Prevention).md",
     "Chapter 8 - Deadlocks/Hold and Wait (Deadlock Prevention).md",
     "Chapter 8 - Deadlocks/Mutual Exclusion (Deadlock Prevention).md",
     "Chapter 8 - Deadlocks/Deadlocks - Handling.md",
     "Chapter 8 - Deadlocks/Livelock.md",
     "Chapter 6-7 - Synchronization Tools and Examples/Deadlock (Chapter 6-7).md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Chapter 6-7 - Synchronization Tools and Examples.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Liveness.md",
-    "Untitled.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Transactional Memory.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Mutex Locks (Critical Section).md",
-    "Chapter 6-7 - Synchronization Tools and Examples/The Dining-Philosophers Problem.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Monitors.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Peterson's Solution (Critical section).md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Memory Barriers - A Hardware Implementation (Critical Section).md",
-    "Chapter 6-7 - Synchronization Tools and Examples/The Bounded-Buffer Problem.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/The Readers–Writers Problem.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Semaphores.md",
-    "Chapter 3 - Processes/Producer–consumer Problem.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Critical section.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Priority Inversion.md",
     "Chapter 8 - Deadlocks",
     "Untitled.canvas",
     "Chapter 6-7 - Synchronization Tools and Examples",

@@ -24,3 +24,10 @@ A process is a program in execution, and the status of the current activity of a
 - UNIX systems provide <span style="color:rgb(112, 48, 160)">ordinary pipes</span> through the <span style="color:rgb(112, 48, 160)">pipe() system call</span>. Ordinary pipes have a read end and a write end. A parent process can, for example, send data to the pipe using its write end, and the child process can read it from its read end. <span style="color:rgb(112, 48, 160)">Named pipes</span> in UNIX are termed FIFOs.
 - Two common forms of <span style="color:rgb(112, 48, 160)">client–server communication</span> are [[Sockets|sockets]] and [[Remote procedure calls|remote procedure calls (RPCs)]]. Sockets allow two processes on different machines to communicate over a network.
 - [[Remote procedure calls |RPCs]] abstract the concept of function (procedure) calls in such a way that a function can be invoked on another process that may reside on a separate computer.
+
+---
+
+![[Pasted image 20250211214835.png]]
+![[Pasted image 20250211214847.png]]
+![[Pasted image 20250211214859.png]]
+![[Pasted image 20250211214914.png]]
