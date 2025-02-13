@@ -1,0 +1,5 @@
+
+- Memory management discussed thus far has required the physical address space of a process to be contiguous. We now introduce <span style="color:rgb(112, 48, 160)">paging</span>, a memory management scheme that permits a process’s <span style="color:rgb(112, 48, 160)">physical address space to be noncontiguous</span>. Paging <span style="color:rgb(112, 48, 160)">avoids</span> <span style="color:rgb(112, 48, 160)">external fragmentation</span> and the associated need for <span style="color:rgb(112, 48, 160)">compaction</span>, two problems that plague contiguous memory allocation.
+- The basic method for implementing paging involves 
+	- breaking <span style="color:rgb(112, 48, 160)">physical memory</span> into <span style="color:rgb(112, 48, 160)">fixed-sized blocks</span> called <span style="color:rgb(112, 48, 160)">frames</span> 
+	- and breaking <span style="color:rgb(112, 48, 160)">logical memory</span> into blocks of the same size called <span style="color:rgb(112, 48, 160)">pages</span>.

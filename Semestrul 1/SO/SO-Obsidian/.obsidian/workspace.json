@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ae67649b452e9228",
+            "id": "6081a616bbed3eb9",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,34 +22,31 @@
             }
           },
           {
-            "id": "04e348902b15c3c7",
+            "id": "d9a4687ac08c240c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 9 - Main Memory/Address Binding.md",
+                "file": "Chapter 9 - Main Memory/Paging.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Address Binding"
+              "title": "Paging"
             }
           },
           {
-            "id": "a9df9e1e6e89f5c4",
+            "id": "1277177c04f331a7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Chapter 9 - Main Memory/Basic Hardware.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Basic Hardware"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -195,12 +192,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ae67649b452e9228",
+  "active": "da37d9cbff5915a4",
   "lastOpenFiles": [
-    "Chapter 9 - Main Memory/Basic Hardware.md",
-    "Chapter 9 - Main Memory/Logical Versus Physical Address Space.md",
+    "Chapter 9 - Main Memory/Paging.md",
     "Chapter 9 - Main Memory/Chapter 9 - Main Memory.md",
+    "Chapter 9 - Main Memory/Fragmentation.md",
+    "Chapter 9 - Main Memory/Memory Allocation.md",
+    "Chapter 9 - Main Memory/Memory Protection 2 (relocation and limit registers).md",
+    "Chapter 9 - Main Memory/Logical Versus Physical Address Space.md",
+    "Imagini/Pasted image 20250213005313.png",
     "Chapter 9 - Main Memory/Address Binding.md",
+    "Imagini/Pasted image 20250213000742.png",
+    "Chapter 9 - Main Memory/Memory Protection 1 (base and limit registers).md",
+    "Chapter 9 - Main Memory/Dynamic loading.md",
+    "Chapter 9 - Main Memory/Basic Hardware.md",
+    "Chapter 3 - Processes/Chapter 3 - Processes.md",
+    "Imagini/Pasted image 20250212234021.png",
+    "Imagini/Pasted image 20250212233825.png",
     "Imagini/Pasted image 20250212224413.png",
     "Imagini/Pasted image 20250212220732.png",
     "Imagini/Pasted image 20250212193716.png",
@@ -210,10 +218,6 @@
     "Imagini/Pasted image 20250212175543.png",
     "Imagini/Pasted image 20250212175533.png",
     "Imagini/Pasted image 20250212175523.png",
-    "Imagini/Pasted image 20250212175511.png",
-    "Imagini/Pasted image 20250212175459.png",
-    "Imagini/Pasted image 20250212175419.png",
-    "Imagini/Pasted image 20250212175400.png",
     "Chapter 5 - CPU Scheduling/Multilevel Feedback Queue (CPU) Scheduling.md",
     "Chapter 9 - Main Memory",
     "Chapter 5 - CPU Scheduling/Scheduling Algorithms (One core).md",
@@ -228,14 +232,7 @@
     "Chapter 5 - CPU Scheduling/Shortest-Job-First (CPU) Scheduling.md",
     "Chapter 5 - CPU Scheduling/CPU – IO Burst Cycle.md",
     "CPU – I.O Burst Cycle.md",
-    "CPU – I/O Burst Cycle.md",
     "CPU – I",
-    "Chapter 4 - Threads/Signals.md",
-    "Chapter 5 - CPU Scheduling/CPU Scheduler.md",
-    "Chapter 5 - CPU Scheduling/CPU Dispatcher.md",
-    "Chapter 5 - CPU Scheduling/Scheduling Criteria.md",
-    "Chapter 3 - Processes/Chapter 3 - Processes.md",
-    "Chapter 4 - Threads/Chapter 4 - Threads.md",
     "Chapter 8 - Deadlocks",
     "Untitled.canvas",
     "Chapter 6-7 - Synchronization Tools and Examples",
