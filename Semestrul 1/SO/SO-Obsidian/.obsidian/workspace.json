@@ -4,45 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "162db317239fb057",
+        "id": "21fd2f0b406e2c51",
         "type": "tabs",
         "children": [
           {
-            "id": "6081a616bbed3eb9",
+            "id": "0c298d1fd59caa69",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 9 - Main Memory/Chapter 9 - Main Memory.md",
+                "file": "Chapter 11 - Mass-Storage Structure/Chapter 11 - Mass-Storage Structure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 9 - Main Memory"
+              "title": "Chapter 11 - Mass-Storage Structure"
             }
           },
           {
-            "id": "d9a4687ac08c240c",
+            "id": "800084dcbc6586e4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 9 - Main Memory/Paging.md",
+                "file": "HDD Scheduling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Paging"
-            }
-          },
-          {
-            "id": "1277177c04f331a7",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "HDD Scheduling"
             }
           }
         ],
@@ -103,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 293.5026054382324
+    "width": 200
   },
   "right": {
     "id": "9a148ae8dbf69e9b",
@@ -119,7 +109,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Livelock.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +118,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Livelock"
+              "title": "Backlinks"
             }
           },
           {
@@ -138,12 +127,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Livelock.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Livelock"
+              "title": "Outgoing links"
             }
           },
           {
@@ -192,54 +180,54 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "da37d9cbff5915a4",
+  "active": "800084dcbc6586e4",
   "lastOpenFiles": [
-    "Chapter 9 - Main Memory/Paging.md",
-    "Chapter 9 - Main Memory/Chapter 9 - Main Memory.md",
-    "Chapter 9 - Main Memory/Fragmentation.md",
-    "Chapter 9 - Main Memory/Memory Allocation.md",
-    "Chapter 9 - Main Memory/Memory Protection 2 (relocation and limit registers).md",
-    "Chapter 9 - Main Memory/Logical Versus Physical Address Space.md",
-    "Imagini/Pasted image 20250213005313.png",
-    "Chapter 9 - Main Memory/Address Binding.md",
-    "Imagini/Pasted image 20250213000742.png",
-    "Chapter 9 - Main Memory/Memory Protection 1 (base and limit registers).md",
-    "Chapter 9 - Main Memory/Dynamic loading.md",
-    "Chapter 9 - Main Memory/Basic Hardware.md",
-    "Chapter 3 - Processes/Chapter 3 - Processes.md",
-    "Imagini/Pasted image 20250212234021.png",
-    "Imagini/Pasted image 20250212233825.png",
-    "Imagini/Pasted image 20250212224413.png",
-    "Imagini/Pasted image 20250212220732.png",
-    "Imagini/Pasted image 20250212193716.png",
+    "Imagini/Pasted image 20250214164807.png",
+    "Imagini/Pasted image 20250214164756.png",
+    "HDD Scheduling.md",
+    "Chapter 11 - Mass-Storage Structure/Chapter 11 - Mass-Storage Structure.md",
+    "Chapter 11 - Mass-Storage Structure/Hard Disk Drives.md",
+    "Address Mapping.md",
+    "Imagini/Pasted image 20250214164220.png",
+    "Imagini/Pasted image 20250214164206.png",
     "SO - Exam notes.md",
-    "Chapter 5 - CPU Scheduling/Chapter 5 - CPU Scheduling.md",
-    "Chapter 9 - Main Memory/Untitled",
-    "Imagini/Pasted image 20250212175543.png",
-    "Imagini/Pasted image 20250212175533.png",
-    "Imagini/Pasted image 20250212175523.png",
-    "Chapter 5 - CPU Scheduling/Multilevel Feedback Queue (CPU) Scheduling.md",
+    "Chapter 11 - Mass-Storage Structure/Nonvolatile Memory Devices.md",
+    "Imagini/Pasted image 20250214163005.png",
+    "Imagini/Pasted image 20250214162945.png",
+    "Imagini/Pasted image 20250214162849.png",
+    "Imagini/Pasted image 20250214162829.png",
+    "Imagini/Pasted image 20250214162820.png",
+    "Imagini/Pasted image 20250214162612.png",
+    "Chapter 10 - Virtual Memory/Chapter 10 - Virtual Memory.md",
+    "Chapter 11 - Mass-Storage Structure",
+    "Chapter 10 - Virtual Memory/Virtual Memory.md",
+    "Chapter 10 - Virtual Memory/Demand Paging.md",
+    "Imagini/Pasted image 20250214160331.png",
+    "Chapter 9 - Main Memory/Chapter 9 - Main Memory.md",
+    "Section 9.3.4.md",
+    "Chapter 9 - Main Memory/Shared Pages.md",
+    "Chapter 9 - Main Memory/Swapping with Paging.md",
+    "Chapter 9 - Main Memory/Swapping.md",
+    "Chapter 10 - Virtual Memory",
+    "Chapter 9 - Main Memory/Standard Swapping.md",
+    "Chapter 9 - Main Memory/Structure of the Page Table.md",
+    "Chapter 9 - Main Memory/Inverted Page Tables.md",
+    "Chapter 9 - Main Memory/Translation Look-Aside Buffer - Hardware Support.md",
+    "Chapter 9 - Main Memory/Memory Protection 3 (paging).md",
+    "Chapter 9 - Main Memory/Paging.md",
+    "Chapter 9 - Main Memory/Hashed Page Tables.md",
+    "Chapter 9 - Main Memory/Dynamic loading.md",
+    "Chapter 9 - Main Memory/Hierarchical Paging.md",
+    "Chapter 9 - Main Memory/Logical Versus Physical Address Space.md",
+    "Chapter 9 - Main Memory/Memory Protection 2 (relocation and limit registers).md",
     "Chapter 9 - Main Memory",
-    "Chapter 5 - CPU Scheduling/Scheduling Algorithms (One core).md",
-    "Chapter 5 - CPU Scheduling/Round-Robin (CPU) Scheduling.md",
-    "Chapter 5 - CPU Scheduling/Multilevel Queue (CPU) Scheduling.md",
-    "Chapter 5 - CPU Scheduling/Priority (CPU) Scheduling.md",
-    "Chapter 5 - CPU Scheduling/First-Come, First-Served (CPU) Scheduling.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Chapter 6-7 - Synchronization Tools and Examples.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Priority Inversion.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Liveness.md",
-    "Chapter 6-7 - Synchronization Tools and Examples/Critical section.md",
-    "Chapter 5 - CPU Scheduling/Shortest-Job-First (CPU) Scheduling.md",
-    "Chapter 5 - CPU Scheduling/CPU – IO Burst Cycle.md",
-    "CPU – I.O Burst Cycle.md",
-    "CPU – I",
+    "Chapter 6-7 - Synchronization Tools and Examples",
     "Chapter 8 - Deadlocks",
     "Untitled.canvas",
-    "Chapter 6-7 - Synchronization Tools and Examples",
+    "Chapter 6-7 Synchronization Tools and Examples",
     "Chapter 5 - CPU Scheduling",
     "Chapter 4 - Threads",
     "Chapter 3 - Processes",
-    "Imagini",
-    "SO"
+    "Imagini"
   ]
 }

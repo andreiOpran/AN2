@@ -1,0 +1,8 @@
+
+- [[Standard Swapping]] was used in traditional UNIX systems, but it is generally no longer used in contemporary operating systems, because the amount of time required to move entire processes between memory and the backing store is prohibitive.
+- Most systems, including Linux and Windows, now use a <span style="color:rgb(112, 48, 160)">variation of swapping in which pages of a process—rather than an entire process—can be swapped</span>. 
+	- This strategy still allows physical memory to be oversubscribed, but <span style="color:rgb(112, 48, 160)">does not incur the cost of swapping entire processes</span>, as presumably only a small number of pages will be involved in swapping. 
+	- In fact, the term <span style="color:rgb(112, 48, 160)">swapping</span> now generally refers to<span style="color:rgb(112, 48, 160)"> standard swapping</span>, and <span style="color:rgb(112, 48, 160)">paging</span> refers to <span style="color:rgb(112, 48, 160)">swapping with paging</span>. 
+	- A <span style="color:rgb(112, 48, 160)">page out</span> operation moves a page from memory to the backing store; the reverse process is known as a <span style="color:rgb(112, 48, 160)">page in</span>. Swapping with paging is illustrated in <span style="color:rgb(112, 48, 160)">Figure 9.20</span> where a subset of pages for processes A and B are being paged-out and paged-in respectively. 
+	- ![[Pasted image 20250214150342.png]]
+- As we shall see in [[Chapter 10 - Virtual Memory]], swapping with paging works well in conjunction with virtual memory.
