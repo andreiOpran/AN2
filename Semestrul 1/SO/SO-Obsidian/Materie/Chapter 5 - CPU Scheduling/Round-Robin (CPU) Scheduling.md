@@ -1,0 +1,28 @@
+
+- The <span style="color:rgb(112, 48, 160)">round-robin (RR)</span> scheduling algorithm is similar to [[First-Come, First-Served (CPU) Scheduling]], but <span style="color:rgb(112, 48, 160)">preemption</span> <span style="color:rgb(112, 48, 160)">is added</span> to enable the system to switch between processes. 
+- A small unit of time, called a <span style="color:rgb(112, 48, 160)">time quantum</span> or <span style="color:rgb(112, 48, 160)">time slice</span>, is defined. 
+	- A <span style="color:rgb(112, 48, 160)">time quantum</span> is generally from 10 to 100 milliseconds in length. 
+- The ready queue is treated as a <span style="color:rgb(112, 48, 160)">circular</span> queue. The CPU scheduler goes around the ready queue, allocating the CPU to each process for a time interval of up to<span style="color:rgb(112, 48, 160)"> 1 time quantum</span>.
+- To <span style="color:rgb(112, 48, 160)">implement</span> RR scheduling, we again treat the ready queue as a <span style="color:rgb(112, 48, 160)">FIFO</span> queue of processes. New processes are added to the tail of the ready queue. The CPU scheduler picks the first process from the ready queue, sets a timer to interrupt after 1 time quantum, and dispatches the process.
+- <span style="color:rgb(112, 48, 160)">One of two</span> things will then happen. 
+	- The process may have a CPU burst of less than 1 time quantum. In this case, the process itself will release the CPU voluntarily. The scheduler will then proceed to the next process in the ready queue. 
+	- If the CPU burst of the currently running process is longer than 1 time quantum, the timer will go off and will cause an interrupt to the operating system. A context switch will be executed, and the process will be put at the tail of the ready queue. The CPU scheduler will then select the next process in the ready queue.
+- The average waiting time under the RR policy is often long. Consider the following set of processes that arrive at time 0, with the length of the CPU burst given in milliseconds:
+- ![[Pasted image 20250212021741.png]]
+- If we use a <span style="color:rgb(112, 48, 160)">time quantum of 4 milliseconds</span>, then process P1 gets the first 4 milliseconds. Since it requires another 20 milliseconds, it is preempted after the first time quantum (<span style="color:rgb(112, 48, 160)">The RR scheduling algorithm is thus preemptive</span>), and the CPU is given to the next process in the queue, process P2. Process P2 does not need 4 milliseconds, so it quits before its time quantum expires. The CPU is then given to the next process, process P3. Once each process has received 1 time quantum, the CPU is returned to process P1 for an additional time quantum. The resulting RR schedule is as follows:
+- ![[Pasted image 20250212021826.png]]
+- Let’s calculate the <span style="color:rgb(112, 48, 160)">average</span> waiting time for this schedule. P1 waits for 6 milliseconds (10 − 4), P2 waits for 4 milliseconds, and P3 waits for 7 milliseconds. Thus, the average waiting time is 17/3 = <span style="color:rgb(112, 48, 160)">5.66 milliseconds</span>.
+- If there are <span style="color:rgb(112, 48, 160)">n processe</span>s in the ready queue and the <span style="color:rgb(112, 48, 160)">time quantum is q</span>, then each process gets <span style="color:rgb(112, 48, 160)">1/n </span>of the CPU time in chunks of <span style="color:rgb(112, 48, 160)">at most q time units</span>. 
+	- Each process must wait no longer than<span style="color:rgb(112, 48, 160)"> (n − 1) × q </span>time units until its next time quantum. 
+		- For example, with five processes and a time quantum of 20 milliseconds, each process will get up to 20 milliseconds every 100 milliseconds.
+- The <span style="color:rgb(112, 48, 160)">performance</span> of the RR algorithm depends heavily on the size of the time quantum. 
+	- <span style="color:rgb(112, 48, 160)">At one extreme</span>, if the time quantum is extremely large, the RR policy is the same as the FCFS policy. 
+	- <span style="color:rgb(112, 48, 160)">In contrast</span>, if the time quantum is extremely small (say, 1 millisecond), the RR approach can result in a large number of context switches.
+	 - Assume,<span style="color:rgb(112, 48, 160)"> for example</span>, that we have only one process of 10 time units. 
+		- If the quantum is <span style="color:rgb(112, 48, 160)">12</span> time units, the process finishes in less than 1 time quantum, with no overhead. 
+		- If the quantum is <span style="color:rgb(112, 48, 160)">6</span> time units, however, the process requires 2 quanta, resulting in a context switch. 
+		- If the time quantum is <span style="color:rgb(112, 48, 160)">1</span> time unit, then nine context switches will occur, slowing the execution of the process accordingly (Figure 5.5).
+		- ![[Pasted image 20250212022227.png]]
+
+- Thus, we want the time quantum to be large with respect to the context-switch time. If the context-switch time is approximately 10 percent of the time quantum, then about 10 percent of the CPU time will be spent in context switching. In practice, most modern systems have time quanta ranging from 10 to 100 milliseconds. The time required for a context switch is typically less than 10 microseconds; thus, the context-switch time is a small fraction of the time quantum.
+- Although the time quantum should be large compared with the contextswitch time, it should not be too large. As we pointed out earlier, if the time quantum is too large, RR scheduling degenerates to an FCFS policy. A rule of thumb is that 80 percent of the CPU bursts should be shorter than the time quantum.

@@ -1,3 +1,0 @@
-
-- [[Virtual Memory]]
-- [[Demand Paging]]

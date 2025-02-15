@@ -1,4 +1,0 @@
-
-- <span style="color:rgb(112, 48, 160)">Livelock</span> is another form of [[Liveness]] failure. It is similar to deadlock; both prevent two or more threads from proceeding, but the threads are unable to proceed for different reasons. 
-- Whereas deadlock occurs when every thread in a set is blocked waiting for an event that can be caused only by another thread in the set, <span style="color:rgb(112, 48, 160)">livelock</span> occurs when a thread continuously attempts an action that fails. 
-- Livelock is similar to what sometimes happens when two people attempt to pass in a hallway: One moves to his right, the other to her left, still obstructing each other’s progress. Then he moves to his left, and she moves to her right, and so forth. They aren’t blocked, but they aren’t making any progress.

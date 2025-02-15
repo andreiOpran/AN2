@@ -1,7 +1,0 @@
-
-- A process terminates when it finishes executing its final statement and asks the operating system to delete it by using the <span style="color:rgb(112, 48, 160)">exit() system call</span>. At that point, the process may <span style="color:rgb(112, 48, 160)">return a status </span>value (typically an integer) to its <span style="color:rgb(112, 48, 160)">waiting</span> <span style="color:rgb(112, 48, 160)">parent process</span> (via the wait() system call). All the resources of the process—including physical and virtual memory, open files, and I/O buffers—are <span style="color:rgb(112, 48, 160)">deallocated</span> and reclaimed by the operating system.
-
-- A parent may terminate the execution of one of its children for a variety of reasons, such as these:
-	- The child has <span style="color:rgb(112, 48, 160)">exceeded its usage of some of the resources</span> that it has been allocated. (To determine whether this has occurred, the parent must have a mechanism to inspect the state of its children.)
-	- The task assigned to the child is <span style="color:rgb(112, 48, 160)">no longer required</span>.
-	- The<span style="color:rgb(112, 48, 160)"> parent is exiting</span>, and the operating system does not allow a child to continue if its parent terminates. 

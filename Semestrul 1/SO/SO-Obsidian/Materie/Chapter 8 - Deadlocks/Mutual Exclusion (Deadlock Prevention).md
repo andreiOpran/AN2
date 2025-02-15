@@ -1,0 +1,4 @@
+
+- The <span style="color:rgb(112, 48, 160)">mutual-exclusion</span> condition must hold. That is, at least one resource must be <span style="color:rgb(112, 48, 160)">nonsharable</span>. 
+- <span style="color:rgb(112, 48, 160)">Sharable resources</span> do not require mutually exclusive access and thus cannot be involved in a deadlock. Read-only files are a good example of a <span style="color:rgb(112, 48, 160)">sharable</span> resource. 
+- If several threads attempt to open a read-only file at the same time, they can be granted simultaneous access to the file. A thread never needs to wait for a sharable resource. In general, however, we cannot prevent deadlocks by denying the mutual-exclusion condition, because some resources are intrinsically nonsharable. For example, a <span style="color:rgb(112, 48, 160)">mutex lock</span> cannot be simultaneously shared by several threads.

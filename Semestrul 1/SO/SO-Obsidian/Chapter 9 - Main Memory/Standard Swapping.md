@@ -1,8 +1,0 @@
-
-- <span style="color:rgb(112, 48, 160)">Standard swapping</span> involves moving entire processes between main memory and a backing store. 
-	- The <span style="color:rgb(112, 48, 160)">backing store</span> is commonly fast secondary storage. 
-	- It must be large enough to accommodate whatever parts of processes need to be stored and retrieved, and it must provide direct access to these memory images. When a process or part is swapped to the backing store, the data structures associated with the process must be written to the backing store. 
-	- For a multithreaded process, all per-thread data structures must be swapped as well. 
-	- The operating system must also maintain metadata for processes that have been swapped out, <span style="color:rgb(112, 48, 160)">so they can be restored</span> when they are swapped back in to memory.
-- The advantage of standard swapping is that it allows physical memory to be oversubscribed, so that the system can accommodate more processes than there is actual physical memory to store them. Idle or mostly idle processes are good candidates for swapping; any memory that has been allocated to these inactive processes can then be dedicated to active processes. If an inactive process that has been swapped out becomes active once again, it must then be swapped back in. This is illustrated in <span style="color:rgb(112, 48, 160)">Figure 9.19</span>.
-- ![[Pasted image 20250214145756.png]]
