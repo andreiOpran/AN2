@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5a6fa168161e2455",
+        "id": "eaee1857286659f2",
         "type": "tabs",
         "children": [
           {
-            "id": "b94cbcd5d66a6b76",
+            "id": "9a691c35b53f5b71",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,51 +22,53 @@
             }
           },
           {
-            "id": "cba75ec170b1aff9",
+            "id": "c808ed855014b0b4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Materie/Chapter 9 - Main Memory/Translation Look-Aside Buffer - Hardware Support.md",
+                "file": "Subiecte/Subiecte rezolvate de mine/7.februarie.2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Translation Look-Aside Buffer - Hardware Support"
-            }
-          }
-        ]
-      },
-      {
-        "id": "eaee1857286659f2",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "da09d2f09d2f3be4",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "7.februarie.2023"
-            }
-          },
-          {
-            "id": "42218c514ea9c5ad",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate/SO examen 7 februarie 2023.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "SO examen 7 februarie 2023"
+              "title": "7.februarie.2024"
             }
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "002da5a1268a5ccd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3f6d5bbb7a975f9a",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "schita subiecte azi"
+            }
+          },
+          {
+            "id": "31cb7d568d5f6e68",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Materie/Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Deadlocks - Necessary Conditions"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -211,54 +213,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b94cbcd5d66a6b76",
+  "active": "c808ed855014b0b4",
   "lastOpenFiles": [
-    "Materie/Chapter 9 - Main Memory/Translation Look-Aside Buffer - Hardware Support.md",
-    "Subiecte/Subiecte rezolvate/SO examen 7 februarie 2023.pdf",
-    "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf",
+    "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf",
+    "Subiecte/Subiecte rezolvate de mine/7.februarie.2024.md",
+    "Imagini/WhatsApp Image 2025-02-17 at 00.56.14_70300724.jpg",
+    "Imagini/Pasted image 20250217002138.png",
+    "Imagini/WhatsApp Image 2025-02-16 at 23.55.11_e9317fe2.jpg",
+    "Imagini/Pasted image 20250216234124.png",
+    "Imagini/Pasted image 20250216233823.png",
+    "Imagini/Pasted image 20250216233745.png",
+    "Imagini/Pasted image 20250216233725.png",
     "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
-    "Imagini/Pasted image 20250215172325.png",
+    "Imagini/Pasted image 20250216225935.png",
+    "Imagini/Pasted image 20250216224109.png",
+    "Materie/Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
+    "Materie/Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
+    "Materie/Chapter 6-7 - Synchronization Tools and Examples/Priority Inversion.md",
+    "Subiecte/Subiecte rezolvate/restanta 1 sept 2023.pdf",
+    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
+    "Subiecte/Subiecte nerezolvate/08.iunie.2023.pdf",
+    "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf",
+    "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf",
+    "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf",
+    "Materie/Chapter 6-7 - Synchronization Tools and Examples/Liveness.md",
+    "Imagini/Pasted image 20250216210538.png",
+    "Materie/Chapter 10 - Virtual Memory/Demand Paging.md",
+    "Subiecte/Subiecte rezolvate/SO examen 7 februarie 2023.pdf",
+    "Materie/Chapter 5 - CPU Scheduling/First-Come, First-Served (CPU) Scheduling.md",
+    "Materie/Chapter 5 - CPU Scheduling/Chapter 5 - CPU Scheduling.md",
+    "Materie/Chapter 5 - CPU Scheduling/Scheduling Algorithms (One core).md",
+    "Materie/Chapter 4 - Threads/Threads.md",
+    "Materie/Chapter 4 - Threads/Chapter 4 - Threads.md",
+    "Materie/Chapter 9 - Main Memory/Inverted Page Tables.md",
+    "Materie/Chapter 9 - Main Memory/Translation Look-Aside Buffer - Hardware Support.md",
     "Materie/Chapter 9 - Main Memory/Fragmentation.md",
     "Materie/Chapter 9 - Main Memory/Paging.md",
     "Materie/Chapter 10 - Virtual Memory/Virtual Memory.md",
     "Materie/Chapter 9 - Main Memory/Memory Protection 3 (paging).md",
-    "Materie/Chapter 10 - Virtual Memory/Demand Paging.md",
-    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
-    "Subiecte/Subiecte nerezolvate/08.iunie.2023.pdf",
-    "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf",
     "Materie/Chapter 9 - Main Memory/Logical Versus Physical Address Space.md",
     "Materie/Chapter 9 - Main Memory/Address Binding.md",
-    "Imagini/Pasted image 20250215164056.png",
-    "Imagini/Pasted image 20250215163521.png",
-    "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf",
-    "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf",
-    "Subiecte/Subiecte rezolvate/restanta 1 sept 2023.pdf",
-    "Imagini/Pasted image 20250212010906.png",
     "Materie/Chapter 11 - Mass-Storage Structure/SCAN Scheduling.md",
     "Subiecte/Subiecte rezolvate de mine",
     "Subiecte/Subiecte rezolvate",
-    "Materie/Chapter 4 - Threads/Chapter 4 - Threads.md",
     "Materie/Chapter 4 - Threads/Amdahl's Law.md",
     "Materie/Chapter 11 - Mass-Storage Structure/C-SCAN Scheduling.md",
     "Materie/Chapter 11 - Mass-Storage Structure/Chapter 11 - Mass-Storage Structure.md",
     "Materie/Chapter 11 - Mass-Storage Structure/HDD Scheduling.md",
-    "Imagini/Pasted image 20250214171454.png",
-    "Imagini/Pasted image 20250214171440.png",
-    "Imagini/Pasted image 20250214171214.png",
-    "Imagini/Pasted image 20250214171124.png",
-    "Materie/Chapter 11 - Mass-Storage Structure/FCFS HDD Scheduling.md",
-    "Imagini/Pasted image 20250214170252.png",
-    "Imagini/Pasted image 20250214164807.png",
-    "Materie/Chapter 11 - Mass-Storage Structure/Hard Disk Drives.md",
-    "Materie/Chapter 11 - Mass-Storage Structure/Address Mapping.md",
-    "Materie/SO - Exam notes.md",
-    "Materie/Chapter 11 - Mass-Storage Structure/Nonvolatile Memory Devices.md",
-    "Materie/Chapter 10 - Virtual Memory/Chapter 10 - Virtual Memory.md",
-    "Materie/Chapter 9 - Main Memory/Chapter 9 - Main Memory.md",
-    "Section 9.3.4.md",
-    "Materie/Chapter 9 - Main Memory/Shared Pages.md",
-    "Materie/Chapter 9 - Main Memory/Swapping with Paging.md",
-    "Materie/Chapter 9 - Main Memory/Swapping.md",
     "Untitled.canvas"
   ]
 }
