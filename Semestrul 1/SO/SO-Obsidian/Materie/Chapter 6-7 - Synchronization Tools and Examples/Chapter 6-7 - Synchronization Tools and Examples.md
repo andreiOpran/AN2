@@ -68,6 +68,6 @@
 
 ---
 
-### <span style="color:rgb(112, 48, 160)">Exam (07.02.2024) exercise (9) found in the book:</span>
+### <span style="color:rgb(112, 48, 160)">Exam (07.02.2023) exercise (9) found in the book:</span>
 
 ![[Pasted image 20250211162044.png]]

@@ -4,68 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "eaee1857286659f2",
+        "id": "8bdc0cf11161271e",
         "type": "tabs",
         "children": [
           {
-            "id": "9a691c35b53f5b71",
+            "id": "090ebcf653e4efa6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "7.februarie.2023"
-            }
-          },
-          {
-            "id": "c808ed855014b0b4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate de mine/7.februarie.2024.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "7.februarie.2024"
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "002da5a1268a5ccd",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "3f6d5bbb7a975f9a",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "schita subiecte azi"
-            }
-          },
-          {
-            "id": "31cb7d568d5f6e68",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Materie/Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Deadlocks - Necessary Conditions"
+              "title": "New tab"
             }
           }
         ]
@@ -125,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.5026054382324
+    "width": 373.51103591918945
   },
   "right": {
     "id": "9a148ae8dbf69e9b",
@@ -213,40 +162,42 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c808ed855014b0b4",
+  "active": "090ebcf653e4efa6",
   "lastOpenFiles": [
+    "Subiecte/Subiecte rezolvate/restanta 1 sept 2023.pdf",
+    "Subiecte/Subiecte rezolvate/SO examen 7 februarie 2023.pdf",
+    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
+    "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf",
+    "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf",
+    "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf",
+    "Subiecte/Subiecte nerezolvate/08.iunie.2023.pdf",
+    "Materie/Chapter 9 - Main Memory/Translation Look-Aside Buffer - Hardware Support.md",
+    "Materie/Chapter 11 - Mass-Storage Structure/Chapter 11 - Mass-Storage Structure.md",
+    "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
+    "Subiecte/Subiecte rezolvate de mine/7.februarie.2025.md",
+    "Materie/Chapter 6-7 - Synchronization Tools and Examples/Chapter 6-7 - Synchronization Tools and Examples.md",
     "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf",
-    "Subiecte/Subiecte rezolvate de mine/7.februarie.2024.md",
+    "Imagini/Pasted image 20250217010652.png",
+    "Imagini/Pasted image 20250217010549.png",
+    "Imagini/Pasted image 20250217010509.png",
+    "Imagini/Pasted image 20250217005946.png",
     "Imagini/WhatsApp Image 2025-02-17 at 00.56.14_70300724.jpg",
     "Imagini/Pasted image 20250217002138.png",
     "Imagini/WhatsApp Image 2025-02-16 at 23.55.11_e9317fe2.jpg",
     "Imagini/Pasted image 20250216234124.png",
     "Imagini/Pasted image 20250216233823.png",
     "Imagini/Pasted image 20250216233745.png",
-    "Imagini/Pasted image 20250216233725.png",
-    "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
-    "Imagini/Pasted image 20250216225935.png",
-    "Imagini/Pasted image 20250216224109.png",
     "Materie/Chapter 8 - Deadlocks/Chapter 8 - Deadlocks.md",
     "Materie/Chapter 8 - Deadlocks/Deadlocks - Necessary Conditions.md",
     "Materie/Chapter 6-7 - Synchronization Tools and Examples/Priority Inversion.md",
-    "Subiecte/Subiecte rezolvate/restanta 1 sept 2023.pdf",
-    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
-    "Subiecte/Subiecte nerezolvate/08.iunie.2023.pdf",
-    "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf",
-    "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf",
-    "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf",
     "Materie/Chapter 6-7 - Synchronization Tools and Examples/Liveness.md",
-    "Imagini/Pasted image 20250216210538.png",
     "Materie/Chapter 10 - Virtual Memory/Demand Paging.md",
-    "Subiecte/Subiecte rezolvate/SO examen 7 februarie 2023.pdf",
     "Materie/Chapter 5 - CPU Scheduling/First-Come, First-Served (CPU) Scheduling.md",
     "Materie/Chapter 5 - CPU Scheduling/Chapter 5 - CPU Scheduling.md",
     "Materie/Chapter 5 - CPU Scheduling/Scheduling Algorithms (One core).md",
     "Materie/Chapter 4 - Threads/Threads.md",
     "Materie/Chapter 4 - Threads/Chapter 4 - Threads.md",
     "Materie/Chapter 9 - Main Memory/Inverted Page Tables.md",
-    "Materie/Chapter 9 - Main Memory/Translation Look-Aside Buffer - Hardware Support.md",
     "Materie/Chapter 9 - Main Memory/Fragmentation.md",
     "Materie/Chapter 9 - Main Memory/Paging.md",
     "Materie/Chapter 10 - Virtual Memory/Virtual Memory.md",
@@ -258,8 +209,6 @@
     "Subiecte/Subiecte rezolvate",
     "Materie/Chapter 4 - Threads/Amdahl's Law.md",
     "Materie/Chapter 11 - Mass-Storage Structure/C-SCAN Scheduling.md",
-    "Materie/Chapter 11 - Mass-Storage Structure/Chapter 11 - Mass-Storage Structure.md",
-    "Materie/Chapter 11 - Mass-Storage Structure/HDD Scheduling.md",
     "Untitled.canvas"
   ]
 }
