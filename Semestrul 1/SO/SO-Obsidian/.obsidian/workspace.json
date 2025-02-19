@@ -63,7 +63,8 @@
               "title": "7.februarie.2025"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "846d33340700d224",
@@ -141,7 +142,8 @@
               "title": "20.februarie.2024"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -287,18 +289,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "33b04015ccead2d8",
+  "active": "bcac1c103d47dcc9",
   "lastOpenFiles": [
-    "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf",
-    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
     "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf",
+    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
+    "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
+    "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf",
+    "Subiecte/Subiecte rezolvate de mine/01.septembrie.2023.md",
+    "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf",
     "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf",
     "Subiecte/Subiecte nerezolvate/08.iunie.2023.pdf",
-    "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf",
     "Subiecte/Subiecte rezolvate de mine/8.iunie.2023.md",
     "Subiecte/Subiecte rezolvate de mine/7.februarie.2025.md",
-    "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
-    "Subiecte/Subiecte rezolvate de mine/01.septembrie.2023.md",
     "Imagini/Pasted image 20250217230030.png",
     "Imagini/Pasted image 20250217230024.png",
     "Imagini/Pasted image 20250217230018.png",
