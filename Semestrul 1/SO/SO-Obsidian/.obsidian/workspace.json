@@ -4,146 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "b171a29f8bf30721",
+        "id": "5b7a51f4dc93c081",
         "type": "tabs",
         "children": [
           {
-            "id": "33b04015ccead2d8",
+            "id": "26551fd84299d262",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate de mine/01.septembrie.2023.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "01.septembrie.2023"
-            }
-          },
-          {
-            "id": "bcac1c103d47dcc9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "7.februarie.2023"
-            }
-          },
-          {
-            "id": "1753305720303baa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate de mine/8.iunie.2023.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "8.iunie.2023"
-            }
-          },
-          {
-            "id": "33a22fe4ba965ff4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate de mine/7.februarie.2025.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "7.februarie.2025"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "846d33340700d224",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "cc95034f0d82cd7f",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "01.septembrie.2023"
-            }
-          },
-          {
-            "id": "af6ceda18dd00eb4",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "7.februarie.2023"
-            }
-          },
-          {
-            "id": "3fab6b0d865e97ee",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte nerezolvate/08.iunie.2023.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "08.iunie.2023"
-            }
-          },
-          {
-            "id": "693bcfe8ccb61ebd",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "schita subiecte azi"
-            }
-          },
-          {
-            "id": "0a6f9e4f21468146",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "5.februarie.2024"
-            }
-          },
-          {
-            "id": "bfd9c3786259aafa",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "20.februarie.2024"
-            }
-          }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -289,18 +163,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bcac1c103d47dcc9",
+  "active": "26551fd84299d262",
   "lastOpenFiles": [
-    "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf",
-    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
+    "Untitled.md",
+    "Subiecte/Subiecte rezolvate de mine/7.februarie.2025.md",
+    "Subiecte/Subiecte rezolvate de mine/8.iunie.2023.md",
     "Subiecte/Subiecte rezolvate de mine/7.februarie.2023.md",
+    "Subiecte/Subiecte nerezolvate/20.februarie.2024.pdf",
+    "Subiecte/Subiecte nerezolvate/5.februarie.2024.pdf",
     "Subiecte/Subiecte nerezolvate/7.februarie.2023.pdf",
     "Subiecte/Subiecte rezolvate de mine/01.septembrie.2023.md",
     "Subiecte/Subiecte nerezolvate/01.septembrie.2023.pdf",
     "Subiecte/Subiecte rezolvate/schita subiecte azi.pdf",
     "Subiecte/Subiecte nerezolvate/08.iunie.2023.pdf",
-    "Subiecte/Subiecte rezolvate de mine/8.iunie.2023.md",
-    "Subiecte/Subiecte rezolvate de mine/7.februarie.2025.md",
     "Imagini/Pasted image 20250217230030.png",
     "Imagini/Pasted image 20250217230024.png",
     "Imagini/Pasted image 20250217230018.png",
