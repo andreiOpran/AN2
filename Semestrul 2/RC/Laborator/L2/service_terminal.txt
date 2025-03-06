@@ -1,44 +1,107 @@
+# Enter privileged EXEC mode
 switch> enable
+
+# Enter global configuration mode
 switch# configure terminal
+
+# Disable DNS lookup to prevent delays on mistyped commands
 switch(config)# no ip domain lookup
+
+# Set the hostname of the switch
 switch(config)# hostname Sw-ELBA
+
+# Disable Cisco Discovery Protocol (CDP) to prevent unnecessary advertisements
 Sw-ELBA(config)# no cdp run
+
+# Encrypt all plaintext passwords in the configuration
 Sw-ELBA(config)# service password-encryption
+
+# Set an encrypted enable password (more secure)
 Sw-ELBA(config)# enable secret ciscosecpa55
+
+# Set a plaintext enable password (less secure, overridden by enable secret)
 Sw-ELBA(config)# enable password ciscoenapa55
+
+# Set a Message of the Day (MOTD) banner
 Sw-ELBA(config)# banner motd *my banner*
+
+# Configure the console line
 Sw-ELBA(config)# line console 0
+# Set console access password
 switch(config-line)# password ciscoconpa55
+# Require password authentication for console access
 switch(config-line)# login
+# Prevent log messages from interrupting command input
 switch(config-line)# logging synchronous
+# Set inactivity timeout to 20 minutes 10 seconds
 switch(config-line)# exec-timeout 20 10
+# Exit console configuration
 switch(config-line)# exit
+
+# Configure Virtual Terminal (VTY) lines (remote access)
 switch(config)# line vty 0 15
+# Set a password for VTY access
 switch(config-line)# password ciscovtypa55
+# Require password authentication for remote login
 switch(config-line)# login
+# Prevent log messages from interrupting command input
 switch(config-line)# logging synchronous
+# Set inactivity timeout to 5 minutes 10 seconds
 switch(config-line)# exec-timeout 5 10
+# Exit VTY configuration
 switch(config-line)# exit
+
+# Exit global configuration mode
 switch(config)# exit
+
+# Save the running configuration to startup configuration
 Sw-ELBA# copy running-config startup-config
+
+# Set the system clock
 Sw-ELBA# clock set 19:42:10 6 Mar 2025
+
+# Enter global configuration mode again
 Sw-ELBA# configure terminal
+
+# Set the domain name for SSH configuration
 switch(config)# ip domain name info.ro
+
+# Create a new user with privilege level 15 (full access) and an encrypted password
 switch(config)# username Admin01 privilege 15 secret Admin01pa55
+
+# Configure VTY lines for SSH access
 switch(config)# line vty 0 15
+# Allow only SSH (disable Telnet)
 switch(config-line)# transport input ssh
+# Require local user authentication instead of just a password
 switch(config-line)# login local
+# Exit VTY configuration
 switch(config-line)# exit
+
+# Generate RSA keys for SSH encryption (2048-bit key size)
 switch(config)# crypto key generate rsa
 # 2048
+
+# Set SSH to use version 2 (more secure)
 switch(config)# ip ssh version 2
+
+# Configure remote logging to a syslog server
 switch(config)# logging host 209.165.200.30
+
+# Enable timestamping for log messages with milliseconds
 switch(config)# service timestamps log datetime msec
 switch(config)# service timestamps debug datetime msec
-switch(config)# interface vlan1
-switch(config-if)# description Legatura cu ramura 147.16.20.0/23
-switch(config-if)# ip address 174.16.20.2 255.255.254.0
-switch(config-if)# no shutdown
-switch(config-if)# exit
-switch(config)# ip default-gateway 174.16.20.1
 
+# Configure VLAN 1 (Management VLAN)
+switch(config)# interface vlan1
+# Add a description for VLAN 1
+switch(config-if)# description Legatura cu ramura 147.16.20.0/23
+# Assign an IP address and subnet mask to VLAN 1
+switch(config-if)# ip address 174.16.20.2 255.255.254.0
+# Enable the interface
+switch(config-if)# no shutdown
+# Exit interface configuration mode
+switch(config-if)# exit
+
+# Set the default gateway for the switch
+switch(config)# ip default-gateway 174.16.20.1
