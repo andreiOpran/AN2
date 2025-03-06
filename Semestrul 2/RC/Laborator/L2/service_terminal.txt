@@ -1,0 +1,44 @@
+switch> enable
+switch# configure terminal
+switch(config)# no ip domain lookup
+switch(config)# hostname Sw-ELBA
+Sw-ELBA(config)# no cdp run
+Sw-ELBA(config)# service password-encryption
+Sw-ELBA(config)# enable secret ciscosecpa55
+Sw-ELBA(config)# enable password ciscoenapa55
+Sw-ELBA(config)# banner motd *my banner*
+Sw-ELBA(config)# line console 0
+switch(config-line)# password ciscoconpa55
+switch(config-line)# login
+switch(config-line)# logging synchronous
+switch(config-line)# exec-timeout 20 10
+switch(config-line)# exit
+switch(config)# line vty 0 15
+switch(config-line)# password ciscovtypa55
+switch(config-line)# login
+switch(config-line)# logging synchronous
+switch(config-line)# exec-timeout 5 10
+switch(config-line)# exit
+switch(config)# exit
+Sw-ELBA# copy running-config startup-config
+Sw-ELBA# clock set 19:42:10 6 Mar 2025
+Sw-ELBA# configure terminal
+switch(config)# ip domain name info.ro
+switch(config)# username Admin01 privilege 15 secret Admin01pa55
+switch(config)# line vty 0 15
+switch(config-line)# transport input ssh
+switch(config-line)# login local
+switch(config-line)# exit
+switch(config)# crypto key generate rsa
+# 2048
+switch(config)# ip ssh version 2
+switch(config)# logging host 209.165.200.30
+switch(config)# service timestamps log datetime msec
+switch(config)# service timestamps debug datetime msec
+switch(config)# interface vlan1
+switch(config-if)# description Legatura cu ramura 147.16.20.0/23
+switch(config-if)# ip address 174.16.20.2 255.255.254.0
+switch(config-if)# no shutdown
+switch(config-if)# exit
+switch(config)# ip default-gateway 174.16.20.1
+
