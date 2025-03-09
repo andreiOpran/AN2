@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5b7a51f4dc93c081",
+        "id": "3c6cdbf29c47bfc1",
         "type": "tabs",
         "children": [
           {
-            "id": "26551fd84299d262",
+            "id": "12f43069f18df44f",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -74,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 323.51103591918945,
-    "collapsed": true
+    "width": 323.51103591918945
   },
   "right": {
     "id": "9a148ae8dbf69e9b",
@@ -163,7 +162,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "26551fd84299d262",
+  "active": "da37d9cbff5915a4",
   "lastOpenFiles": [
     "Untitled.md",
     "Subiecte/Subiecte rezolvate de mine/7.februarie.2025.md",
