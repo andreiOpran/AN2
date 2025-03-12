@@ -22,3 +22,5 @@ x_to_bins = np.digitize(image, bins)  # returneaza pentru fiecare element interv
 # Atentie! In cazul nostru indexarea elementelor va
 # incepe de la 1, intrucat nu avem valori < 0
 
+# print(x_to_bins)
+
