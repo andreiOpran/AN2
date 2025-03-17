@@ -19,8 +19,8 @@ plt.show()
 num_bins = 10
 bins = np.linspace(start=0, stop=255, num=num_bins)  # returneaza intervalele
 x_to_bins = np.digitize(image, bins)  # returneaza pentru fiecare element intervalul corespunzator
-# Atentie! In cazul nostru indexarea elementelor va
-# incepe de la 1, intrucat nu avem valori < 0
+										# Atentie! In cazul nostru indexarea elementelor va
+										# incepe de la 1, intrucat nu avem valori < 0
 
 # print(x_to_bins)
 
