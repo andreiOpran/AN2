@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3c6cdbf29c47bfc1",
+        "id": "64ce3b0b9357c23c",
         "type": "tabs",
         "children": [
           {
-            "id": "12f43069f18df44f",
+            "id": "142458d3ee36d148",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -162,7 +162,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "da37d9cbff5915a4",
+  "active": "142458d3ee36d148",
   "lastOpenFiles": [
     "Untitled.md",
     "Subiecte/Subiecte rezolvate de mine/7.februarie.2025.md",
