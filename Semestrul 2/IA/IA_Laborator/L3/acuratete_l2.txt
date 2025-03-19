@@ -1,0 +1,5 @@
+0.8840 accuracy for k = 1
+0.8980 accuracy for k = 3
+0.8960 accuracy for k = 5
+0.8800 accuracy for k = 7
+0.8800 accuracy for k = 9

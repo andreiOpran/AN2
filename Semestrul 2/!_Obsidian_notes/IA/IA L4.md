@@ -1,0 +1,11 @@
+
+A(x1, y1)
+B(x2, y2)
+
+l1 = | x1 - x2 | + | y1 - y2 |
+l2 = sqrt((x1 - x2)^2 + (y1 - y2)^2)
+
+KNN - K nearest neighbor
+
+
+colocviu cu materiale
