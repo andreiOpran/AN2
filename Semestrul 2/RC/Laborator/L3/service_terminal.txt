@@ -1,0 +1,181 @@
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+
+Press RETURN to get started!
+
+
+
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#no ip domain lookup
+Router(config)#hostname R-ANGLIA
+R-ANGLIA(config)#no cdp run
+R-ANGLIA(config)#service password-encryption
+R-ANGLIA(config)#security passwords min-length 10
+R-ANGLIA(config)#login block-for 65 attempts 3 within 10
+R-ANGLIA(config)#enable secret ciscosecpa55
+R-ANGLIA(config)#enable password ciscoenapa55
+R-ANGLIA(config)#banner login $accesul persoanelor neautorizate este strict interzis$
+R-ANGLIA(config)#banner motd $vineri 21.03.2025 la ora 12 serverul va fi oprit$
+R-ANGLIA(config)#line console 0
+R-ANGLIA(config-line)#password ciscoconpa55
+R-ANGLIA(config-line)#login
+R-ANGLIA(config-line)#logging synchronous
+R-ANGLIA(config-line)#exec-timeout 15 15
+R-ANGLIA(config-line)#exit
+R-ANGLIA(config)#line vty 0 15
+R-ANGLIA(config-line)#password ciscovtypa55
+R-ANGLIA(config-line)#login
+R-ANGLIA(config-line)#logging synchronous
+R-ANGLIA(config-line)#exec-timeout 5 5
+R-ANGLIA(config-line)#exit
+R-ANGLIA(config)#exit
+R-ANGLIA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+R-ANGLIA#copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+R-ANGLIA#clock set 22:26:30 19 Mar 2025
+R-ANGLIA#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R-ANGLIA(config)#ip domain name info.ro
+R-ANGLIA(config)#username Admin01 privilege 15 secret Admin01pa55
+R-ANGLIA(config)#line vty 0 15
+R-ANGLIA(config-line)#transport input ssh
+R-ANGLIA(config-line)#login local	
+R-ANGLIA(config-line)#exit
+R-ANGLIA(config)#crypto key generate rsa
+The name for the keys will be: R-ANGLIA.info.ro
+Choose the size of the key modulus in the range of 360 to 4096 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be non-exportable...[OK]
+
+R-ANGLIA(config)#ip ssh version 2
+*Mar 19 22:29:11.116: %SSH-5-ENABLED: SSH 1.99 has been enabled
+R-ANGLIA(config)#logging host 171.160.47.254
+R-ANGLIA(config)#service timestamps log datetime msec
+R-ANGLIA(config)#service timestamps debug datetime msec
+R-ANGLIA(config)#interface gigabitethernet 0/0
+R-ANGLIA(config-if)#description Legatura cu reteaua 171.160.0.0/19
+R-ANGLIA(config-if)#ip address 171.160.0.1 255.255.224.0
+R-ANGLIA(config-if)#no shutdown
+
+R-ANGLIA(config-if)#
+*Mar 19, 22:31:03.3131: %LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+R-ANGLIA(config-if)#exit
+R-ANGLIA(config)#interface serial 0/0/0
+R-ANGLIA(config-if)#description Legatura cu routerul R-SERVER
+R-ANGLIA(config-if)#ip address 171.160.56.5 255.255.255.252
+R-ANGLIA(config-if)#no shutdown
+
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to down
+R-ANGLIA(config-if)#
+
+-------------------------------------------------------------------------------------------------
+
+# Annotated Router Configuration Commands
+
+## Initial Access and Basic Setup
+```
+Router>enable                      # Enter privileged EXEC mode
+Router#configure terminal          # Enter global configuration mode
+Router(config)#no ip domain lookup # Disable DNS lookup (prevents typo delays)
+Router(config)#hostname R-ANGLIA   # Set the router's hostname to R-ANGLIA
+```
+
+## Security Basics
+```
+R-ANGLIA(config)#no cdp run                     # Disable Cisco Discovery Protocol (security measure)
+R-ANGLIA(config)#service password-encryption    # Encrypt passwords in the configuration
+R-ANGLIA(config)#security passwords min-length 10 # Set minimum password length to 10 characters
+R-ANGLIA(config)#login block-for 65 attempts 3 within 10 # Block login for 65 minutes after 3 failed attempts within 10 seconds
+```
+
+## Password Configuration
+```
+R-ANGLIA(config)#enable secret ciscosecpa55     # Set encrypted password for privileged mode
+R-ANGLIA(config)#enable password ciscoenapa55   # Set backup password (less secure than secret)
+```
+
+## Banner Messages
+```
+# Login banner - displayed before login (Romanian: unauthorized access is strictly forbidden)
+R-ANGLIA(config)#banner login $accesul persoanelor neautorizate este strict interzis$
+
+# Message of the Day - displays after login (Romanian: Friday 03/21/2025 at 12 the server will be shut down)
+R-ANGLIA(config)#banner motd $vineri 21.03.2025 la ora 12 serverul va fi oprit$
+```
+
+## Console Line Configuration
+```
+R-ANGLIA(config)#line console 0                 # Enter console line configuration
+R-ANGLIA(config-line)#password ciscoconpa55     # Set console password
+R-ANGLIA(config-line)#login                     # Enable password checking at login
+R-ANGLIA(config-line)#logging synchronous       # Prevent commands from being interrupted by syslog messages
+R-ANGLIA(config-line)#exec-timeout 15 15        # Auto-logout after 15 minutes and 15 seconds of inactivity
+R-ANGLIA(config-line)#exit                      # Exit console configuration
+```
+
+## VTY (Telnet/SSH) Line Configuration
+```
+R-ANGLIA(config)#line vty 0 15                  # Configure all 16 virtual terminal lines
+R-ANGLIA(config-line)#password ciscovtypa55     # Set VTY password
+R-ANGLIA(config-line)#login                     # Enable password checking
+R-ANGLIA(config-line)#logging synchronous       # Prevent commands from being interrupted
+R-ANGLIA(config-line)#exec-timeout 5 5          # Auto-logout after 5 minutes and 5 seconds
+R-ANGLIA(config-line)#exit                      # Exit VTY configuration
+```
+
+## Saving Configuration and Setting Clock
+```
+R-ANGLIA(config)#exit                           # Exit to privileged EXEC mode
+R-ANGLIA#copy running-config startup-config     # Save current configuration to NVRAM
+R-ANGLIA#clock set 22:26:30 19 Mar 2025         # Set the router's clock
+```
+
+## Domain and SSH Configuration
+```
+R-ANGLIA#configure terminal                     # Re-enter global configuration mode
+R-ANGLIA(config)#ip domain name info.ro         # Set domain name (needed for SSH)
+R-ANGLIA(config)#username Admin01 privilege 15 secret Admin01pa55 # Create admin user with full privileges
+
+# Configure VTY lines for SSH
+R-ANGLIA(config)#line vty 0 15
+R-ANGLIA(config-line)#transport input ssh       # Only allow SSH connections (no Telnet)
+R-ANGLIA(config-line)#login local               # Use local username database for authentication
+R-ANGLIA(config-line)#exit
+
+# Generate RSA key pair for SSH (note the correction from the failed command)
+R-ANGLIA(config)#crypto key generate rsa        # Generate RSA keys for SSH
+# Key size set to 2048 bits (more secure than default 512)
+R-ANGLIA(config)#ip ssh version 2               # Use SSH version 2 (more secure than v1)
+```
+
+## Logging Configuration
+```
+R-ANGLIA(config)#logging host 171.160.47.254    # Send logs to a syslog server
+R-ANGLIA(config)#service timestamps log datetime msec  # Add timestamps to log messages
+R-ANGLIA(config)#service timestamps debug datetime msec # Add timestamps to debug messages
+```
+
+## Network Interface Configuration
+```
+# Configure GigabitEthernet interface (note the typo correction)
+R-ANGLIA(config)#interface gigabitethernet 0/0
+R-ANGLIA(config-if)#description Legatura cu reteaua 171.160.0.0/19  # Interface description (Romanian: Link to network 171.160.0.0/19)
+R-ANGLIA(config-if)#ip address 171.160.0.1 255.255.224.0  # Set IP address and subnet mask
+R-ANGLIA(config-if)#no shutdown                            # Enable the interface
+
+# Configure Serial interface
+R-ANGLIA(config-if)#exit
+R-ANGLIA(config)#interface serial 0/0/0
+R-ANGLIA(config-if)#description Legatura cu routerul R-SERVER  # Interface description (Romanian: Link to R-SERVER router)
+R-ANGLIA(config-if)#ip address 171.160.56.5 255.255.255.252   # Set IP address and subnet mask
+R-ANGLIA(config-if)#no shutdown                                # Enable the interface
+```
