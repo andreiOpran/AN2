@@ -1,4 +1,4 @@
-public class Laborator1 {
+public class L1 {
     public static void main(String[] args) {
 
 //        // String text = "Hello, World!";
