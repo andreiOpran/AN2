@@ -1,4 +1,8 @@
-public class Student {
+package L3;
+
+import org.jetbrains.annotations.NotNull;
+
+public class Student implements Comparable<Student> {
 	private String nume;
 	private int varsta;
 	private double medie;
@@ -33,5 +37,19 @@ public class Student {
 	}
 	public void setMedie(double medie) {
 		this.medie = medie;
+	}
+
+	@Override
+	public int compareTo(@NotNull Student other) {
+		return Double.compare(this.medie, other.medie);
+//		if (this.medie < other.medie) {
+//			return -1;
+//		}
+//		else if (this.medie > other.medie) {
+//			return 1;
+//		}
+//		else {
+//			return 0;
+//		}
 	}
 }

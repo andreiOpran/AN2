@@ -1,3 +1,5 @@
+package L2;
+
 import java.util.Arrays;
 
 public class L2_1_2 {

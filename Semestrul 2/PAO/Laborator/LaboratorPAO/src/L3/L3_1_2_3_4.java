@@ -1,6 +1,8 @@
+package L3;
+
 import java.util.Arrays;
 
-public class L3 {
+public class L3_1_2_3_4 {
 
 	public static class Persoana {
 		private String nume;
