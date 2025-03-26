@@ -1,0 +1,9 @@
+# ninja log v5
+20	788	7646741977903234	CMakeFiles/AA.dir/Laborator/L2/algoritmiGeneticiMutatie.cpp.obj	6f382ff0727e31ca
+54	858	7646741978669845	CMakeFiles/AA.dir/Laborator/L2/algoritmiGeneticiIncrucisare.cpp.obj	eaebd2f55f22f83b
+14	1056	7646741980626812	CMakeFiles/AA.dir/Laborator/L2/algoritmiGeneticiCodificare.cpp.obj	47d32cd6effcb192
+24	1084	7646741980961686	CMakeFiles/AA.dir/Laborator/L2/algoritmiGeneticiSelectie.cpp.obj	76a643ae2caa503c
+1	1180	7646741981929995	CMakeFiles/AA.dir/Laborator/L1/rucsacDiscret.cpp.obj	dd2a6a917da483eb
+8	1185	7646741981973160	CMakeFiles/AA.dir/Laborator/L1/rucsacFractionar.cpp.obj	e602d90ba26cd642
+71	1219	7646741982340537	CMakeFiles/AA.dir/Laborator/L3/aproximarePi.cpp.obj	72e9b7f89284c2be
+83	1526	7646741985387567	CMakeFiles/AA.dir/Laborator/test.cpp.obj	e9c45427f5ca0140
