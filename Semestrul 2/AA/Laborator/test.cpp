@@ -100,13 +100,24 @@ int Decodificare(double a, double b, int p, string codificat) {
 
 #pragma endregion
 
-int selectie(int u, int dimPop, const vector<double> &intervaleProbabilitateSelectie) {
-
-	for(int i = 1; i < dimPop; ++i) {
-		if(u >= intervaleProbabilitateSelectie[i - 1] && u < intervaleProbabilitateSelectie[i])
-			return i;
+int selectie(double u, int dimPop, const vector<double> &intervaleProbabilitateSelectie) {
+	for(auto x : intervaleProbabilitateSelectie) {
+		cout << x << '\n';
 	}
-	return dimPop - 1;
+	
+	if (u >= intervaleProbabilitateSelectie[dimPop - 1]) {
+		return dimPop;
+	}
+	int left = 0, right = dimPop - 1;
+	while (left < right) {
+		int mid = left + (right - left) / 2;
+		if (u < intervaleProbabilitateSelectie[mid]) {
+			right = mid;
+		} else {
+			left = mid + 1;
+		}
+	}
+	return left;
 }
 
 
@@ -213,10 +224,22 @@ int main() {
 	cout << '\n';
 
 	// selectie
-	
+	int nrCromozomSelectat = 0;
+	vector<int> indexiCromozomiSelectati;
 	for(double u : usDinExemplu) {
-		int nrCromozomSelectat = selectie(u, dimPop, intervaleProbabilitateSelectie);
+		nrCromozomSelectat = selectie(u, dimPop, intervaleProbabilitateSelectie);
+		indexiCromozomiSelectati.push_back(nrCromozomSelectat);
+		cout << fixed << setprecision(17);
 		cout << "u=" << u << " selectam cromozomul " << nrCromozomSelectat << '\n';
+	}
+
+	cout << "\nDupa selectie:\n";
+	i = 1;
+	for(auto index : indexiCromozomiSelectati) {
+		auto cromozom = populatie[index];
+		cout << setw(3) << i++ << ": " << cromozom.first 
+			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.second 
+			 << "; f = " << setw(9) << fixed << setprecision(12) << fitness[index] << '\n';
 	}
 	
 #pragma endregion
