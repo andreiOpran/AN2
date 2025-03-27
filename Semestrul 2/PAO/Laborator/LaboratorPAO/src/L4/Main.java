@@ -49,20 +49,22 @@ public class Main {
 		shapes.add(new Rectangle(20, 30));
 		shapes.add(new Circle(10));
 		for (Shape shape : shapes) {
-			System.out.println(shape.getArea());
+			System.out.print(shape.getArea() + " ");
 			if (shape instanceof Circle) {
-				System.out.println(((Circle) shape).getColor());
+				System.out.print(((Circle) shape).getColor());
 			}
+			System.out.println();
 		}
 
 		System.out.println();
 
 		shapes.sort(Shape.compareByArea);
 		for (Shape shape : shapes) {
-			System.out.println(shape.getArea());
+			System.out.print(shape.getArea() + " ");
 			if (shape instanceof Circle) {
-				System.out.println(((Circle) shape).getColor());
+				System.out.print(((Circle) shape).getColor());
 			}
+			System.out.println();
 		}
 
 	}
