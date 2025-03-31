@@ -46,11 +46,12 @@ OUT:
 #include <random>
 #include <algorithm>
 #include <iomanip>
+#include <ostream>
 using namespace std;
 
 #pragma region codificare si decodificare
 
-string Codificare(double a, double b, int p, double x) {
+string Codificare(const double a, const double b, const double p, const double x) {
 	/*
 		codificam un numar double in binar
 
@@ -62,15 +63,15 @@ string Codificare(double a, double b, int p, double x) {
 	*/
 
 	// calculam discretizarea
-	int l = ceil(log2((b - a) * pow(10, p))); // numarul de biti pentru codificare
-	double d = (b - a) / pow(2, l); // pasul de discretizare
+	const int l = ceil(log2((b - a) * pow(10, p))); // numarul de biti pentru codificare
+	const double d = (b - a) / pow(2, l); // pasul de discretizare
 
 	int i = floor((x - a) / d); // x = a + i * d, rezulta ca i = (x - a) / d
 	if(i < 0) i = 0;
 
 	string rezultat;
-	for(int j = l - 1; j >= 0; --j) {
-		if(i & (1 << j))
+	for(int ind = l - 1; ind >= 0; --ind) {
+		if(i & (1 << ind))
 			rezultat += '1';
 		else
 			rezultat += '0';
@@ -78,7 +79,7 @@ string Codificare(double a, double b, int p, double x) {
 	return rezultat;
 }
 
-int Decodificare(double a, double b, int p, string codificat) {
+int Decodificare(const double a, const double b, const int p, const string& codificat) {
 	/*
 		decodificam un numar double din binar
 
@@ -87,24 +88,21 @@ int Decodificare(double a, double b, int p, string codificat) {
 	*/
 
 	// calculam discretizarea
-	int l = ceil(log2((b - a) * pow(10, p))); // numarul de biti pentru codificare
+	const int l = ceil(log2((b - a) * pow(10, p))); // numarul de biti pentru codificare
 	double d = (b - a) / pow(2, l); // pasul de discretizare
 
 	int x = 0;
-	for(unsigned int i = 0; i < codificat.length(); i++) {
-		if(codificat[i] == '1')
-			x += pow(2, codificat.length() - i - 1);
+	for(unsigned int ind = 0; ind < codificat.length(); ind++) {
+		if(codificat[ind] == '1')
+			x += pow(2, codificat.length() - ind - 1);
 	}
 	return x;
 }
 
 #pragma endregion
 
-int selectie(double u, int dimPop, const vector<double> &intervaleProbabilitateSelectie) {	
-	if (u >= intervaleProbabilitateSelectie[dimPop - 1]) {
-		return dimPop;
-	}
-	int left = 0, right = dimPop - 1;
+int selectie(const double u, const int dimPop, const vector<double> &intervaleProbabilitateSelectie) {
+	int left = 1, right = dimPop;
 	while (left < right) {
 		int mid = left + (right - left) / 2;
 		if (u < intervaleProbabilitateSelectie[mid]) {
@@ -116,21 +114,20 @@ int selectie(double u, int dimPop, const vector<double> &intervaleProbabilitateS
 	return left;
 }
 
-pair<string, string> incrucisare(const string &a, const string &b, int punctIncrucisare) {
-	int l = a.length();
+pair<string, string> incrucisare(const string &a, const string &b, const int punctIncrucisare) {
+	const int l = a.length();
 	string c = a.substr(0, punctIncrucisare) + b.substr(punctIncrucisare, l - punctIncrucisare);
 	string d = b.substr(0, punctIncrucisare) + a.substr(punctIncrucisare, l - punctIncrucisare);
 	return {c, d};
 }
 
-bool mutatie(string &cromozom, double probMutatie) {
+bool mutatie(string &cromozom, const double probMutatie) {
 	bool mutatie = false;
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_real_distribution<> dis(0, 1);
 	for (unsigned int i = 0; i < cromozom.length(); ++i) {
-		double u = dis(gen);
-		if (u < probMutatie) {
+		if (double u = dis(gen); u < probMutatie) {
 			cromozom[i] ^= 1; // inversare bit
 			mutatie = true;
 		}
@@ -142,6 +139,14 @@ struct Cromozom {
     string codificat;
     double valoare;
     double fitness;
+
+    friend std::ostream& operator<<(std::ostream& os, const Cromozom& obj)
+    {
+	    return os
+		    << "codificat: " << obj.codificat
+		    << " valoare: " << obj.valoare
+		    << " fitness: " << obj.fitness;
+    }
 };
 
 int main() {
@@ -194,7 +199,8 @@ int main() {
 	random_device rd;
 	mt19937 gen(rd());
 	// mt19937 gen(24); // set seed = 24
-	uniform_real_distribution<> dis(domDefStart, domDefEnd);
+	uniform_real_distribution<> dis01(0, 1);
+	uniform_real_distribution<> disDomDef(domDefStart, domDefEnd);
 
 	vector<Cromozom> populatie;
 
@@ -207,13 +213,13 @@ int main() {
 	}
 
 	// Afisare populatie initiala
-	int i = 0;
+	int cont = 0;
 	cout << "Populatia initiala\n";
-	for (const auto& cromozom : populatie) {
-		cout << setw(3) << i + 1 << ": " << cromozom.codificat
-			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
-			 << "; f =" << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
-		i++;
+	for (const auto& [codificat, valoare, fitness] : populatie) {
+		cout << setw(3) << cont + 1 << ": " << codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << valoare
+			 << "; f =" << setw(9) << fixed << setprecision(12) << fitness << '\n';
+		cont++;
 	}
 
 #pragma endregion
@@ -231,20 +237,20 @@ int main() {
 		probabilitateSelectie.push_back(cromozom.fitness / sumaFitness);
 
 	cout << "\nProbabilitati selectie \n";
-	i = 1;
+	cont = 1;
 	for (auto prob : probabilitateSelectie) {
-		cout << "cromozom" << setw(4) << i++ 
+		cout << "cromozom" << setw(4) << cont++
 			 << " probabilitate " << fixed << setprecision(12) << prob << '\n';
 	}
 
 	// calculare intervale probabilitate selectie
 	intervaleProbabilitateSelectie.push_back(0);
-	for (unsigned int i = 0; i < probabilitateSelectie.size(); ++i) {
-		intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i]);
+	for (unsigned int i1 = 0; i1 < probabilitateSelectie.size(); ++i1) {
+		intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i1]);
 	}
 	cout << "\nIntervale probabilitati selectie \n";
-	for (unsigned int i = 0; i < intervaleProbabilitateSelectie.size(); ++i) {
-		cout << intervaleProbabilitateSelectie[i] << '\n';
+	for (unsigned int i1 = 0; i1 < intervaleProbabilitateSelectie.size(); ++i1) {
+		cout << intervaleProbabilitateSelectie[i1] << '\n';
 	}
 	cout << '\n';
 
@@ -260,11 +266,11 @@ int main() {
 	populatie = populatieSelectata;
 
 	cout << "\nDupa selectie:\n";
-	i = 1;
-	for (const auto& cromozom : populatie) {
-		cout << setw(3) << i++ << ": " << cromozom.codificat
-			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
-			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
+	cont = 1;
+	for (const auto& [codificat, valoare, fitness] : populatie) {
+		cout << setw(3) << cont << ": " << codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << valoare
+			 << "; f = " << setw(9) << fixed << setprecision(12) << fitness << '\n';
 	}
 
 	cout << "\nProbabilitate de incrusisare " << setprecision(2) << probRecombinare << '\n';
@@ -299,9 +305,9 @@ int main() {
 	}
 
 	cout << "\nDupa recombinare:\n";
-	i = 1;
+	cont = 1;
 	for (const auto& cromozom : populatie) {
-		cout << setw(3) << i++ << ": " << cromozom.codificat
+		cout << setw(3) << cont++ << ": " << cromozom.codificat
 			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
 			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
 	}
@@ -317,9 +323,9 @@ int main() {
 	}
 
 	cout << "\nDupa mutatie:\n";
-	i = 1;
+	cont = 1;
 	for (const auto& cromozom : populatie) {
-		cout << setw(3) << i++ << ": " << cromozom.codificat
+		cout << setw(3) << cont++ << ": " << cromozom.codificat
 			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
 			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
 	}
@@ -329,25 +335,78 @@ int main() {
 #pragma region afisare evolutia maximului
 
 	cout << "\nEvolutia maximului:\n";
-	for (int i = 1; i < nrEtape; ++i) {
+	for (int etapa = 1; etapa < nrEtape; ++etapa) {
+
+		// recalculare valoare si fitness
+		for (auto& [codificat, valoare, fitness] : populatie) {
+			int x = Decodificare(domDefStart, domDefEnd, precizie, codificat); // decodificam binarul pentru a obtine valoarea
+			const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
+			double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
+			valoare = domDefStart + x * d;
+			fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+		}
+
+		// recalculare probabilitate de selectie
+		probabilitateSelectie.clear();
+		intervaleProbabilitateSelectie.clear();
+
+		sumaFitness = 0;
+		for (const auto& cromozom : populatie)
+			sumaFitness += cromozom.fitness;
+
+		for (const auto& cromozom : populatie)
+			probabilitateSelectie.push_back(cromozom.fitness / sumaFitness);
+
+		intervaleProbabilitateSelectie.push_back(0);
+		for (unsigned int i1 = 0; i1 < probabilitateSelectie.size(); ++i1) {
+			intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i1]);
+		}
 
 		// selectie
 		nrCromozomSelectat = 0;
 		populatieSelectata.clear();
-		for
+		for (int i = 0; i < dimPop; i++) {
+			double u = dis01(gen);
+			nrCromozomSelectat = selectie(u, dimPop, intervaleProbabilitateSelectie);
+			populatieSelectata.push_back(populatie[nrCromozomSelectat - 1]);
+		}
+		populatie = populatieSelectata;
 
+		// incrucisare
+		indiciCromozomiSelectatiIncrucisare.clear();
+		for (int i = 0; i < dimPop; i++) {
+			double u = dis01(gen);
+			if (u < probRecombinare)
+				indiciCromozomiSelectatiIncrucisare.push_back(i);
+		}
+		if (indiciCromozomiSelectatiIncrucisare.size() % 2 != 0) {
+			indiciCromozomiSelectatiIncrucisare.pop_back();
+		}
+		for (unsigned int i = 0; i < indiciCromozomiSelectatiIncrucisare.size(); i += 2) {
+			int index1 = indiciCromozomiSelectatiIncrucisare[i];
+			int index2 = indiciCromozomiSelectatiIncrucisare[i + 1];
+			string cromozom1 = populatie[index1].codificat;
+			string cromozom2 = populatie[index2].codificat;
+			int punct = rand() % cromozom1.length();
+			auto rezultat = incrucisare(cromozom1, cromozom2, punct);
+			// reintegrare in populatie
+			populatie[index1].codificat = rezultat.first;
+			populatie[index2].codificat = rezultat.second;
+		}
 
+		// mutatie
+		for (Cromozom &c : populatie) mutatie(c.codificat, probMutatie);
+
+		// calculare fitness maxim
 		double maxFitness = 0;
 		int indexMaxFitness = 0;
-		for (unsigned int j = 0; j < populatie.size(); ++j) {
+		for (int j = 0; j < populatie.size(); ++j) {
 			if (populatie[j].fitness > maxFitness) {
 				maxFitness = populatie[j].fitness;
 				indexMaxFitness = j;
 			}
 		}
-		cout << "Etapa " << i + 1 << ": " << populatie[indexMaxFitness].codificat
-			 << "; x =" << setw(10) << fixed << setprecision(6) << populatie[indexMaxFitness].valoare
-			 << "; f = " << setw(9) << fixed << setprecision(12) << populatie[indexMaxFitness].fitness << '\n';
+		cout << "Etapa " << setw(4) << etapa + 1 << ": " << setw(9) << fixed << setprecision(12) << populatie[indexMaxFitness].fitness << '\n';
 	}
 
 
