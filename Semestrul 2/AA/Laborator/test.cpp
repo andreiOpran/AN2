@@ -100,11 +100,7 @@ int Decodificare(double a, double b, int p, string codificat) {
 
 #pragma endregion
 
-int selectie(double u, int dimPop, const vector<double> &intervaleProbabilitateSelectie) {
-	for(auto x : intervaleProbabilitateSelectie) {
-		cout << x << '\n';
-	}
-	
+int selectie(double u, int dimPop, const vector<double> &intervaleProbabilitateSelectie) {	
 	if (u >= intervaleProbabilitateSelectie[dimPop - 1]) {
 		return dimPop;
 	}
@@ -120,6 +116,33 @@ int selectie(double u, int dimPop, const vector<double> &intervaleProbabilitateS
 	return left;
 }
 
+pair<string, string> incrucisare(const string &a, const string &b, int punctIncrucisare) {
+	int l = a.length();
+	string c = a.substr(0, punctIncrucisare) + b.substr(punctIncrucisare, l - punctIncrucisare);
+	string d = b.substr(0, punctIncrucisare) + a.substr(punctIncrucisare, l - punctIncrucisare);
+	return {c, d};
+}
+
+bool mutatie(string &cromozom, double probMutatie) {
+	bool mutatie = false;
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_real_distribution<> dis(0, 1);
+	for (unsigned int i = 0; i < cromozom.length(); ++i) {
+		double u = dis(gen);
+		if (u < probMutatie) {
+			cromozom[i] ^= 1; // inversare bit
+			mutatie = true;
+		}
+	}
+	return mutatie;
+}
+
+struct Cromozom {
+    string codificat;
+    double valoare;
+    double fitness;
+};
 
 int main() {
 
@@ -147,7 +170,7 @@ int main() {
 		1.124764, 1.527482, 1.573845, -0.562311, 1.191435
 	};
 
-	vector<double> usDinExemplu = {
+	vector<double> usDinExempluSelectie = {
 		0.6034720442729782, 0.17892824175281696, 0.6867737986711382, 0.7176059630936646, 
 		0.5619562065293205, 0.24081572433510423, 0.5408716518401836, 0.43771824679891214, 
 		0.7390763060836184, 0.8447467542582436, 0.7683657918169965, 0.9907124915454842, 
@@ -155,55 +178,57 @@ int main() {
 		0.0756221139277069, 0.03335884865931882, 0.26608038821171887, 0.5492264660581757
 	};
 
+	vector<double> usDinExempluIncrucisare = {
+		0.8672982503681332, 0.17618744553586774, 0.5623919628827635, 0.12595818897032773, 
+		0.5494832939809089, 0.9988878068067887, 0.044918841352894145, 0.15024385267360985, 
+		0.5809198972137714, 0.30819031632516913, 0.9073062085201059, 0.6421334753559018, 
+		0.46721859789040554, 0.6320007810666798, 0.20308557877487043, 0.6311055118179946, 
+		0.11241241610234687, 0.8000743582190735, 0.529921293680138, 0.3600402029299934
+	};
+	
+
 #pragma endregion
 
 #pragma region generare populatie (cromozomi, valori, fitness, probabilitate selectie, intervale probabilitate selectie)
 
-	// random_device rd;
-	// mt19937 gen(rd());
-	mt19937 gen(24); // set seed = 24
+	random_device rd;
+	mt19937 gen(rd());
+	// mt19937 gen(24); // set seed = 24
 	uniform_real_distribution<> dis(domDefStart, domDefEnd);
 
-	vector<pair<string, double>> populatie;
-	vector<double> fitness;
+	vector<Cromozom> populatie;
 
 	// generare populatie (cromozomi si valori)
-	for(int i = 0; i < dimPop; i++) {
-		// double x = dis(gen); // generare random
+	for (int i = 0; i < dimPop; i++) {
 		double x = xsDinExemplu[i]; // generare din exemplu
 		string cromozom = Codificare(domDefStart, domDefEnd, precizie, x);
-		populatie.push_back({cromozom, x});
+		double fitness = coefA * x * x + coefB * x + coefC;
+		populatie.push_back({cromozom, x, fitness});
 	}
 
-	// calculare fitness
-	for(auto cromozom : populatie) {
-		double x = cromozom.second;
-		fitness.push_back(coefA * x * x + coefB * x + coefC);
-	}
-
+	// Afisare populatie initiala
 	int i = 0;
 	cout << "Populatia initiala\n";
-	for(auto cromozom : populatie) {
-		// setw() -> set width
-		// setprecision() -> set number of decimal places
-		cout << setw(3) << i + 1 << ": " << cromozom.first 
-			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.second 
-			 << "; f =" << setw(9) << fixed << setprecision(12) << fitness[i++] << '\n';
+	for (const auto& cromozom : populatie) {
+		cout << setw(3) << i + 1 << ": " << cromozom.codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
+			 << "; f =" << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
+		i++;
 	}
 
 #pragma endregion
 
-#pragma region selectie
+#pragma region selectie cu afisare detaliata
 
 	vector<double> probabilitateSelectie;
 	vector<double> intervaleProbabilitateSelectie;
 
 	// calculare probabilitate de selectie (fitness[i] / sumaFitness)
 	double sumaFitness = 0;
-	for(double x : fitness)
-		sumaFitness += x;
-	for(unsigned int i = 0; i < fitness.size(); ++i)
-		probabilitateSelectie.push_back(fitness[i] / sumaFitness);
+	for (const auto& cromozom : populatie)
+		sumaFitness += cromozom.fitness;
+	for (const auto& cromozom : populatie)
+		probabilitateSelectie.push_back(cromozom.fitness / sumaFitness);
 
 	cout << "\nProbabilitati selectie \n";
 	i = 1;
@@ -214,36 +239,121 @@ int main() {
 
 	// calculare intervale probabilitate selectie
 	intervaleProbabilitateSelectie.push_back(0);
-	for(unsigned int i = 0; i < probabilitateSelectie.size(); ++i) {
+	for (unsigned int i = 0; i < probabilitateSelectie.size(); ++i) {
 		intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i]);
 	}
 	cout << "\nIntervale probabilitati selectie \n";
-	for(unsigned int i = 0; i < intervaleProbabilitateSelectie.size(); ++i) {
+	for (unsigned int i = 0; i < intervaleProbabilitateSelectie.size(); ++i) {
 		cout << intervaleProbabilitateSelectie[i] << '\n';
 	}
 	cout << '\n';
 
 	// selectie
 	int nrCromozomSelectat = 0;
-	vector<int> indexiCromozomiSelectati;
-	for(double u : usDinExemplu) {
+	vector<Cromozom> populatieSelectata;
+	for (double u : usDinExempluSelectie) {
 		nrCromozomSelectat = selectie(u, dimPop, intervaleProbabilitateSelectie);
-		indexiCromozomiSelectati.push_back(nrCromozomSelectat);
+		populatieSelectata.push_back(populatie[nrCromozomSelectat - 1]);
 		cout << fixed << setprecision(17);
 		cout << "u=" << u << " selectam cromozomul " << nrCromozomSelectat << '\n';
 	}
+	populatie = populatieSelectata;
 
 	cout << "\nDupa selectie:\n";
 	i = 1;
-	for(auto index : indexiCromozomiSelectati) {
-		auto cromozom = populatie[index];
-		cout << setw(3) << i++ << ": " << cromozom.first 
-			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.second 
-			 << "; f = " << setw(9) << fixed << setprecision(12) << fitness[index] << '\n';
+	for (const auto& cromozom : populatie) {
+		cout << setw(3) << i++ << ": " << cromozom.codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
+			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
+	}
+
+	cout << "\nProbabilitate de incrusisare " << setprecision(2) << probRecombinare << '\n';
+	vector<int> indiciCromozomiSelectatiIncrucisare;
+	for (int i = 0; i < dimPop; i++) {
+		cout << fixed << setprecision(17);
+		cout << setw(3) << i + 1 << ": " << populatie[i].codificat << " u = " << usDinExempluIncrucisare[i];
+		if (usDinExempluIncrucisare[i] < probRecombinare) {
+			cout << " < " << setprecision(2) << probRecombinare << " => participa";
+			indiciCromozomiSelectatiIncrucisare.push_back(i);
+		}
+		cout << '\n';
+	}
+
+	// incrucisare
+	if (indiciCromozomiSelectatiIncrucisare.size() % 2 != 0) { // daca numarul de cromozomi selectati pentru incrucisare este impar, eliminam ultimul cromozom
+		indiciCromozomiSelectatiIncrucisare.pop_back();
+	}
+	for (unsigned int i = 0; i < indiciCromozomiSelectatiIncrucisare.size(); i += 2) {
+		int index1 = indiciCromozomiSelectatiIncrucisare[i];
+		int index2 = indiciCromozomiSelectatiIncrucisare[i + 1];
+		string cromozom1 = populatie[index1].codificat;
+		string cromozom2 = populatie[index2].codificat;
+		int punct = rand() % cromozom1.length();
+		pair<string, string> rezultat = incrucisare(cromozom1, cromozom2, punct);
+		cout << "\nRecombinare dintre cromozomul " << index1 + 1 << " cu cromozomul " << index2 + 1 << ":\n";
+		cout << cromozom1 << " " << cromozom2 << " punct " << punct << '\n';
+		cout << "Rezultat " << rezultat.first << " " << rezultat.second << '\n';
+
+		populatie[index1].codificat = rezultat.first;
+		populatie[index2].codificat = rezultat.second;
+	}
+
+	cout << "\nDupa recombinare:\n";
+	i = 1;
+	for (const auto& cromozom : populatie) {
+		cout << setw(3) << i++ << ": " << cromozom.codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
+			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
+	}
+
+	cout << "\nProbabilitate de mutatie pentru fiecare gena " << setprecision(2) << probMutatie << '\n';
+	cout << "Au fost modificati cromozomii:\n";
+	int indexCromozomMutat = 0;
+	for (Cromozom &c : populatie) {
+		++indexCromozomMutat;
+		if (mutatie(c.codificat, probMutatie)) {
+			cout << indexCromozomMutat << '\n';
+		}
+	}
+
+	cout << "\nDupa mutatie:\n";
+	i = 1;
+	for (const auto& cromozom : populatie) {
+		cout << setw(3) << i++ << ": " << cromozom.codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
+			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
 	}
 	
 #pragma endregion
 
+#pragma region afisare evolutia maximului
+
+	cout << "\nEvolutia maximului:\n";
+	for (int i = 1; i < nrEtape; ++i) {
+
+		// selectie
+		nrCromozomSelectat = 0;
+		populatieSelectata.clear();
+		for
+
+
+		double maxFitness = 0;
+		int indexMaxFitness = 0;
+		for (unsigned int j = 0; j < populatie.size(); ++j) {
+			if (populatie[j].fitness > maxFitness) {
+				maxFitness = populatie[j].fitness;
+				indexMaxFitness = j;
+			}
+		}
+		cout << "Etapa " << i + 1 << ": " << populatie[indexMaxFitness].codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << populatie[indexMaxFitness].valoare
+			 << "; f = " << setw(9) << fixed << setprecision(12) << populatie[indexMaxFitness].fitness << '\n';
+	}
+
+
+#pragma endregion
+
+	return 0;
 }
 
 /*
