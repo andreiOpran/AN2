@@ -271,7 +271,6 @@ int main() {
 		cout << setw(3) << cont << ": " << codificat
 			 << "; x =" << setw(10) << fixed << setprecision(6) << valoare
 			 << "; f = " << setw(9) << fixed << setprecision(12) << fitness << '\n';
-		++cont;
 	}
 
 	cout << "\nProbabilitate de incrusisare " << setprecision(2) << probRecombinare << '\n';
