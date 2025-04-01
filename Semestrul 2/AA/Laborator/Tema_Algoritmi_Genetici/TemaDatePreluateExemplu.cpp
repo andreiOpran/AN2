@@ -271,6 +271,7 @@ int main() {
 		cout << setw(3) << cont << ": " << codificat
 			 << "; x =" << setw(10) << fixed << setprecision(6) << valoare
 			 << "; f = " << setw(9) << fixed << setprecision(12) << fitness << '\n';
+		++cont;
 	}
 
 	cout << "\nProbabilitate de incrusisare " << setprecision(2) << probRecombinare << '\n';
@@ -304,38 +305,7 @@ int main() {
 		populatie[index2].codificat = rezultat.second;
 	}
 
-	cout << "\nDupa recombinare:\n";
-	cont = 1;
-	for (const auto& cromozom : populatie) {
-		cout << setw(3) << cont++ << ": " << cromozom.codificat
-			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
-			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
-	}
-
-	cout << "\nProbabilitate de mutatie pentru fiecare gena " << setprecision(2) << probMutatie << '\n';
-	cout << "Au fost modificati cromozomii:\n";
-	int indexCromozomMutat = 0;
-	for (Cromozom &c : populatie) {
-		++indexCromozomMutat;
-		if (mutatie(c.codificat, probMutatie)) {
-			cout << indexCromozomMutat << '\n';
-		}
-	}
-
-	cout << "\nDupa mutatie:\n";
-	cont = 1;
-	for (const auto& cromozom : populatie) {
-		cout << setw(3) << cont++ << ": " << cromozom.codificat
-			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
-			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
-	}
-
-#pragma endregion
-
-#pragma region afisare evolutia maximului
-
-	cout << "\nEvolutia maximului:\n";
-	for (int etapa = 1; etapa < nrEtape; ++etapa) {
+	#pragma region recalculare valoare, fitness, probabilitate selectie - dupa incrucisare
 
 		// recalculare valoare si fitness
 		for (auto& [codificat, valoare, fitness] : populatie) {
@@ -361,6 +331,99 @@ int main() {
 		for (unsigned int i1 = 0; i1 < probabilitateSelectie.size(); ++i1) {
 			intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i1]);
 		}
+
+	#pragma endregion
+
+	cout << "\nDupa recombinare:\n";
+	cont = 1;
+	for (const auto& cromozom : populatie) {
+		cout << setw(3) << cont++ << ": " << cromozom.codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
+			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
+	}
+
+	cout << "\nProbabilitate de mutatie pentru fiecare gena este " << setprecision(2) << probMutatie << '\n';
+	cout << "Au fost modificati cromozomii:\n";
+	int indexCromozomMutat = 0;
+	for (Cromozom &c : populatie) {
+		++indexCromozomMutat;
+		if (mutatie(c.codificat, probMutatie)) {
+			cout << indexCromozomMutat << '\n';
+		}
+	}
+
+	#pragma region recalculare valoare, fitness, probabilitate selectie - dupa mutatie
+
+		// recalculare valoare si fitness
+		for (auto& [codificat, valoare, fitness] : populatie) {
+			int x = Decodificare(domDefStart, domDefEnd, precizie, codificat); // decodificam binarul pentru a obtine valoarea
+			const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
+			double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
+			valoare = domDefStart + x * d;
+			fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+		}
+
+		// recalculare probabilitate de selectie
+		probabilitateSelectie.clear();
+		intervaleProbabilitateSelectie.clear();
+
+		sumaFitness = 0;
+		for (const auto& cromozom : populatie)
+			sumaFitness += cromozom.fitness;
+
+		for (const auto& cromozom : populatie)
+			probabilitateSelectie.push_back(cromozom.fitness / sumaFitness);
+
+		intervaleProbabilitateSelectie.push_back(0);
+		for (unsigned int i1 = 0; i1 < probabilitateSelectie.size(); ++i1) {
+			intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i1]);
+		}
+
+	#pragma endregion
+
+	cout << "\nDupa mutatie:\n";
+	cont = 1;
+	for (const auto& cromozom : populatie) {
+		cout << setw(3) << cont++ << ": " << cromozom.codificat
+			 << "; x =" << setw(10) << fixed << setprecision(6) << cromozom.valoare
+			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
+	}
+
+#pragma endregion
+
+#pragma region afisare evolutia maximului
+
+	cout << "\nEvolutia maximului:\n";
+	for (int etapa = 1; etapa < nrEtape; ++etapa) {
+
+	#pragma region recalculare valoare, fitness, probabilitate selectie - inceput de etapa
+
+			// recalculare valoare si fitness
+			for (auto& [codificat, valoare, fitness] : populatie) {
+				int x = Decodificare(domDefStart, domDefEnd, precizie, codificat); // decodificam binarul pentru a obtine valoarea
+				const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
+				double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
+				valoare = domDefStart + x * d;
+				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+			}
+
+			// recalculare probabilitate de selectie
+			probabilitateSelectie.clear();
+			intervaleProbabilitateSelectie.clear();
+
+			sumaFitness = 0;
+			for (const auto& cromozom : populatie)
+				sumaFitness += cromozom.fitness;
+
+			for (const auto& cromozom : populatie)
+				probabilitateSelectie.push_back(cromozom.fitness / sumaFitness);
+
+			intervaleProbabilitateSelectie.push_back(0);
+			for (unsigned int i1 = 0; i1 < probabilitateSelectie.size(); ++i1) {
+				intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i1]);
+			}
+
+	#pragma endregion
 
 		// selectie
 		nrCromozomSelectat = 0;
@@ -394,10 +457,68 @@ int main() {
 			populatie[index2].codificat = rezultat.second;
 		}
 
+	#pragma region recalculare valoare, fitness, probabilitate selectie - dupa incrucisare
+
+			// recalculare valoare si fitness
+			for (auto& [codificat, valoare, fitness] : populatie) {
+				int x = Decodificare(domDefStart, domDefEnd, precizie, codificat); // decodificam binarul pentru a obtine valoarea
+				const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
+				double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
+				valoare = domDefStart + x * d;
+				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+			}
+
+			// recalculare probabilitate de selectie
+			probabilitateSelectie.clear();
+			intervaleProbabilitateSelectie.clear();
+
+			sumaFitness = 0;
+			for (const auto& cromozom : populatie)
+				sumaFitness += cromozom.fitness;
+
+			for (const auto& cromozom : populatie)
+				probabilitateSelectie.push_back(cromozom.fitness / sumaFitness);
+
+			intervaleProbabilitateSelectie.push_back(0);
+			for (unsigned int i1 = 0; i1 < probabilitateSelectie.size(); ++i1) {
+				intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i1]);
+			}
+
+	#pragma endregion
+
 		// mutatie
 		for (Cromozom &c : populatie) mutatie(c.codificat, probMutatie);
 
-		// calculare fitness maxim
+	#pragma region recalculare valoare, fitness, probabilitate selectie - dupa mutatie
+
+			// recalculare valoare si fitness
+			for (auto& [codificat, valoare, fitness] : populatie) {
+				int x = Decodificare(domDefStart, domDefEnd, precizie, codificat); // decodificam binarul pentru a obtine valoarea
+				const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
+				double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
+				valoare = domDefStart + x * d;
+				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+			}
+
+			// recalculare probabilitate de selectie
+			probabilitateSelectie.clear();
+			intervaleProbabilitateSelectie.clear();
+
+			sumaFitness = 0;
+			for (const auto& cromozom : populatie)
+				sumaFitness += cromozom.fitness;
+
+			for (const auto& cromozom : populatie)
+				probabilitateSelectie.push_back(cromozom.fitness / sumaFitness);
+
+			intervaleProbabilitateSelectie.push_back(0);
+			for (unsigned int i1 = 0; i1 < probabilitateSelectie.size(); ++i1) {
+				intervaleProbabilitateSelectie.push_back(intervaleProbabilitateSelectie.back() + probabilitateSelectie[i1]);
+			}
+
+	#pragma endregion
+
+        // calculare fitness maxim
 		double maxFitness = 0;
 		int indexMaxFitness = 0;
 		for (int j = 0; j < populatie.size(); ++j) {
