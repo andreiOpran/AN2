@@ -114,11 +114,31 @@ int selectie(const double u, const int dimPop, const vector<double> &intervalePr
 	return left;
 }
 
-pair<string, string> incrucisare(const string &a, const string &b, const int punctIncrucisare) {
-	const int l = a.length();
-	string c = a.substr(0, punctIncrucisare) + b.substr(punctIncrucisare, l - punctIncrucisare);
-	string d = b.substr(0, punctIncrucisare) + a.substr(punctIncrucisare, l - punctIncrucisare);
-	return {c, d};
+pair<string, string> incrucisare(const string &a, const string &b, int punctStanga, int punctDreapta) {
+    if(punctDreapta < punctStanga) {
+        int aux = punctStanga;
+        punctStanga = punctDreapta;
+        punctDreapta = aux;
+    }
+    const int l = a.length();
+//	string c = a.substr(0, punctIncrucisare) + b.substr(punctIncrucisare, l - punctIncrucisare);
+//	string d = b.substr(0, punctIncrucisare) + a.substr(punctIncrucisare, l - punctIncrucisare);
+	string c = a.substr(0, punctStanga) + b.substr(punctStanga, punctDreapta - punctStanga) + a.substr(punctDreapta);
+    string d = a.substr(0, punctStanga) + a.substr(punctStanga, punctDreapta - punctStanga) + b.substr(punctDreapta);
+    return {c, d};
+}
+
+vector<string> incrucisare3(const string &a, const string &b, const string &c, int punctStanga, int punctDreapta) {
+    if(punctDreapta < punctStanga) {
+        int aux = punctStanga;
+        punctStanga = punctDreapta;
+        punctDreapta = aux;
+    }
+    const int l = a.length();
+    string rez1 = a.substr(0, punctStanga) + c.substr(punctStanga, punctDreapta - punctStanga) + a.substr(punctDreapta);
+    string rez2 = b.substr(0, punctStanga) + a.substr(punctStanga, punctDreapta - punctStanga) + b.substr(punctDreapta);
+    string rez3 = c.substr(0, punctStanga) + b.substr(punctStanga, punctDreapta - punctStanga) + c.substr(punctDreapta);
+    return {rez1, rez2, rez3};
 }
 
 bool mutatie(string &cromozom, const double probMutatie) {
@@ -153,16 +173,23 @@ int main() {
 
 #pragma region input
 
-	double domDefStart, domDefEnd, coefA, coefB, coefC, precizie, probRecombinare, probMutatie;
+	double domDefStart, domDefEnd, coefA, coefB, coefC, coefD, coefE, precizie, probRecombinare, probMutatie;
 	int dimPop, nrEtape;
 	// cin >> dimPop >> domDefStart >> domDefEnd >> coefA >> coefB >> coefC >> precizie >>
 	// 	probRecombinare >> probMutatie >> nrEtape;
 	dimPop = 20;
-	domDefStart = -1;
-	domDefEnd = 2;
-	coefA = -1;
-	coefB = 1;
-	coefC = 2;
+//	domDefStart = -1;
+//	domDefEnd = 2;
+    domDefStart = -2;
+    domDefEnd = 2.3;
+//	coefA = -1;
+//	coefB = 1;
+//	coefC = 2;
+    coefA = -1;
+    coefB = 0;
+    coefC = 4;
+    coefD = 2;
+    coefE = 4;
 	precizie = 6;
 	probRecombinare = 0.25;
 	probMutatie = 0.01;
@@ -174,7 +201,7 @@ int main() {
 
 	random_device rd;
 	int seed = rd();
-	seed = 1234; // set seed = 24
+    seed = 318295082; // set seed = 24
 	mt19937 gen(seed); // set random seed
 	cout << "\nSeed = " << seed << "\n\n";
 
@@ -187,7 +214,8 @@ int main() {
 	for (int i = 0; i < dimPop; i++) {
 		double x = disDomDef(gen);
 		string cromozom = Codificare(domDefStart, domDefEnd, precizie, x);
-		double fitness = coefA * x * x + coefB * x + coefC;
+//		double fitness = coefA * x * x + coefB * x + coefC;
+        double fitness = coefA * pow(x, 4) + coefB * pow(x, 3) + coefC * pow(x, 2) + coefD * x + coefE;
 		populatie.push_back({cromozom, x, fitness});
 	}
 
@@ -245,7 +273,8 @@ int main() {
 			indiceElita = i;
 		}
 	}
-	populatieSelectata.push_back(populatie[indiceElita]);
+//	populatieSelectata.push_back(populatie[indiceElita]); // il adaugam dupa ce se face incrucisarea si mutatia
+    Cromozom elita = populatie[indiceElita];
 	cout << "Elita este cromozomul " << indiceElita + 1 << ": " << populatie[indiceElita].codificat << " cu fitness-ul maxim = " << maxFitness << '\n';
 
 	for (int i = 0; i < dimPop - 1; i++) { // dimPop - 1 pentru ca am selectat deja elita
@@ -280,23 +309,58 @@ int main() {
 	}
 
 	// incrucisare
-	if (indiciCromozomiSelectatiIncrucisare.size() % 2 != 0) { // daca numarul de cromozomi selectati pentru incrucisare este impar, eliminam ultimul cromozom
-		indiciCromozomiSelectatiIncrucisare.pop_back();
-	}
-	for (unsigned int i = 0; i < indiciCromozomiSelectatiIncrucisare.size(); i += 2) {
-		int index1 = indiciCromozomiSelectatiIncrucisare[i];
-		int index2 = indiciCromozomiSelectatiIncrucisare[i + 1];
-		string cromozom1 = populatie[index1].codificat;
-		string cromozom2 = populatie[index2].codificat;
-		int punct = rand() % cromozom1.length();
-		pair<string, string> rezultat = incrucisare(cromozom1, cromozom2, punct);
-		cout << "\nRecombinare dintre cromozomul " << index1 + 1 << " cu cromozomul " << index2 + 1 << ":\n";
-		cout << cromozom1 << " " << cromozom2 << " punct " << punct << '\n';
-		cout << "Rezultat " << rezultat.first << " " << rezultat.second << '\n';
+    if (indiciCromozomiSelectatiIncrucisare.size() < 2) {
+        cout << "Nu putem face incrucisare cu mai putin de 2 cromozomi";
+    } else {
+        if (indiciCromozomiSelectatiIncrucisare.size() % 2 != 0) { // luam ultimii 3 cromozomi si ii incrucisam
+            int index1 = indiciCromozomiSelectatiIncrucisare.back();
+            indiciCromozomiSelectatiIncrucisare.pop_back();
+            int index2 = indiciCromozomiSelectatiIncrucisare.back();
+            indiciCromozomiSelectatiIncrucisare.pop_back();
+            int index3 = indiciCromozomiSelectatiIncrucisare.back();
+            indiciCromozomiSelectatiIncrucisare.pop_back();
 
-		populatie[index1].codificat = rezultat.first;
-		populatie[index2].codificat = rezultat.second;
-	}
+            string cromozomDeIncrucisat1 = populatie[index1].codificat;
+            string cromozomDeIncrucisat2 = populatie[index1].codificat;
+            string cromozomDeIncrucisat3 = populatie[index1].codificat;
+
+            int punctStanga = rand() % cromozomDeIncrucisat1.length();
+            int punctDreapta = rand() % cromozomDeIncrucisat1.length();
+            if(punctDreapta < punctStanga) {
+                int aux = punctStanga;
+                punctStanga = punctDreapta;
+                punctDreapta = aux;
+            }
+
+            vector<string> rezultatIncrucisare3Cromozomi = incrucisare3(cromozomDeIncrucisat1, cromozomDeIncrucisat2, cromozomDeIncrucisat3, punctStanga, punctDreapta);
+            populatie[index1].codificat = rezultatIncrucisare3Cromozomi[0];
+            populatie[index2].codificat = rezultatIncrucisare3Cromozomi[1];
+            populatie[index3].codificat = rezultatIncrucisare3Cromozomi[2];
+            cout << "\nRecombinare dintre cromozomul " << index1 + 1 << " cu cromozomul " << index2 + 1 << " si cromozomul " << index3 + 1 << ":\n";
+            cout << cromozomDeIncrucisat1 << " " << cromozomDeIncrucisat2 << " " << cromozomDeIncrucisat3 << " punctStanga " << punctStanga <<  " punctDreapta " << punctDreapta << '\n';
+        }
+        for (unsigned int i = 0; i < indiciCromozomiSelectatiIncrucisare.size(); i += 2) {
+            int index1 = indiciCromozomiSelectatiIncrucisare[i];
+            int index2 = indiciCromozomiSelectatiIncrucisare[i + 1];
+            string cromozom1 = populatie[index1].codificat;
+            string cromozom2 = populatie[index2].codificat;
+            int punctStanga = rand() % cromozom1.length();
+            int punctDreapta = rand() % cromozom1.length();
+            if(punctDreapta < punctStanga) {
+                int aux = punctStanga;
+                punctStanga = punctDreapta;
+                punctDreapta = aux;
+            }
+            pair<string, string> rezultat = incrucisare(cromozom1, cromozom2, punctStanga, punctDreapta);
+            cout << "\nRecombinare dintre cromozomul " << index1 + 1 << " cu cromozomul " << index2 + 1 << ":\n";
+            cout << cromozom1 << " " << cromozom2 << " punctStanga " << punctStanga <<  " punctDreapta " << punctDreapta << '\n';
+            cout << "Rezultat " << rezultat.first << " " << rezultat.second << '\n';
+
+            populatie[index1].codificat = rezultat.first;
+            populatie[index2].codificat = rezultat.second;
+        }
+    }
+
 
 	#pragma region recalculare valoare, fitness, probabilitate selectie - dupa incrucisare
 
@@ -306,7 +370,8 @@ int main() {
 			const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
 			double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
 			valoare = domDefStart + x * d;
-			fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+//			fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+            fitness = coefA * pow(valoare, 4) + coefB * pow(valoare, 3) + coefC * pow(valoare, 2) + coefD * valoare + coefE;
 		}
 
 		// recalculare probabilitate de selectie
@@ -353,7 +418,8 @@ int main() {
 			const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
 			double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
 			valoare = domDefStart + x * d;
-			fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+//			fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+            fitness = coefA * pow(valoare, 4) + coefB * pow(valoare, 3) + coefC * pow(valoare, 2) + coefD * valoare + coefE;
 		}
 
 		// recalculare probabilitate de selectie
@@ -382,6 +448,20 @@ int main() {
 			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
 	}
 
+    // inlocuirea celui mai slab cromozom cu elita
+    // cautam cromozomul cu fitness-ul minim
+    double minFitness = 1e9;
+    int indiceCromozomMinim = 0;
+    for (int i = 0; i < dimPop; ++i) {
+        if (populatie[i].fitness < minFitness) {
+            minFitness = populatie[i].fitness;
+            indiceCromozomMinim = i;
+        }
+    }
+    // inlocuim cromozomul cu fitness-ul minim cu elita
+    populatie[indiceCromozomMinim] = elita;
+    cout << "\nInlocuim cromozomul cu fitness-ul minim (cu indicele " << indiceCromozomMinim + 1 << ") cu elita\n";
+
 #pragma endregion
 
 #pragma region afisare evolutia maximului
@@ -397,7 +477,8 @@ int main() {
 				const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
 				double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
 				valoare = domDefStart + x * d;
-				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+//				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+                fitness = coefA * pow(valoare, 4) + coefB * pow(valoare, 3) + coefC * pow(valoare, 2) + coefD * valoare + coefE;
 			}
 
 			// recalculare probabilitate de selectie
@@ -429,7 +510,7 @@ int main() {
 				indiceElita = i;
 			}
 		}
-		populatieSelectata.push_back(populatie[indiceElita]);
+        elita = populatie[indiceElita]; // facem o copie la elita
 		for (int i = 0; i < dimPop; i++) {
 			double u = dis01(gen);
 			nrCromozomSelectat = selectie(u, dimPop, intervaleProbabilitateSelectie);
@@ -452,8 +533,14 @@ int main() {
 			int index2 = indiciCromozomiSelectatiIncrucisare[i + 1];
 			string cromozom1 = populatie[index1].codificat;
 			string cromozom2 = populatie[index2].codificat;
-			int punct = rand() % cromozom1.length();
-			auto rezultat = incrucisare(cromozom1, cromozom2, punct);
+			int punctStanga = rand() % cromozom1.length();
+            int punctDreapta = rand() % cromozom1.length();
+            if(punctDreapta < punctStanga) {
+                int aux = punctStanga;
+                punctStanga = punctDreapta;
+                punctDreapta = aux;
+            }
+			auto rezultat = incrucisare(cromozom1, cromozom2, punctStanga, punctDreapta);
 			// reintegrare in populatie
 			populatie[index1].codificat = rezultat.first;
 			populatie[index2].codificat = rezultat.second;
@@ -467,7 +554,8 @@ int main() {
 				const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
 				double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
 				valoare = domDefStart + x * d;
-				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+//				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+                fitness = coefA * pow(valoare, 4) + coefB * pow(valoare, 3) + coefC * pow(valoare, 2) + coefD * valoare + coefE;
 			}
 
 			// recalculare probabilitate de selectie
@@ -499,7 +587,8 @@ int main() {
 				const int l = ceil(log2((domDefEnd - domDefStart) * pow(10, precizie))); // numarul de biti pentru codificare
 				double d = (domDefEnd - domDefStart) / pow(2, l); // pasul de discretizare
 				valoare = domDefStart + x * d;
-				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+//				fitness = coefA * valoare * valoare + coefB * valoare + coefC;
+                fitness = coefA * pow(valoare, 4) + coefB * pow(valoare, 3) + coefC * pow(valoare, 2) + coefD * valoare + coefE;
 			}
 
 			// recalculare probabilitate de selectie
@@ -519,6 +608,19 @@ int main() {
 			}
 
 	#pragma endregion
+
+        // reintroducere elita in populatie prin inlocuirea cromozomului cu fitness ul cel mai mic
+        // cautam cromozomul cu fitness-ul minim
+        minFitness = 1e9;
+        indiceCromozomMinim = 0;
+        for (int i = 0; i < dimPop; ++i) {
+            if (populatie[i].fitness < minFitness) {
+                minFitness = populatie[i].fitness;
+                indiceCromozomMinim = i;
+            }
+        }
+        // inlocuim cromozomul cu fitness-ul minim cu elita
+        populatie[indiceCromozomMinim] = elita;
 
 		// calculare fitness maxim
 		double maxFitness = 0;

@@ -245,10 +245,11 @@ int main() {
 			indiceElita = i;
 		}
 	}
-	populatieSelectata.push_back(populatie[indiceElita]);
+//	populatieSelectata.push_back(populatie[indiceElita]); // il adaugam dupa ce se face incrucisarea si mutatia
+    Cromozom elita = populatie[indiceElita];
 	cout << "Elita este cromozomul " << indiceElita + 1 << ": " << populatie[indiceElita].codificat << " cu fitness-ul maxim = " << maxFitness << '\n';
 
-	for (int i = 0; i < dimPop - 1; i++) { // dimPop - 1 pentru ca am selectat deja elita
+	for (int i = 0; i < dimPop; i++) { // dimPop - 1 pentru ca am selectat deja elita
 		double u = dis01(gen);
 		nrCromozomSelectat = selectie(u, dimPop, intervaleProbabilitateSelectie);
 		populatieSelectata.push_back(populatie[nrCromozomSelectat - 1]);
@@ -382,6 +383,20 @@ int main() {
 			 << "; f = " << setw(9) << fixed << setprecision(12) << cromozom.fitness << '\n';
 	}
 
+    // inlocuirea celui mai slab cromozom cu elita
+    // cautam cromozomul cu fitness-ul minim
+    double minFitness = 1e9;
+    int indiceCromozomMinim = 0;
+    for (int i = 0; i < dimPop; ++i) {
+        if (populatie[i].fitness < minFitness) {
+            minFitness = populatie[i].fitness;
+            indiceCromozomMinim = i;
+        }
+    }
+    // inlocuim cromozomul cu fitness-ul minim cu elita
+    populatie[indiceCromozomMinim] = elita;
+    cout << "\nInlocuim cromozomul cu fitness-ul minim (cu indicele " << indiceCromozomMinim + 1 << ") cu elita\n";
+
 #pragma endregion
 
 #pragma region afisare evolutia maximului
@@ -429,7 +444,7 @@ int main() {
 				indiceElita = i;
 			}
 		}
-		populatieSelectata.push_back(populatie[indiceElita]);
+        elita = populatie[indiceElita]; // facem o copie la elita
 		for (int i = 0; i < dimPop; i++) {
 			double u = dis01(gen);
 			nrCromozomSelectat = selectie(u, dimPop, intervaleProbabilitateSelectie);
@@ -519,6 +534,19 @@ int main() {
 			}
 
 	#pragma endregion
+
+        // reintroducere elita in populatie prin inlocuirea cromozomului cu fitness ul cel mai mic
+        // cautam cromozomul cu fitness-ul minim
+        minFitness = 1e9;
+        indiceCromozomMinim = 0;
+        for (int i = 0; i < dimPop; ++i) {
+            if (populatie[i].fitness < minFitness) {
+                minFitness = populatie[i].fitness;
+                indiceCromozomMinim = i;
+            }
+        }
+        // inlocuim cromozomul cu fitness-ul minim cu elita
+        populatie[indiceCromozomMinim] = elita;
 
 		// calculare fitness maxim
 		double maxFitness = 0;
