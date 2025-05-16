@@ -1,6 +1,6 @@
 package L3;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 public class Student implements Comparable<Student> {
 	private String nume;
@@ -40,7 +40,7 @@ public class Student implements Comparable<Student> {
 	}
 
 	@Override
-	public int compareTo(@NotNull Student other) {
+	public int compareTo(Student other) {
 		return Double.compare(this.medie, other.medie);
 //		if (this.medie < other.medie) {
 //			return -1;
