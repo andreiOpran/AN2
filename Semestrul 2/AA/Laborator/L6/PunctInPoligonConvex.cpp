@@ -10,7 +10,7 @@ cross = produs vectorial
 p.cross(q, r) = produsul vectorial dintre vectorii PQ si PR = determinantul din testul de orientare
 
 dot = produs scalar
-p.dot(q, r) = produsul scalar dintre vectorii PQ si PR adica
+p.dot(q, r) = produsul scalar dintre vectorii PQ si PR adica 
 produsul dintre lungimea lui PQ si lungimea lui PR si cosinusul unghiului dintre ei
 
 sqrLen = lungimea vectorului
@@ -107,9 +107,9 @@ bool punctInTriunghi(const Punct& a, const Punct& b, const Punct& c, const Punct
 // verifica daca un punct e pe segment
 bool punctPeSegment(const Punct& a, const Punct& b, const Punct& p) {
 	if (a.cross(b, p) != 0) return false; // punctul nu e coliniar
-
+	
 	// verificam daca punctul e in interiorul segmentului
-	if (min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x) &&
+	if (min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x) && 
 		min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y)) {
 		return true;
 	}
@@ -160,7 +160,7 @@ string pozitiePunctInPoligonConvex(Punct punct) {
 	Punct b1 = Punct(0, 0) + translatie;
 	if (punctPeSegment(a1, b1, punct))
 		return "BOUNDARY";
-
+	
 	Punct a2 = secventa[l + 1] + translatie;
 	if (punctPeSegment(a1, a2, punct))
 		return "BOUNDARY";
@@ -174,7 +174,7 @@ string pozitiePunctInPoligonConvex(Punct punct) {
 
 int main() {
 	int n, m;
-
+	
 	cin >> n;
 	vector<Punct> poligon;
 	for (int i = 0; i < n; i++) {
