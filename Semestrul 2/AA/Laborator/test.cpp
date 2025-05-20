@@ -96,12 +96,9 @@ void pregatirePoligon(vector<Punct>& puncte) {
 }
 
 bool punctInTriunghi(const Punct& a, const Punct& b, const Punct& c, const Punct& p) {
-    long long o1 = a.cross(b, p);
-    long long o2 = b.cross(c, p);
-    long long o3 = c.cross(a, p);
-
-    // verificam daca toate au acelasi semn si niciunul nu e zero
-    return (o1 > 0 && o2 > 0 && o3 > 0) || (o1 < 0 && o2 < 0 && o3 < 0);
+	long long orientare1 = abs(a.cross(b, c));
+	long long orientare2 = abs(p.cross(a, b)) + abs(p.cross(b, c)) + abs(p.cross(c, a));
+	return orientare1 == orientare2;
 }
 
 // verifica daca un punct e pe segment
