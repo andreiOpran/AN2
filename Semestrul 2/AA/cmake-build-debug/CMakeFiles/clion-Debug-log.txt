@@ -1,1 +1,1 @@
-CMakeLists.txt not found in C:\Users\andre\Desktop\AN2\Semestrul 2\AA Select CMakeLists.txt
+CMakeLists.txt not found in /home/andrei/Desktop/AN2/Semestrul 2/AA Select CMakeLists.txt
