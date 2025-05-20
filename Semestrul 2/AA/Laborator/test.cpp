@@ -133,15 +133,6 @@ string pozitiePunctInPoligonConvex(Punct punct) {
 		return "OUTSIDE";
 	}
 
-	if (secventa[0].cross(punct) == 0)
-	{
-		// verificam pozitia pe raza primei muchii
-		if (secventa[0].dot(punct) < 0 || secventa[0].sqrLen() < punct.sqrLen())
-			return "OUTSIDE";
-		else
-			return "BOUNDARY";
-	}
-
 	// cautare binara pentru a gasi sectorul in care se afla punctul
 	int l = 0, r = n - 1;
 	while (r - l > 1) {
@@ -153,13 +144,9 @@ string pozitiePunctInPoligonConvex(Punct punct) {
 	}
 
 	// verifica daca punctul e pe una din cele doua laturi
-	Punct a1 = secventa[l] + translatie;
-	Punct b1 = Punct(0, 0) + translatie;
-	if (punctPeSegment(a1, b1, punct))
+	if (punctPeSegment(secventa[l], Punct(0, 0), punct))
 		return "BOUNDARY";
-
-	Punct a2 = secventa[l + 1] + translatie;
-	if (punctPeSegment(a1, a2, punct))
+	if (punctPeSegment(secventa[l], secventa[l + 1], punct))
 		return "BOUNDARY";
 
 	// verificcam daca punctul e in triunghiul format de cele doua laturi
