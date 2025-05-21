@@ -90,21 +90,16 @@ bool punctPeSegment(const Punct& a, const Punct& b, const Punct& p) {
 }
 
 bool segmenteIntersectate(const Punct& a1, const Punct& b1, const Punct& a2, const Punct& b2) {
-	int o1 = semn(a1.cross(b1, a2));
-	int o2 = semn(a1.cross(b1, b2));
-	int o3 = semn(a2.cross(b2, a1));
-	int o4 = semn(a2.cross(b2, b1));
-
-	// doua segmente se intersecteaza daca si numai daca capetele unui segment sunt de o parte si de alta
-	// a celuilalt segment
-	if (o1 != o2 && o3 != o4)
+	// doua segmente se intersecteaza daca si numai daca capetele unui segment sunt de o parte si de alta a celuilalt segment
+	if (semn(a1.cross(b1, a2)) != semn(a1.cross(b1, b2))
+		&& semn(a2.cross(b2, a1)) != semn(a2.cross(b2, b1)))
 		return true;
 
 	// puncte coliniare
-	if (o1 == 0 && punctPeSegment(a1, b1, a2)) return true;
-	if (o2 == 0 && punctPeSegment(a1, b1, b2)) return true;
-	if (o3 == 0 && punctPeSegment(a2, b2, a1)) return true;
-	if (o4 == 0 && punctPeSegment(a2, b2, b1)) return true;
+	if (semn(a1.cross(b1, a2)) == 0 && punctPeSegment(a1, b1, a2)) return true;
+	if (semn(a1.cross(b1, b2)) == 0 && punctPeSegment(a1, b1, b2)) return true;
+	if (semn(a2.cross(b2, a1)) == 0 && punctPeSegment(a2, b2, a1)) return true;
+	if (semn(a2.cross(b2, b1)) == 0 && punctPeSegment(a2, b2, b1)) return true;
 
 	return false;
 }

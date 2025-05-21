@@ -30,19 +30,19 @@ bool esteXMonoton(vector<Punct>& puncte) {
 	// primul lant de la minX la maxX in sens opus celui trigonometric
 	int i = ind_minX;
 	while (i != ind_maxX) {
-		int indiceUrmator = (i + 1) % n;
-		if (puncte[i].x > puncte[indiceUrmator].x) // verificare daca x devine mai mic pentru urmatorul punct
+		int j = (i + 1) % n;
+		if (puncte[i].x > puncte[j].x) // verificare daca x devine mai mic pentru urmatorul punct
 			return false;
-		i = indiceUrmator;
+		i = j;
 	}
 
 	// al doilea lant de la minX la maxX in sens trigonometric
 	i = ind_minX;
 	while (i != ind_maxX) {
-		int indiceUrmator = (i - 1 + n) % n;
-		if (puncte[i].x > puncte[indiceUrmator].x) // verificare daca x devine mai mic pentru urmatorul punct
+		int j = (i - 1 + n) % n;
+		if (puncte[i].x > puncte[j].x) // verificare daca x devine mai mic pentru urmatorul punct
 			return false;
-		i = indiceUrmator;
+		i = j;
 	}
 
 	return true;
@@ -65,19 +65,19 @@ bool esteYMonoton(vector<Punct>& puncte) {
 	// primul lant de la minY la maxY in sens opus celui trigonometric
 	int i = ind_minY;
 	while (i != ind_maxY) {
-		int indiceUrmator = (i + 1) % n;
-		if (puncte[i].y > puncte[indiceUrmator].y) // verificare daca y devine mai mic pentru urmatorul punct
+		int j = (i + 1) % n;
+		if (puncte[i].y > puncte[j].y) // verificare daca y devine mai mic pentru urmatorul punct
 			return false;
-		i = indiceUrmator;
+		i = j;
 	}
 
 	// al doilea lant de la minY la maxY in sens trigonometric
 	i = ind_minY;
 	while (i != ind_maxY) {
-		int indiceUrmator = (i - 1 + n) % n;
-		if (puncte[i].y > puncte[indiceUrmator].y) //verificare daca y devine mai mic pentru urmatorul punct
+		int j = (i - 1 + n) % n;
+		if (puncte[i].y > puncte[j].y) //verificare daca y devine mai mic pentru urmatorul punct
 			return false;
-		i = indiceUrmator;
+		i = j;
 	}
 
 	return true;
