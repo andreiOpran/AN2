@@ -10,7 +10,7 @@ cross = produs vectorial
 p.cross(q, r) = produsul vectorial dintre vectorii PQ si PR = determinantul din testul de orientare
 
 dot = produs scalar
-p.dot(q, r) = produsul scalar dintre vectorii PQ si PR adica 
+p.dot(q, r) = produsul scalar dintre vectorii PQ si PR
 produsul dintre lungimea lui PQ si lungimea lui PR si cosinusul unghiului dintre ei
 
 sqrLen = lungimea vectorului
@@ -96,20 +96,17 @@ void pregatirePoligon(vector<Punct>& puncte) {
 }
 
 bool punctInTriunghi(const Punct& a, const Punct& b, const Punct& c, const Punct& p) {
-    long long o1 = a.cross(b, p);
-    long long o2 = b.cross(c, p);
-    long long o3 = c.cross(a, p);
-
-    // verificam daca toate au acelasi semn si niciunul nu e zero
-    return (o1 > 0 && o2 > 0 && o3 > 0) || (o1 < 0 && o2 < 0 && o3 < 0);
+	long long orientare1 = abs(a.cross(b, c));
+	long long orientare2 = abs(p.cross(a, b)) + abs(p.cross(b, c)) + abs(p.cross(c, a));
+	return orientare1 == orientare2;
 }
 
 // verifica daca un punct e pe segment
 bool punctPeSegment(const Punct& a, const Punct& b, const Punct& p) {
 	if (a.cross(b, p) != 0) return false; // punctul nu e coliniar
-	
+
 	// verificam daca punctul e in interiorul segmentului
-	if (min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x) && 
+	if (min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x) &&
 		min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y)) {
 		return true;
 	}
@@ -136,15 +133,6 @@ string pozitiePunctInPoligonConvex(Punct punct) {
 		return "OUTSIDE";
 	}
 
-	if (secventa[0].cross(punct) == 0)
-	{
-		// verificam pozitia pe raza primei muchii
-		if (secventa[0].dot(punct) < 0 || secventa[0].sqrLen() < punct.sqrLen())
-			return "OUTSIDE";
-		else
-			return "BOUNDARY";
-	}
-
 	// cautare binara pentru a gasi sectorul in care se afla punctul
 	int l = 0, r = n - 1;
 	while (r - l > 1) {
@@ -155,15 +143,12 @@ string pozitiePunctInPoligonConvex(Punct punct) {
 			r = mid;
 	}
 
-	// verifica daca punctul e pe una din cele doua laturi
-	Punct a1 = secventa[l] + translatie;
-	Punct b1 = Punct(0, 0) + translatie;
-	if (punctPeSegment(a1, b1, punct))
-		return "BOUNDARY";
-	
-	Punct a2 = secventa[l + 1] + translatie;
-	if (punctPeSegment(a1, a2, punct))
-		return "BOUNDARY";
+    // verifica daca punctul e pe una din cele doua laturi
+    if (punctPeSegment(secventa[l], Punct(0, 0), punct))
+        return "BOUNDARY";
+    
+    if (punctPeSegment(secventa[l], secventa[l + 1], punct))
+        return "BOUNDARY";
 
 	// verificcam daca punctul e in triunghiul format de cele doua laturi
 	if (punctInTriunghi(Punct(0, 0), secventa[l], secventa[l + 1], punct))
@@ -174,7 +159,7 @@ string pozitiePunctInPoligonConvex(Punct punct) {
 
 int main() {
 	int n, m;
-	
+
 	cin >> n;
 	vector<Punct> poligon;
 	for (int i = 0; i < n; i++) {
