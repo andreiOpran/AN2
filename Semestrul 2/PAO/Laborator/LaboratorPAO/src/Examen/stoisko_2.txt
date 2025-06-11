@@ -1,0 +1,5 @@
+Stilou,plastic,12,7.5
+Rama,lemn,6,15.0
+Minge,plastic,10,8.0
+Poster,hartie,25,4.0
+Puzzle,carton,5,20.0

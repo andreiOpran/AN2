@@ -1,0 +1,5 @@
+Figurina,plastic,5,10.5
+Magnet,metal,10,5.0
+Breloc,plastic,15,3.0
+Cana,ceramica,8,12.0
+Tricou,bumbac,20,25.0

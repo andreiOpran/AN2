@@ -1,177 +1,149 @@
 #include <iostream>
 #include <vector>
+#include <set>
 #include <algorithm>
-#include <climits>
-
-const long long bigNumber = 1000000000000LL;
-
+#include <iomanip>
+#include <cmath>
 using namespace std;
 
-/*
-
-cross = produs vectorial
-p.cross(q, r) = produsul vectorial dintre vectorii PQ si PR = determinantul din testul de orientare
-
-dot = produs scalar
-p.dot(q, r) = produsul scalar dintre vectorii PQ si PR adica
-produsul dintre lungimea lui PQ si lungimea lui PR si cosinusul unghiului dintre ei
-
-sqrLen = lungimea vectorului
-Punct(x, y).sqrLen() = x^2 + y^2
-
-*/
-struct Punct {
-	long long x;
-	long long y;
-
-	Punct() {}
-	Punct(long long x, long long y) : x(x), y(y) {}
-
-	Punct operator+(const Punct& other) const { return Punct(x + other.x, y + other.y); }
-	Punct operator-(const Punct& other) const { return Punct(x - other.x, y - other.y); }
-
-	long long cross(const Punct& other) const { return x * other.y - y * other.x; }
-	long long dot(const Punct& other) const { return x * other.x + y * other.y; }
-
-	long long cross(const Punct& a, const Punct& b) const { return (a.x - x) * (b.y - y) - (a.y - y) * (b.x - x); }
-	long long dot(const Punct& a, const Punct& b) const { return (a.x - x) * (b.x - x) + (a.y - y) * (b.y - y); }
-
-	long long sqrLen() const { return this->dot(*this); }
+struct Semiplan {
+    double a, b, c;
+    Semiplan() : a(0), b(0), c(0) {}
+    Semiplan(double a, double b, double c) : a(a), b(b), c(c) {}
 };
 
-string testOrientare(long long px, long long py, long long qx, long long qy, long long rx, long long ry) {
-	Punct p(px, py);
-	Punct q(qx, qy);
-	Punct r(rx, ry);
+struct Dreptunghi {
+    double x_left, x_right, y_bottom, y_top;
+    double arie;
 
-	long long orientare = p.cross(q, r);
+    Dreptunghi(double x_left, double x_right, double y_bottom, double y_top) : x_left(x_left), x_right(x_right), y_bottom(y_bottom), y_top(y_top) {
+        arie = (x_right - x_left) * (y_top - y_bottom);
+    }
 
-	if (orientare == 0) {
-		return "TOUCH";
-	}
-	else if (orientare > 0) {
-		return "LEFT";
-	}
-	else {
-		return "RIGHT";
-	}
+    bool contineInInteriorPunct(double x, double y) const {
+        return x > x_left && x < x_right && y > y_bottom && y < y_top;
+    }
+};
+
+istream& operator>>(istream& is, Semiplan& obj) {
+    is >> obj.a >> obj.b >> obj.c;
+    return is;
 }
 
-bool compararePuncte(const Punct& a, const Punct& b) {
-	if (a.x == b.x) {
-		return a.y < b.y;
-	}
-	return a.x < b.x;
+int cautareBinaraLower(const vector<double>& v, double p) {
+    int left = 0, right = v.size() - 1;
+    int result = -1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (v[mid] < p) {
+            result = mid;
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return result; // returneaza index
 }
 
-int semn(long long x) {
-	if (x > 0) return 1;
-	if (x < 0) return -1;
-	return 0;
-}
+int cautareBinaraUpper(const vector<double>& v, double p) {
+    int left = 0, right = v.size() - 1;
+    int result = -1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
 
-
-bool punctInTriunghi(const Punct& a, const Punct& b, const Punct& c, const Punct& p) {
-	long long orientare1 = abs(a.cross(b, c));
-	long long orientare2 = abs(p.cross(a, b)) + abs(p.cross(b, c)) + abs(p.cross(c, a));
-	return orientare1 == orientare2;
-}
-
-// verifica daca un punct e pe segment
-bool punctPeSegment(const Punct& a, const Punct& b, const Punct& p) {
-	if (a.cross(b, p) != 0) return false; // punctul nu e coliniar
-
-	// verificam daca punctul e in interiorul segmentului
-	if (min(a.x, b.x) <= p.x && p.x <= max(a.x, b.x) &&
-		min(a.y, b.y) <= p.y && p.y <= max(a.y, b.y)) {
-		return true;
-	}
-	return false;
-}
-
-bool segmenteIntersectate(const Punct& a1, const Punct& b1, const Punct& a2, const Punct& b2) {
-	int o1 = semn(a1.cross(b1, a2));
-	int o2 = semn(a1.cross(b1, b2));
-	int o3 = semn(a2.cross(b2, a1));
-	int o4 = semn(a2.cross(b2, b1));
-
-	// doua segmente se intersecteaza daca si numai daca capetele unui segment sunt de o parte si de alta
-	// a celuilalt segment
-	if (o1 != o2 && o3 != o4)
-		return true;
-
-	// puncte coliniare
-	if (o1 == 0 && punctPeSegment(a1, b1, a2)) return true;
-	if (o2 == 0 && punctPeSegment(a1, b1, b2)) return true;
-	if (o3 == 0 && punctPeSegment(a2, b2, a1)) return true;
-	if (o4 == 0 && punctPeSegment(a2, b2, b1)) return true;
-
-	return false;
-}
-
-string pozitiePunctInPoligon(vector<Punct> poligon, Punct q) {
-	int n = poligon.size();
-
-	// verificare BOUNDARY
-	for (int i = 0; i < n; i++) {
-		if (punctPeSegment(poligon[i], poligon[(i + 1) % n], q)) {
-			return "BOUNDARY";
-		}
-	}
-
-	Punct exterior(q.x + 10000, q.y + 2000000000);
-	int cont = 0;
-
-	// contorizare pucnte care intersecteaza un segment de la q la exterior
-	for (int i = 0; i < n; i++) {
-		Punct p1 = poligon[i];
-		Punct p2 = poligon[(i + 1) % n];
-
-		// verificare intersectie
-		if (segmenteIntersectate(p1, p2, q, exterior)) { 
-			if (semn(q.cross(exterior, p1)) == 0) { // verificare coliniaritate
-				if (punctPeSegment(q, exterior, p1)) { // p1 este pe segmentul qexterior
-					Punct p0 = poligon[(i - 1 + n) % n];
-					if ((p0.y < q.y && p2.y > q.y) || (p0.y > q.y && p2.y < q.y)) { // verificare daca p1 si p2 sunt de o parte si de alta a lui q rezulta intersectie
-						cont++;
-					}
-				}
-			}
-			else {
-				cont ++;
-			}
-		}
-	}
-
-	if (cont % 2 == 1) {
-		return "INSIDE";
-	}
-	else {
-		return "OUTSIDE";
-	}
-	
+        if (v[mid] > p) {
+            result = mid; 
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return result; 
 }
 
 int main() {
-	int n;
-	cin >> n;
+    int n, m;
+    vector<Semiplan> semiplane;
+    double x, y;
+    cin >> n;
 
-	vector<Punct> poligon;
-	for (int i = 0; i < n; i++) {
-		long long x, y;
-		cin >> x >> y;
-		poligon.push_back(Punct(x, y));
-	}
+    while (n--) {
+        Semiplan sp;
+        cin >> sp;
+        semiplane.push_back(sp);
+    }
 
-	int m;
-	cin >> m;
+    // pentru a separa semiplanele in verticale si orizontale
+    set<double> limitaStangaXSet; // x >= limita
+    set<double> limitaDreaptaXSet;
+    set<double> limitaJosYSet; // y >= limita
+    set<double> limitaSusYSet;
 
-	for (int i = 0; i < m; i++) {
-		long long x, y;
-		cin >> x >> y;
-		Punct q(x, y);
-		cout << pozitiePunctInPoligon(poligon, q) << endl;
-	}
-	
-	return 0;
+    for (const auto& semiplan : semiplane) {
+        if (semiplan.a != 0 && semiplan.b == 0) { // semiplan vertical
+            double limita = -1.0 * semiplan.c / semiplan.a;
+            if (semiplan.a > 0) { // x <= limita
+                limitaDreaptaXSet.insert(limita);
+            } else { // x >= limita
+                limitaStangaXSet.insert(limita);
+            }
+        }
+        if (semiplan.a == 0 && semiplan.b != 0) { // semiplan orizontal
+            double limita = -1.0 * semiplan.c / semiplan.b;
+            if (semiplan.b > 0) { // y <= limita
+                limitaSusYSet.insert(limita);
+            } else { // y >= limita
+                limitaJosYSet.insert(limita);
+            }
+        }
+    }
+
+    vector<double> limitaStangaXVector(limitaStangaXSet.begin(), limitaStangaXSet.end());
+    vector<double> limitaDreaptaXVector(limitaDreaptaXSet.begin(), limitaDreaptaXSet.end());
+    vector<double> limitaJosYVector(limitaJosYSet.begin(), limitaJosYSet.end());
+    vector<double> limitaSusYVector(limitaSusYSet.begin(), limitaSusYSet.end());
+
+    sort(limitaStangaXVector.begin(), limitaStangaXVector.end());
+    sort(limitaDreaptaXVector.begin(), limitaDreaptaXVector.end());
+    sort(limitaJosYVector.begin(), limitaJosYVector.end());
+    sort(limitaSusYVector.begin(), limitaSusYVector.end());
+
+    cin >> m;
+    while (m--) {
+        cin >> x >> y;
+
+        // cele mai apropiate limite
+        int stanga = cautareBinaraLower(limitaStangaXVector, x);
+        int dreapta = cautareBinaraUpper(limitaDreaptaXVector, x);
+        int jos = cautareBinaraLower(limitaJosYVector, y);
+        int sus = cautareBinaraUpper(limitaSusYVector, y);
+
+        if (stanga == -1 || dreapta == -1 || jos == -1 || sus == -1) {
+            cout << "NO\n";
+            continue;
+        }
+
+        double stangaMax = limitaStangaXVector[stanga];
+        double dreaptaMin = limitaDreaptaXVector[dreapta];
+        double josMax = limitaJosYVector[jos];
+        double susMin = limitaSusYVector[sus];
+
+        // verificare (x, y) in dreptunghi
+        if (x > stangaMax && x < dreaptaMin && y > josMax && y < susMin) {
+            cout << "YES\n";
+            Dreptunghi dreptunghi(stangaMax, dreaptaMin, josMax, susMin);
+            double arie = dreptunghi.arie;
+            cout << fixed << setprecision(6) << arie << "\n";
+        } else {
+            cout << "NO\n";
+        }
+
+    }
+
+    return 0;
 }

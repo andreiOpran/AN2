@@ -1,0 +1,181 @@
+package Examen;
+
+import javax.xml.crypto.Data;
+import java.io.*;
+
+import java.lang.reflect.Array;
+import java.sql.*;
+import java.util.*;
+import java.util.stream.Collectors;
+
+class DiplomaLicenta implements Serializable {
+    private int serie;
+    private String absolvent;
+    private int an;
+    private String facultate;
+    private String specializare;
+    private double medie;
+
+    public DiplomaLicenta(int serie, String absolvent, int an, String facultate, String specializare, double medie) {
+        this.serie = serie;
+        this.absolvent = absolvent;
+        this.an = an;
+        this.facultate = facultate;
+        this.specializare = specializare;
+        this.medie = medie;
+    }
+
+    @Override
+    public String toString() {
+        return "DiplomaLicenta{" +
+                "serie=" + serie +
+                ", absolvent='" + absolvent + '\'' +
+                ", an=" + an +
+                ", facultate='" + facultate + '\'' +
+                ", specializare='" + specializare + '\'' +
+                ", medie=" + medie +
+                '}';
+    }
+
+    public int getSerie() {
+        return serie;
+    }
+
+    public void setSerie(int serie) {
+        this.serie = serie;
+    }
+
+    public String getAbsolvent() {
+        return absolvent;
+    }
+
+    public void setAbsolvent(String absolvent) {
+        this.absolvent = absolvent;
+    }
+
+    public int getAn() {
+        return an;
+    }
+
+    public void setAn(int an) {
+        this.an = an;
+    }
+
+    public String getFacultate() {
+        return facultate;
+    }
+
+    public void setFacultate(String facultate) {
+        this.facultate = facultate;
+    }
+
+    public String getSpecializare() {
+        return specializare;
+    }
+
+    public void setSpecializare(String specializare) {
+        this.specializare = specializare;
+    }
+
+    public double getMedie() {
+        return medie;
+    }
+
+    public void setMedie(double medie) {
+        this.medie = medie;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        DiplomaLicenta that = (DiplomaLicenta) o;
+        return serie == that.serie && an == that.an && Double.compare(medie, that.medie) == 0 && Objects.equals(absolvent, that.absolvent) && Objects.equals(facultate, that.facultate) && Objects.equals(specializare, that.specializare);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serie, absolvent, an, facultate, specializare, medie);
+    }
+}
+
+class DatabaseConnection {
+    private static DatabaseConnection instance;
+    private Connection connection;
+    private String URL = "";
+
+    private DatabaseConnection() throws SQLException {
+        instance = null;
+        connection = DriverManager.getConnection(URL);
+    }
+
+    public static DatabaseConnection getInstance() throws SQLException {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+            return instance;
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+}
+
+
+public class Test {
+    public static void main(String[] args) {
+        try {
+            DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+            Connection connection = databaseConnection.getConnection();
+            List<DiplomaLicenta> diplome = new ArrayList<>();
+
+            Scanner scanner = new Scanner(System.in);
+            int an_min, an_max;
+            String den_spec;
+            an_min = scanner.nextInt();
+            an_max = scanner.nextInt();
+            den_spec = scanner.next();
+
+
+            String query = "SELECT * FROM DiplomeLicenta WHERE specializare = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, den_spec);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    int serie = resultSet.getInt("serie");
+                    String absolvent = resultSet.getString("absolvent");
+                    int an = resultSet.getInt("an");
+                    String facultate = resultSet.getString("facultate");
+                    String specializare = resultSet.getString("specializare");
+                    double medie = resultSet.getDouble("medie");
+
+                    if (an >= an_min && an <= an_max) {
+                        diplome.add(new DiplomaLicenta(serie, absolvent, an, facultate, specializare, medie));
+                    }
+                }
+            }
+
+            if (diplome.isEmpty()) {
+                System.out.println("Nu exista diplome");
+            }
+
+            // serializare
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("fisier1.txt"))) {
+                oos.writeObject(diplome);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+
+            // deserializare
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("fisier1.txt"))) {
+                ArrayList<DiplomaLicenta> diplomeDeserializate = (ArrayList<DiplomaLicenta>) ois.readObject();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
