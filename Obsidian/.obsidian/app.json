@@ -1,8 +1,9 @@
 {
   "spellcheck": false,
-  "showLineNumber": true,
+  "showLineNumber": false,
   "showIndentGuide": true,
   "rightToLeft": false,
   "tabSize": 4,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "Images"
 }
